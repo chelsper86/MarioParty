@@ -1,4 +1,4 @@
-let images = ["images/dice-00.svg",
+let images = ["images/dice-00.png",
 "images/dice-01.svg",
 "images/dice-02.svg",
 "images/dice-03.svg",
