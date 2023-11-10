@@ -1,0 +1,249 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /*When you set an element's box-sizing to border-box, it means that the element's specified width and height include the padding and border. In other words, the padding and border are included within the box, and they do not increase the overall dimensions of the element.*/
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.headerContainer{
+    /*border: 1px solid black;*/
+    margin: 25px;
+}
+
+.headerGrid{
+    width: 100%;
+    display: flex;
+    /*gap: 5rem;*/
+    /*grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));/*When you use the "fr" unit, you're specifying a fraction of the available space within the grid container. For example, if you set a column to be 1fr and another column to be 2fr, the first column gets one-third of the available space, and the second column gets two-thirds of the available space.*/
+}
+
+/*#main_character_img{
+    border: 1px solid black;
+}*/
+
+#main_character_img img {
+    max-width: 100%; /* Set a maximum width to fit the container */
+    max-height: 100%; /* Set a maximum height to fit the container */
+    display: block; /* Ensure it's a block-level element for horizontal centering */
+    float: left;
+    margin: 0px 0px 0px 30px;
+    /*margin: 0 auto; /* Center it horizontally within the div */
+}
+
+#character-name {
+    font-size: 10em;
+}
+
+h1{
+    font-size: 100%;
+    /*font-size: 225px;*/
+    font-family: sans-serif;
+    color: #ffffff;
+    padding-left: 100px;
+    display: flex;
+    /*flex-direction: ;*/
+    justify-content: center;
+    align-items: center;
+    /*border: 1px solid black;*/
+    height: 100%;
+    float: left;
+}
+
+.dropDownMainContainer{
+    width: 100%;
+}
+
+.dropDownMenusContainer1{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+.dropDownMenusContainer2{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+#turn_menu, #star_menu, #coin_menu{
+    border: 5px solid black;
+    border-radius: 25px;
+    background-color: lightgray;
+    padding: 20px;
+    margin: 10px;
+}
+
+#star_menu{
+    margin: 10px 0px 10px 0px;
+}
+
+#item1, #item2, #item3{
+    border: 5px solid black;
+    border-radius: 25px;
+    background-color: lightgray;
+    padding: 20px 0px 20px 20px;
+    margin: 10px;
+}
+
+#item2{
+    margin: 10px 0px 10px 0px;
+}
+
+#turn_drop_down, #star_drop_down, #coin_drop_down{
+    /* "," signifies the class and "#" signifies the id value being referenced in the html files*/
+    /*width: 175px;*/
+    width: 175px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 50px;
+    border-radius: 15px; /*Changes the roundness of the corners of the selector box*/
+}
+
+#item1_drop_down, #item2_drop_down, #item3_drop_down{
+    /* "," signifies the class and "#" signifies the id value being referenced in the html files*/
+    width: 175px;
+    /*width: 100%;*/
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 50px;
+    border-radius: 15px; /*Changes the roundness of the corners of the selector box*/
+}
+
+.column{
+    float: left;
+    width: 33.33%;    
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.subRow{
+    display: flex;
+  }
+
+.subColumn{ 
+    flex: 50%;
+}
+
+#turn_img, #star_img, #coin_img{
+    display: block; /* Ensure it's a block-level element */
+    margin: 0 auto; /* Center the image horizontally */
+    padding: 0px 0px 0px 20px;
+}
+
+.diceContainer{
+    width: 900px;
+    height: 900px;
+    padding: 50px;
+    border: 25px solid black;
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: 0 15px 35px rgba(50, 50, 50, 0.2);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column; /* Change flex direction to column */
+    justify-content: center;
+    align-items: center; /* Center horizontally */
+    font-family: "Poppins", sans-serif;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    margin: 25px;
+}
+
+#dice-wrapper{
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shake{
+    animation: shake 0.1s infinite;
+}
+
+@keyframes shake{
+    0%{
+        transform: rotate(20deg);
+    }
+    50%{
+        transform: rotate(-20deg);
+    }
+    100%{
+        transform: rotate(20deg);
+    }
+}
+
+#item_drop_down_image1, #item_drop_down_image2, #item_drop_down_image3 {
+    width: 100px; /* Adjust to your preferred width */
+    height: 100px; /* Adjust to your preferred height */
+    /*overflow: hidden;*/ /* Ensure the image doesn't overflow the container */
+    display: block; /* Ensure the image is treated as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    /*vertical-align: middle; /* Center the image vertically */
+    margin: 0px 20px 0px 20px;
+}
+
+#image-description {
+    display: none; /* Hide the item description initially */
+}
+
+/* Style the modal container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Style the modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 800px;
+    position: relative;
+    font-size: 50px;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Style the modal close button */
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
