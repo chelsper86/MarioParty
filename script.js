@@ -134,7 +134,7 @@ const characterData = {
     'boo': {
         cssFile: 'boo.css',
         name: 'Boo',
-        image: 'images/boo_main_img.svg'
+        image: 'images/boo_main_img.png'
     },
     'bobomb': {
         cssFile: 'bobomb.css',
