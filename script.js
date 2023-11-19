@@ -1,31 +1,55 @@
-//This section controls the dice roll behavior when the zero dice image is clicked. It shakes the dice image, changes the value of the dice, and plays a dice rolling sound.
-let images = ["images/dice-00.png",
-"images/dice-01.png",
-"images/dice-02.png",
-"images/dice-03.png",
-"images/dice-04.png",
-"images/dice-05.png",
-"images/dice-06.png",
-"images/dice-07.png",
-"images/dice-08.png",
-"images/dice-09.png",
-"images/dice-10.png"];
+let moveDice = document.querySelectorAll(".dice-wrapper");
+let rollType = 'move'; // Default roll type
 
-let dice = document.querySelectorAll(".dice-wrapper");
+let moveDiceImages = ["images/dice/dice-00.png",
+"images/dice/dice-01.png",
+"images/dice/dice-02.png",
+"images/dice/dice-03.png",
+"images/dice/dice-04.png",
+"images/dice/dice-05.png",
+"images/dice/dice-06.png",
+"images/dice/dice-07.png",
+"images/dice/dice-08.png",
+"images/dice/dice-09.png",
+"images/dice/dice-10.png"];
 
-//This function plays a rolling dice audio file when the dice is clicked.
-function play() {
-    var audio = document.getElementById("diceAudio");
-    audio.play();
-  }
+let diceItems = [
+    'Red Mushroom',
+    'Gold Mushroom',
+    'Poison Mushroom',
+    'Reverse Mushroom',
+    'Genie Lamp',
+    'Blue Lamp',
+    'Key',
+    'Boo Bell',
+    'Boo Spray',
+    'Dueling Glove',
+    'Plunder Chest',
+    'Warp Block'
+];
+
+let diceItemImages = {
+    'Red Mushroom': 'images/dice/dice_mushroom_red.svg',
+    'Gold Mushroom': 'images/dice/dice_mushroom_gold.svg',
+    'Poison Mushroom': 'images/dice/dice_mushroom_poison.svg',
+    'Reverse Mushroom': 'images/dice/dice_mushroom_reverse.svg',
+    'Genie Lamp': 'images/dice/dice_lamp_genie.svg',
+    'Blue Lamp': 'images/dice/dice_lamp_blue.svg',
+    'Key': 'images/dice/dice_key.svg',
+    'Boo Bell': 'images/dice/dice_boo_bell.svg',
+    'Boo Spray': 'images/dice/dice_boo_spray.svg',
+    'Dueling Glove': 'images/dice/dice_dueling_glove.svg',
+    'Plunder Chest': 'images/dice/dice_plunder_chest.svg',
+    'Warp Block': 'images/dice/dice_warp_block.svg'
+};
 
 //This function shakes the dice image, picks a random dice roll between 1 & 10 and then displays the corresponding new dice image.
 function roll(){
-    dice.forEach(function(die){
+    moveDice.forEach(function(die){
         die.classList.add("shake");   
     });
     setTimeout(function(){
-        dice.forEach(function(die){
+        moveDice.forEach(function(die){
             die.classList.remove("shake");
         });
         let dieValue = Math.floor(Math.random()*(10-1+1))+1
@@ -33,11 +57,58 @@ function roll(){
         Math.floor(Math.random()*10)+1
         ;
         console.log(dieValue);
-        document.querySelector("#die-0").setAttribute("src", images[dieValue]);
+        document.querySelector("#die-0").setAttribute("src", moveDiceImages[dieValue]);
     },
     1250
     );
 }
+
+//This function plays a rolling dice audio file when the dice is clicked.
+function play() {
+    var audio = document.getElementById("diceAudio");
+    audio.play();
+  }
+
+/*
+//This function shakes the dice image, picks a random dice roll between 1 & 10 and then displays the corresponding new dice image.
+function rollMove(){
+    moveDice.forEach(function(die){
+        die.classList.add("shake");   
+    });
+    setTimeout(function(){
+        moveDice.forEach(function(die){
+            die.classList.remove("shake");
+        });
+        let dieValue = Math.floor(Math.random()*(10-1+1))+1
+        ;
+        Math.floor(Math.random()*10)+1
+        ;
+        console.log(dieValue);
+        document.querySelector("#die-0").setAttribute("src", moveDiceImages[dieValue]);
+    },
+    1250
+    );
+}
+*/
+
+// This section controls the "item dice" roll behavior when the quesion mark dice image is clicked.
+// This function shakes the dice image, picks a random item, and displays the corresponding image.
+/* CHANGE 1
+function rollItem() {
+    itemDice.forEach(function (die) {
+        die.classList.add("shake");
+    });
+    setTimeout(function () {
+        itemDice.forEach(function (die) {
+            die.classList.remove("shake");
+        });
+        let randomIndex = Math.floor(Math.random() * diceItems.length);
+        let selectedItem = diceItems[randomIndex];
+        console.log(selectedItem);
+        document.querySelector("#die-0").setAttribute("src", diceItemImages[selectedItem]);
+    }, 1250);
+}
+*/
 
 //This informs the user that the "Changes you made may not be saved" if you reload the page. It is a fail safe option in case someone accidentally refreshes their screen. If a refresh is successful, then the data on the page is lost.
 window.addEventListener('beforeunload', function (e) {
@@ -57,47 +128,52 @@ const characterData = {
     'mario': {
         cssFile: 'mario.css',
         name: 'Mario',
-        image: 'images/mario_main_img.svg'
+        //image: 'images/mario_main_img.svg'
+        image: 'images/random_main_img.png'
     },
     'boo': {
         cssFile: 'boo.css',
         name: 'Boo',
-        image: 'images/boo_main_img.png'
+        image: 'images/boo_main_img.svg'
     },
     'bobomb': {
         cssFile: 'bobomb.css',
         name: 'Bob-omb',
-        image: 'images/bobomb.svg'
+        image: 'images/bobomb_main_img.png'
     },
     'drybones': {
         cssFile: 'drybones.css',
         name: 'Dry Bones',
-        image: 'images/drybones.svg'
+        image: 'images/drybones_main_img.png'
     },
     'yoshi': {
         cssFile: 'yoshi.css',
         name: 'Yoshi',
-        image: 'images/yoshi.jpeg'
+        image: 'images/yoshi_main_img.png'
     },
     'peach': {
         cssFile: 'peach.css',
         name: 'Peach',
-        image: 'images/peach.svg'
+        //image: 'images/peach.svg'
+        image: 'images/random_main_img.png'
     },
     'rosalina': {
         cssFile: 'rosalina.css',
         name: 'Rosalina',
-        image: 'images/rosalina.svg'
+        //image: 'images/rosalina.svg'
+        image: 'images/random_main_img.png'
     },
     'koopa': {
         cssFile: 'koopa.css',
         name: 'Koopa',
-        image: 'images/koopa.svg'
+        //image: 'images/koopa.svg'
+        image: 'images/random_main_img.png'
     },
     'cattoad': {
         cssFile: 'cattoad.css',
         name: 'Cat Toad',
-        image: 'images/cattoad.svg'
+        //image: 'images/cattoad.svg'
+        image: 'images/random_main_img.png'
     },
     // Add more characters and CSS files as needed
 };
@@ -118,19 +194,19 @@ if (characterData[character]) {
 
 // Define item images for each item
 const itemImages = {
-    'Item': 'images/item_box_alt.svg',
-    'Red Mushroom': 'images/mushroom_red.svg',
-    'Gold Mushroom': 'images/mushroom_gold.svg',
-    'Poison Mushroom': 'images/mushroom_poison.svg',
-    'Reverse Mushroom': 'images/mushroom_reverse.svg',
-    'Genie Lamp': 'images/lamp_genie.svg',
-    'Blue Lamp': 'images/lamp_blue.svg',
-    'Key': 'images/key.svg',
-    'Boo Bell': 'images/boo_bell.svg',
-    'Boo Spray': 'images/boo_spray.svg',
-    'Dueling Glove': 'images/dueling_glove.svg',
-    'Plunder Chest': 'images/plunder_chest.svg',
-    'Warp Block': 'images/warp_block.svg'
+    'Item': 'images/items/item_box_alt.svg',
+    'Red Mushroom': 'images/items/mushroom_red.svg',
+    'Gold Mushroom': 'images/items/mushroom_gold.svg',
+    'Poison Mushroom': 'images/items/mushroom_poison.svg',
+    'Reverse Mushroom': 'images/items/mushroom_reverse.svg',
+    'Genie Lamp': 'images/items/lamp_genie.svg',
+    'Blue Lamp': 'images/items/lamp_blue.svg',
+    'Key': 'images/items/key.svg',
+    'Boo Bell': 'images/items/boo_bell.svg',
+    'Boo Spray': 'images/items/boo_spray.svg',
+    'Dueling Glove': 'images/items/dueling_glove.svg',
+    'Plunder Chest': 'images/items/plunder_chest.svg',
+    'Warp Block': 'images/items/warp_block.svg'
 
     // Add more items and image paths as needed
 };
