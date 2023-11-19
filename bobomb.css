@@ -1,0 +1,9 @@
+body{
+    height: 100vh;
+    background: linear-gradient(
+        rgb(123, 125, 159),
+        #3c3f70ff
+    ) 0 100% no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed; /* This makes the background fixed and extend beyond the initial viewport */
+}
