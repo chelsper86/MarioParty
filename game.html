@@ -20,7 +20,6 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
             <div class="headerGrid">
                 <div class="box">
                     <div id="main_character_img">
-                        <!--<img src="images/mario_main_img.svg">-->
                         <img src="" id="character-image">
                     </div>
                 </div>
@@ -183,7 +182,7 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
                                 </div>
                                 <div class="subColumn">
                                     <div id="item_drop_down_image1">
-                                        <img src="images/item_box_alt.svg" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
+                                        <img src="images/items/item_box_alt.svg" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
                                         <div id="image-description-modal" class="modal" style="display: none;">
                                             <div class="modal-content">
                                                 <span class="close" id="modal-close">&times;</span>
@@ -220,7 +219,7 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
                                 </div>
                                 <div class="subColumn">
                                     <div id="item_drop_down_image2"> <!-- Unique ID for the second item image -->
-                                        <img src="images/item_box_alt.svg" id="item-image2" onerror="this.style.display='none'"> <!-- Unique ID for the second item image -->
+                                        <img src="images/items/item_box_alt.svg" id="item-image2" onerror="this.style.display='none'"> <!-- Unique ID for the second item image -->
                                     </div>
                                 </div>
                             </div>    
@@ -251,7 +250,7 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
                                     </div>
                                     <div class="subColumn">
                                         <div id="item_drop_down_image3"> <!-- Unique ID for the third item image -->
-                                            <img src="images/item_box_alt.svg" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->
+                                            <img src="images/items/item_box_alt.svg" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->
                                         </div>
                                     </div>
                                 </div>    
@@ -263,10 +262,16 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
         </div> 
         <div class="diceContainer" id="dice">
             <div class="dice-wrapper" id="diceWrapper">
-                <img src="images/dice-00.png" id="die-0" onclick="play();roll()">
+                <img src="images/dice/dice-00.png" id="die-0" onclick="play();roll()">
             </div>
         </div>
         <script src="script.js"></script>
         <audio id="diceAudio" src="audio/dice-roll-01.mp3"></audio>
+        <div class="dropdown">
+            <select id="rollType" onchange="setRollType(this.value)">
+                <option value="move">Dice - Move</option>
+                <option value="item">Dice - Item</option>
+            </select>
+        </div>
     </body>
 </html>
