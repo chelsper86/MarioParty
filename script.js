@@ -13,6 +13,14 @@ let moveDiceImages = ["images/dice/dice-00.png",
 "images/dice/dice-09.png",
 "images/dice/dice-10.png"];
 
+// Preload the moveDiceImages to prevent display delays during network latency
+const preloadedImages = [];
+for (let i = 0; i < moveDiceImages.length; i++) {
+    const img = new Image();
+    img.src = moveDiceImages[i];
+    preloadedImages.push(img);
+}
+
 let diceItems = [
     'Red Mushroom',
     'Gold Mushroom',
@@ -57,7 +65,7 @@ function roll(){
         Math.floor(Math.random()*10)+1
         ;
         console.log(dieValue);
-        document.querySelector("#die-0").setAttribute("src", moveDiceImages[dieValue]);
+        document.querySelector("#die-0").setAttribute("src", preloadedImages[dieValue].src);
     },
     1250
     );
