@@ -28,18 +28,19 @@ body {
     height: auto;
 }
 
-h2 {
-    color: black;
-    font-size: 4vw;
-    text-align: center;
-    margin: 20px 0;
-    max-width: 100%; /* Set maximum width to match the grid container */
+#select_character_logo {
+    padding: 50px 0px 25px 0px;
+}
+
+#select_character_logo img {
+    max-width: 100%;
+    height: auto;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 0px;
     justify-content: center;
     align-items: center;
     max-width: 100%;
@@ -51,7 +52,7 @@ h2 {
 .grid-container div {
     flex: 1 0 30%; /* Adjust the flex property based on your preference */
     max-width: 100%;
-    padding: 10px;
+    padding: 5px 5px 0px 5px;
     box-sizing: border-box;
 }
 
