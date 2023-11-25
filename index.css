@@ -20,7 +20,7 @@ body {
 }
 
 #index_logo {
-    padding: 100px 50px 25px 50px;
+    padding: 10vw 5vw 10vw 5vw;
 }
 
 #index_logo img {
@@ -29,7 +29,7 @@ body {
 }
 
 #select_character_logo {
-    padding: 50px 75px 25px 75px;
+    padding: 0vw 15vw 0vw 15vw;
 }
 
 #select_character_logo img {
@@ -45,16 +45,14 @@ body {
     align-items: center;
     max-width: 100%;
     overflow: hidden; /* Prevent overflowing content */
-    padding: 10px;
+    padding: 5vw;
     box-sizing: border-box;
-    padding-left: 100px;
-    padding-right: 100px;
 }
 
 .grid-container div {
     flex: 1 0 30%; /* Adjust the flex property based on your preference */
     max-width: 100%;
-    padding: 5px 5px 0px 5px;
+    padding: 1vw 1vw 0vw 1vw;
     box-sizing: border-box;
 }
 
