@@ -136,8 +136,7 @@ const characterData = {
     'mario': {
         cssFile: 'mario.css',
         name: 'Mario',
-        //image: 'images/mario_main_img.svg'
-        image: 'images/random_main_img.png'
+        image: 'images/mario_main_img.png'
     },
     'boo': {
         cssFile: 'boo.css',
@@ -162,26 +161,22 @@ const characterData = {
     'peach': {
         cssFile: 'peach.css',
         name: 'Peach',
-        //image: 'images/peach.svg'
-        image: 'images/random_main_img.png'
+        image: 'images/peach_main_img.png'
     },
     'rosalina': {
         cssFile: 'rosalina.css',
         name: 'Rosalina',
-        //image: 'images/rosalina.svg'
-        image: 'images/random_main_img.png'
+        image: 'images/rosalina_main_img.png'
     },
     'koopa': {
         cssFile: 'koopa.css',
         name: 'Koopa',
-        //image: 'images/koopa.svg'
-        image: 'images/random_main_img.png'
+        image: 'images/koopa_main_img.png'
     },
     'cattoad': {
         cssFile: 'cattoad.css',
         name: 'Cat Toad',
-        //image: 'images/cattoad.svg'
-        image: 'images/random_main_img.png'
+        image: 'images/cat_toad_main_img.png'
     },
     // Add more characters and CSS files as needed
 };
