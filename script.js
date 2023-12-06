@@ -1,17 +1,18 @@
 let moveDice = document.querySelectorAll(".dice-wrapper");
 let rollType = 'move'; // Default roll type
+let totalMoves = 0;  // Variable to store the total of all moves
 
-let moveDiceImages = ["images/dice/dice-00.png",
-"images/dice/dice-01.png",
-"images/dice/dice-02.png",
-"images/dice/dice-03.png",
-"images/dice/dice-04.png",
-"images/dice/dice-05.png",
-"images/dice/dice-06.png",
-"images/dice/dice-07.png",
-"images/dice/dice-08.png",
-"images/dice/dice-09.png",
-"images/dice/dice-10.png"];
+let moveDiceImages = ["images/dice/dice_move_00.png",
+"images/dice/dice_move_01.png",
+"images/dice/dice_move_02.png",
+"images/dice/dice_move_03.png",
+"images/dice/dice_move_04.png",
+"images/dice/dice_move_05.png",
+"images/dice/dice_move_06.png",
+"images/dice/dice_move_07.png",
+"images/dice/dice_move_08.png",
+"images/dice/dice_move_09.png",
+"images/dice/dice_move_10.png"];
 
 // Preload the moveDiceImages to prevent display delays during network latency
 const preloadedImages = [];
@@ -20,6 +21,13 @@ for (let i = 0; i < moveDiceImages.length; i++) {
     img.src = moveDiceImages[i];
     preloadedImages.push(img);
 }
+
+// Add default image sources for each roll type
+const defaultImages = {
+    'move': 'images/dice/dice_move_default.png',
+    'character': 'images/dice/dice_character_default.png',
+    'item': 'images/dice/dice_item_default.png'
+};
 
 let diceItems = [
     'Red Mushroom',
@@ -37,86 +45,149 @@ let diceItems = [
 ];
 
 let diceItemImages = {
-    'Red Mushroom': 'images/dice/dice_mushroom_red.svg',
-    'Gold Mushroom': 'images/dice/dice_mushroom_gold.svg',
-    'Poison Mushroom': 'images/dice/dice_mushroom_poison.svg',
-    'Reverse Mushroom': 'images/dice/dice_mushroom_reverse.svg',
-    'Genie Lamp': 'images/dice/dice_lamp_genie.svg',
-    'Blue Lamp': 'images/dice/dice_lamp_blue.svg',
-    'Key': 'images/dice/dice_key.svg',
-    'Boo Bell': 'images/dice/dice_boo_bell.svg',
-    'Boo Spray': 'images/dice/dice_boo_spray.svg',
-    'Dueling Glove': 'images/dice/dice_dueling_glove.svg',
-    'Plunder Chest': 'images/dice/dice_plunder_chest.svg',
-    'Warp Block': 'images/dice/dice_warp_block.svg'
+    'Red Mushroom': 'images/dice/dice_item_mushroom_red.svg',
+    'Gold Mushroom': 'images/dice/dice_item_mushroom_gold.svg',
+    'Poison Mushroom': 'images/dice/dice_item_mushroom_poison.svg',
+    'Reverse Mushroom': 'images/dice/dice_item_mushroom_reverse.svg',
+    'Genie Lamp': 'images/dice/dice_item_lamp_genie.svg',
+    'Blue Lamp': 'images/dice/dice_item_lamp_blue.svg',
+    'Key': 'images/dice/dice_item_key.svg',
+    'Boo Bell': 'images/dice/dice_item_boo_bell.svg',
+    'Boo Spray': 'images/dice/dice_item_boo_spray.svg',
+    'Dueling Glove': 'images/dice/dice_item_dueling_glove.svg',
+    'Plunder Chest': 'images/dice/dice_item_plunder_chest.svg',
+    'Warp Block': 'images/dice/dice_item_warp_block.svg'
 };
 
-//This function shakes the dice image, picks a random dice roll between 1 & 10 and then displays the corresponding new dice image.
-function roll(){
-    moveDice.forEach(function(die){
-        die.classList.add("shake");   
-    });
-    setTimeout(function(){
-        moveDice.forEach(function(die){
-            die.classList.remove("shake");
-        });
-        let dieValue = Math.floor(Math.random()*(10-1+1))+1
-        ;
-        Math.floor(Math.random()*10)+1
-        ;
-        console.log(dieValue);
-        document.querySelector("#die-0").setAttribute("src", preloadedImages[dieValue].src);
-    },
-    1250
-    );
+let characterDiceImages = {
+    'boo': "images/dice/dice_character_boo.png",
+    'yoshi': "images/dice/dice_character_yoshi.png",
+    'drybones': "images/dice/dice_character_dry_bones.png",
+    'bobomb': "images/dice/dice_character_bobomb.png",
+    'rosalina': "images/dice/dice_character_rosalina.png",
+    'cattoad': "images/dice/dice_character_cat_toad.png",
+};
+
+// Function to update the "turn" dropdown menu by 1. This must be above the rollDice function for this to work.
+function updateTurnDropdown() {
+    const turnSelect = document.getElementById('turn_drop_down');
+    const currentTurn = parseInt(turnSelect.value, 10);
+    // Update the dropdown
+    const newTurn = currentTurn + 1;
+    turnSelect.value = newTurn.toString();
+    // Display the totalMoves after updating the dropdown
+    displayTotalMoves();
+}
+
+// Function to display the total of all moves
+function displayTotalMoves() {
+    const totalMovesElement = document.getElementById('total-moves');
+    // Update the text content with the total moves
+    totalMovesElement.textContent = `Total Spaces Moved: ${totalMoves}`;
+}
+
+// Function to set the default image based on the selected roll type
+function setDefaultImage() {
+    const defaultImage = defaultImages[rollType];
+    document.querySelector("#die-0").setAttribute("src", defaultImage);
 }
 
 //This function plays a rolling dice audio file when the dice is clicked.
-function play() {
+function playAudio() {
     var audio = document.getElementById("diceAudio");
     audio.play();
-  }
-
-/*
-//This function shakes the dice image, picks a random dice roll between 1 & 10 and then displays the corresponding new dice image.
-function rollMove(){
-    moveDice.forEach(function(die){
-        die.classList.add("shake");   
-    });
-    setTimeout(function(){
-        moveDice.forEach(function(die){
-            die.classList.remove("shake");
-        });
-        let dieValue = Math.floor(Math.random()*(10-1+1))+1
-        ;
-        Math.floor(Math.random()*10)+1
-        ;
-        console.log(dieValue);
-        document.querySelector("#die-0").setAttribute("src", moveDiceImages[dieValue]);
-    },
-    1250
-    );
 }
-*/
 
-// This section controls the "item dice" roll behavior when the quesion mark dice image is clicked.
-// This function shakes the dice image, picks a random item, and displays the corresponding image.
-/* CHANGE 1
-function rollItem() {
-    itemDice.forEach(function (die) {
+// Function to shake the dice images
+function shakeDice() {
+    playAudio();
+    moveDice.forEach(function(die) {
         die.classList.add("shake");
     });
-    setTimeout(function () {
-        itemDice.forEach(function (die) {
+
+    setTimeout(function() {
+        moveDice.forEach(function(die) {
             die.classList.remove("shake");
         });
+    }, 1250);
+}
+
+// Function to preload images for a given dice type
+function preloadImages(images) {
+    const preloadedImages = [];
+    for (let i = 0; i < images.length; i++) {
+        const img = new Image();
+        img.src = images[i];
+        preloadedImages.push(img);
+    }
+    return preloadedImages;
+}
+
+function rollMove() {
+    shakeDice();
+    setTimeout(function () {
+        let dieValue = Math.floor(Math.random() * (10-1+1))+1;
+        console.log(dieValue);
+        // Add the current roll value to the total
+        totalMoves += dieValue;
+        // Set the data-value attribute with the current roll value
+        document.querySelector("#die-0").setAttribute("data-value", dieValue);
+        // Set the image source
+        document.querySelector("#die-0").setAttribute("src", moveDiceImages[dieValue]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+        // Trigger the updateTurnDropdown and displayTotalMoves functions
+        updateTurnDropdown();
+    }, 1250);
+}
+
+function rollCharacter() {
+    shakeDice();
+    setTimeout(function () {
+        const characters = ['boo', 'yoshi', 'drybones', 'bobomb', 'rosalina', 'cattoad'];
+        const randomCharacter = characters[Math.floor(Math.random() * characters.length)];
+        // Set the character image source
+        document.querySelector("#die-0").setAttribute("src", characterDiceImages[randomCharacter]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollItem() {
+    shakeDice();
+    setTimeout(function () {
         let randomIndex = Math.floor(Math.random() * diceItems.length);
         let selectedItem = diceItems[randomIndex];
         console.log(selectedItem);
+        // Set the item image source
         document.querySelector("#die-0").setAttribute("src", diceItemImages[selectedItem]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
     }, 1250);
 }
-*/
+
+// Update the rollType when the dropdown changes
+function setRollType(value) {
+    rollType = value;
+    setDefaultImage();
+}
+
+// Initially set the default image
+setDefaultImage();
+
+// This function triggers the updateTurnDropdown menu when the dice image is clicked
+function rollDice() {
+    if (rollType === 'move') {
+        rollMove();
+    } else if (rollType === 'character') {
+        rollCharacter();
+    } else if (rollType === 'item') {
+        rollItem();
+    }
+}
+
+// Add a click event listener to the dice image
+document.getElementById('die-0').addEventListener('click', rollDice);
 
 //This informs the user that the "Changes you made may not be saved" if you reload the page. It is a fail safe option in case someone accidentally refreshes their screen. If a refresh is successful, then the data on the page is lost.
 window.addEventListener('beforeunload', function (e) {
@@ -161,21 +232,25 @@ const characterData = {
     'peach': {
         cssFile: 'peach.css',
         name: 'Peach',
+        //image: 'images/peach.svg'
         image: 'images/peach_main_img.png'
     },
     'rosalina': {
         cssFile: 'rosalina.css',
         name: 'Rosalina',
+        //image: 'images/rosalina.svg'
         image: 'images/rosalina_main_img.png'
     },
     'koopa': {
         cssFile: 'koopa.css',
         name: 'Koopa',
+        //image: 'images/koopa.svg'
         image: 'images/koopa_main_img.png'
     },
     'cattoad': {
         cssFile: 'cattoad.css',
         name: 'Cat Toad',
+        //image: 'images/cattoad.svg'
         image: 'images/cat_toad_main_img.png'
     },
     // Add more characters and CSS files as needed
@@ -351,21 +426,5 @@ updateItemImage3();
 // Listen for changes in the third item dropdown menu
 document.getElementById('item3_drop_down').addEventListener('change', updateItemImage3);
 
-// Function to update the "turn" dropdown menu
-function updateTurnDropdown() {
-    const turnSelect = document.getElementById('turn_drop_down');
-    const currentTurn = parseInt(turnSelect.value, 10);
-    const newTurn = currentTurn + 1;
-    turnSelect.value = newTurn.toString();
-}
-
-// Function to roll the dice
-function rollDice() {
-    // After rolling the dice, add 1 to the "turn" dropdown
-    updateTurnDropdown();
-}
-
-// Add a click event listener to the dice image
-document.getElementById('die-0').addEventListener('click', rollDice);
-
 });
+
