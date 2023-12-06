@@ -1,54 +1,23 @@
+/* "." signifies the class and "#" signifies the id value being referenced in the html files*/
+/* This stylesheet only impacts the game.html page. There is a seperate style sheet for the index.html page.*/
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box; /*When you set an element's box-sizing to border-box, it means that the element's specified width and height include the padding and border. In other words, the padding and border are included within the box, and they do not increase the overall dimensions of the element.*/
 }
 
-#index_logo{
-    display: flex;
-    justify-content: center; 
-}
-
-#index_logo img {
-    max-width: 100%;
-    height: auto; /* Ensures the aspect ratio is maintained */
-    padding: 100px;
-}
-
-@media only screen and (max-width: 1080px) {
-    #index_logo img {
-        min-width: 600px; /* Set a minimum width for the image */
-    }
-}
-
-body{
-    padding: 0;
-    margin: 0;
-}
-
 .headerContainer{
-    /*border: 1px solid black;*/
     margin: 25px;
 }
 
 .headerGrid{
     width: 100%;
     display: flex;
-    /*gap: 5rem;*/
-    /*grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));/*When you use the "fr" unit, you're specifying a fraction of the available space within the grid container. For example, if you set a column to be 1fr and another column to be 2fr, the first column gets one-third of the available space, and the second column gets two-thirds of the available space.*/
 }
 
-#main_character_img img {
-    max-width: 100%; /* Set a maximum width to fit the container */
-    max-height: 100%; /* Set a maximum height to fit the container */
-    display: block; /* Ensure it's a block-level element for horizontal centering */
-    float: left;
-    margin: 0px 0px 0px 30px;
-}
-
-#character-name {
-    display: flex;
-    justify-content: center;
+body{
+    padding: 0;
+    margin: 0;
 }
 
 h1{
@@ -62,38 +31,29 @@ h1{
     font-size: 5vw; /* Default size for larger screens */
 }
 
-@media only screen and (max-width: 2499px) {
+@media only screen and (max-width: 2499px){
     h1 {
         font-size: 7.5vw; /* Adjust for screens between 1800px and 2499px */
     }
 }
 
-@media only screen and (max-width: 1799px) {
+@media only screen and (max-width: 1799px){
     h1 {
         font-size: 10vw; /* Adjust for screens smaller than 1799px */
     }
 }
 
-h2 {
-    color:black;
-    font-family: sans-serif;
-    padding-left: 5%;
-    padding-right: 5%;
-    font-size: 4vw;
-    text-align: center;
-    margin: 0px 0px 25px 0px;
+#main_character_img img{
+    max-width: 100%; /* Set a maximum width to fit the container */
+    max-height: 100%; /* Set a maximum height to fit the container */
+    display: block; /* Ensure it's a block-level element for horizontal centering */
+    float: left;
+    margin: 0px 0px 0px 30px;
 }
 
-@media only screen and (max-width: 2499px) {
-    h2 {
-        font-size: 5vw; /* Adjust for screens between 1800px and 2499px */
-    }
-}
-
-@media only screen and (max-width: 1799px) {
-    h2 {
-        font-size: 6vw; /* Adjust for screens smaller than 1799px */
-    }
+#character-name{
+    display: flex;
+    justify-content: center;
 }
 
 .dropDownMainContainer{
@@ -139,8 +99,6 @@ h2 {
 }
 
 #turn_drop_down, #star_drop_down, #coin_drop_down{
-    /* "," signifies the class and "#" signifies the id value being referenced in the html files*/
-    /*width: 175px;*/
     width: 175px;
     padding: 20px;
     box-sizing: border-box;
@@ -172,7 +130,7 @@ h2 {
 }
 
 /* Clear floats after the columns */
-.row:after {
+.row:after{
     content: "";
     display: table;
     clear: both;
@@ -185,22 +143,6 @@ h2 {
 .subColumn{ 
     flex: 50%;
 }
-
-.charImages {
-    flex: 1; /* Allow images to grow and shrink within their container */
-    /*margin: 10px; /* Adjust margin as needed for spacing between images */
-    justify-content: center;
-}
-
-.charImages img {
-    width: 100%; /* Make images fill the available space within their container */
-    height: auto; /* Maintain the aspect ratio of the images */
-    padding: 5px 5px 0px 5px;
-}
-
-/*#charMario, #charBoo, #charYoshi, #charDryBones, #charBobomb, #charPeach, #charRosalina, #charKoopa, #charCatToad {
-    padding: 5px;
-}*/
 
 #turn_img, #star_img, #coin_img{
     display: block; /* Ensure it's a block-level element */
@@ -233,6 +175,7 @@ h2 {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    visibility: hidden;
 }
 
 .shake{
@@ -251,7 +194,7 @@ h2 {
     }
 }
 
-#item_drop_down_image1, #item_drop_down_image2, #item_drop_down_image3 {
+#item_drop_down_image1, #item_drop_down_image2, #item_drop_down_image3{
     width: 100px; /* Adjust to your preferred width */
     height: 100px; /* Adjust to your preferred height */
     /*overflow: hidden;*/ /* Ensure the image doesn't overflow the container */
@@ -261,12 +204,12 @@ h2 {
     margin: 0px 20px 0px 20px;
 }
 
-#image-description {
+#image-description{
     display: none; /* Hide the item description initially */
 }
 
 /* Style the modal container */
-.modal {
+.modal{
     display: none;
     position: fixed;
     z-index: 1;
@@ -279,7 +222,7 @@ h2 {
 }
 
 /* Style the modal content */
-.modal-content {
+.modal-content{
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -293,7 +236,7 @@ h2 {
 }
 
 /* Style the modal close button */
-.close {
+.close{
     position: absolute;
     right: 0;
     top: 0;
@@ -302,13 +245,13 @@ h2 {
 }
 
 .close:hover,
-.close:focus {
+.close:focus{
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
-.diceDropdown {
+.diceDropdown{
     position: fixed;
     bottom: 25px;
     right: 25px;
@@ -324,7 +267,7 @@ h2 {
     align-items: center;
   }
 
-  #rollType {
+  #rollType{
     width: 0 auto;
     font-size: 50px;
     padding: 20px;
