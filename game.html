@@ -261,7 +261,7 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
         </div>
         <div class="diceContainer" id="dice">
             <div class="dice-wrapper" id="diceWrapper">
-                <img src="" id="die-0"> <!--onclick="play();roll()">-->
+                <img src="images/dice/dice_move_00.png" id="die-0">
             </div>
         </div>
         <script src="script.js"></script>
@@ -277,6 +277,18 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
                 <img src="images/dice/dice_dropdown.png">
             </div>   
         </div>
-        <div id="total-moves">Total Spaces Moved: 0</div>
+        <!-- Wrap the total-moves in a container with a clickable link -->
+        <div class="stat-container" onclick="openTotalMovesModal()">
+            <a href="#">Stat</a>
+            <!--<div id="total-moves">Total Spaces Moved: 0</div>-->
+        </div>
+        <!--Modal for displaying the total moves -->
+        <div id="total-moves-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeTotalMovesModal()">&times;</span>
+                <h2>Game Statistics</h2>
+                <p id="total-moves-content">0</p>
+            </div>
+        </div>
     </body>
 </html>
