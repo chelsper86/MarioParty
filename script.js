@@ -46,18 +46,18 @@ let diceItems = [
 ];
 
 let diceItemImages = {
-    'Red Mushroom': 'images/dice/dice_item_mushroom_red.svg',
-    'Gold Mushroom': 'images/dice/dice_item_mushroom_gold.svg',
-    'Poison Mushroom': 'images/dice/dice_item_mushroom_poison.svg',
-    'Reverse Mushroom': 'images/dice/dice_item_mushroom_reverse.svg',
-    'Genie Lamp': 'images/dice/dice_item_lamp_genie.svg',
-    'Blue Lamp': 'images/dice/dice_item_lamp_blue.svg',
-    'Key': 'images/dice/dice_item_key.svg',
-    'Boo Bell': 'images/dice/dice_item_boo_bell.svg',
-    'Boo Spray': 'images/dice/dice_item_boo_spray.svg',
-    'Dueling Glove': 'images/dice/dice_item_dueling_glove.svg',
-    'Plunder Chest': 'images/dice/dice_item_plunder_chest.svg',
-    'Warp Block': 'images/dice/dice_item_warp_block.svg'
+    'Red Mushroom': 'images/dice/dice_item_mushroom_red.png',
+    'Gold Mushroom': 'images/dice/dice_item_mushroom_gold.png',
+    'Poison Mushroom': 'images/dice/dice_item_mushroom_poison.png',
+    'Reverse Mushroom': 'images/dice/dice_item_mushroom_reverse.png',
+    'Genie Lamp': 'images/dice/dice_item_lamp_genie.png',
+    'Blue Lamp': 'images/dice/dice_item_lamp_blue.png',
+    'Key': 'images/dice/dice_item_key.png',
+    'Boo Bell': 'images/dice/dice_item_boo_bell.png',
+    'Boo Spray': 'images/dice/dice_item_boo_spray.png',
+    'Dueling Glove': 'images/dice/dice_item_dueling_glove.png',
+    'Plunder Chest': 'images/dice/dice_item_plunder_chest.png',
+    'Warp Block': 'images/dice/dice_item_warp_block.png'
 };
 
 let characterDiceImages = {
@@ -247,25 +247,21 @@ const characterData = {
     'peach': {
         cssFile: 'peach.css',
         name: 'Peach',
-        //image: 'images/peach.svg'
         image: 'images/peach_main_img.png'
     },
     'rosalina': {
         cssFile: 'rosalina.css',
         name: 'Rosalina',
-        //image: 'images/rosalina.svg'
         image: 'images/rosalina_main_img.png'
     },
     'koopa': {
         cssFile: 'koopa.css',
         name: 'Koopa',
-        //image: 'images/koopa.svg'
         image: 'images/koopa_main_img.png'
     },
     'cattoad': {
         cssFile: 'cattoad.css',
         name: 'Cat Toad',
-        //image: 'images/cattoad.svg'
         image: 'images/cat_toad_main_img.png'
     },
     // Add more characters and CSS files as needed
@@ -287,19 +283,19 @@ if (characterData[character]) {
 
 // Define item images for each item
 const itemImages = {
-    'Item': 'images/items/item_box_alt.svg',
-    'Red Mushroom': 'images/items/mushroom_red.svg',
-    'Gold Mushroom': 'images/items/mushroom_gold.svg',
-    'Poison Mushroom': 'images/items/mushroom_poison.svg',
-    'Reverse Mushroom': 'images/items/mushroom_reverse.svg',
-    'Genie Lamp': 'images/items/lamp_genie.svg',
-    'Blue Lamp': 'images/items/lamp_blue.svg',
-    'Key': 'images/items/key.svg',
-    'Boo Bell': 'images/items/boo_bell.svg',
-    'Boo Spray': 'images/items/boo_spray.svg',
-    'Dueling Glove': 'images/items/dueling_glove.svg',
-    'Plunder Chest': 'images/items/plunder_chest.svg',
-    'Warp Block': 'images/items/warp_block.svg'
+    'Item': 'images/items/item_box_alt.png',
+    'Red Mushroom': 'images/items/mushroom_red.png',
+    'Gold Mushroom': 'images/items/mushroom_gold.png',
+    'Poison Mushroom': 'images/items/mushroom_poison.png',
+    'Reverse Mushroom': 'images/items/mushroom_reverse.png',
+    'Genie Lamp': 'images/items/lamp_genie.png',
+    'Blue Lamp': 'images/items/lamp_blue.png',
+    'Key': 'images/items/key.png',
+    'Boo Bell': 'images/items/boo_bell.png',
+    'Boo Spray': 'images/items/boo_spray.png',
+    'Dueling Glove': 'images/items/dueling_glove.png',
+    'Plunder Chest': 'images/items/plunder_chest.png',
+    'Warp Block': 'images/items/warp_block.png'
 
     // Add more items and image paths as needed
 };
