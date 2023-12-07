@@ -20,7 +20,7 @@ body {
 }
 
 #index_logo {
-    padding: 10vw 5vw 10vw 5vw;
+    padding: 5vw 5vw 2.5vw 5vw;
 }
 
 #index_logo img {
@@ -45,14 +45,14 @@ body {
     align-items: center;
     max-width: 100%;
     /*overflow: hidden; Prevent overflowing content */
-    padding: 5vw;
+    padding: 2.5vw;
     box-sizing: border-box;
 }
 
 .grid-container div {
     flex: 1 0 30%; /* Adjust the flex property based on your preference */
     max-width: 100%;
-    padding: 1vw 1vw 0vw 1vw;
+    padding: 0vw 1vw 1vw 0vw;
     box-sizing: border-box;
 }
 
