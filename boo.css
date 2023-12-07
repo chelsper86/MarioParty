@@ -8,3 +8,7 @@ body{
     background-size: 100% 100%;
     background-attachment: fixed; /* This makes the background fixed and extend beyond the initial viewport */
 }
+
+#character-name{
+    color: #000000;
+}
