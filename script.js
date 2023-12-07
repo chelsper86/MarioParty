@@ -2,7 +2,8 @@ let moveDice = document.querySelectorAll(".dice-wrapper");
 let rollType = 'move'; // Default roll type
 let totalMoves = 0;  // Variable to store the total of all moves
 
-let moveDiceImages = ["images/dice/dice_move_00.png",
+let moveDiceImages = [
+"images/dice/dice_move_00.png",
 "images/dice/dice_move_01.png",
 "images/dice/dice_move_02.png",
 "images/dice/dice_move_03.png",
@@ -68,6 +69,13 @@ let characterDiceImages = {
     'cattoad': "images/dice/dice_character_cat_toad.png",
 };
 
+// Function to display the total of all moves
+function displayTotalMoves() {
+    const totalMovesElement = document.getElementById('total-moves-content');
+    // Update the text content with the total moves
+    totalMovesElement.textContent = `Total Spaces Moved: ${totalMoves}`;
+}
+
 // Function to update the "turn" dropdown menu by 1. This must be above the rollDice function for this to work.
 function updateTurnDropdown() {
     const turnSelect = document.getElementById('turn_drop_down');
@@ -79,12 +87,19 @@ function updateTurnDropdown() {
     displayTotalMoves();
 }
 
-// Function to display the total of all moves
-function displayTotalMoves() {
-    const totalMovesElement = document.getElementById('total-moves');
-    // Update the text content with the total moves
-    totalMovesElement.textContent = `Total Spaces Moved: ${totalMoves}`;
-}
+// Function to open the total moves modal
+function openTotalMovesModal() {
+    const modal = document.getElementById('total-moves-modal');
+    const contentElement = document.getElementById('total-moves-content');
+    contentElement.textContent = `Total Spaces Moved: ${totalMoves}`;
+    modal.style.display = 'block';
+  }
+  
+  // Function to close the total moves modal
+  function closeTotalMovesModal() {
+    const modal = document.getElementById('total-moves-modal');
+    modal.style.display = 'none';
+  }
 
 // Function to set the default image based on the selected roll type
 function setDefaultImage() {
@@ -408,23 +423,16 @@ document.getElementById('modal-close').addEventListener('click', function () {
 
 // Initially update the item image
 updateItemImage();
-
 // Listen for changes in the item dropdown menu
 document.getElementById('item1_drop_down').addEventListener('change', updateItemImage);
-
 // ... (repeat the above two blocks for other item dropdowns if needed)
-
 // Initially update the item image for the second dropdown
 updateItemImage2();
-
 // Listen for changes in the second item dropdown menu
 document.getElementById('item2_drop_down').addEventListener('change', updateItemImage2);
-
 // Initially update the item image for the third dropdown
 updateItemImage3();
-
 // Listen for changes in the third item dropdown menu
 document.getElementById('item3_drop_down').addEventListener('change', updateItemImage3);
-
 });
 
