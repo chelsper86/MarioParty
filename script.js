@@ -1,19 +1,24 @@
 let moveDice = document.querySelectorAll(".dice-wrapper");
-let rollType = 'move'; // Default roll type
 let totalMoves = 0;  // Variable to store the total of all moves
+let rollType = 'move'; // Default roll type
+let selectedSpace; // Variable to store the selected space
+let blueSpacesCount = 0;
+let redSpacesCount = 0;
+let eventSpacesCount = 0;
+let currentTurn = 0; // Keeps track of the current turn
 
 let moveDiceImages = [
-"images/dice/dice_move_00.png",
-"images/dice/dice_move_01.png",
-"images/dice/dice_move_02.png",
-"images/dice/dice_move_03.png",
-"images/dice/dice_move_04.png",
-"images/dice/dice_move_05.png",
-"images/dice/dice_move_06.png",
-"images/dice/dice_move_07.png",
-"images/dice/dice_move_08.png",
-"images/dice/dice_move_09.png",
-"images/dice/dice_move_10.png"];
+"images/dice/dice_00.png",
+"images/dice/dice_01.png",
+"images/dice/dice_02.png",
+"images/dice/dice_03.png",
+"images/dice/dice_04.png",
+"images/dice/dice_05.png",
+"images/dice/dice_06.png",
+"images/dice/dice_07.png",
+"images/dice/dice_08.png",
+"images/dice/dice_09.png",
+"images/dice/dice_10.png"];
 
 // Preload the moveDiceImages to prevent display delays during network latency
 const preloadedImages = [];
@@ -27,7 +32,10 @@ for (let i = 0; i < moveDiceImages.length; i++) {
 const defaultImages = {
     'move': 'images/dice/dice_move_default.png',
     'character': 'images/dice/dice_character_default.png',
-    'item': 'images/dice/dice_item_default.png'
+    'item': 'images/dice/dice_item_default.png',
+    'cursed': 'images/dice/dice_cursed_default.png',
+    'bowser': 'images/dice/dice_bowser_default.png',
+    'bowserFury': 'images/dice/dice_bowser_fury_default.png'
 };
 
 let diceItems = [
@@ -69,6 +77,62 @@ let characterDiceImages = {
     'cattoad': "images/dice/dice_character_cat_toad.png",
 };
 
+let cursedDice = [
+    'Cursed One',
+    'Cursed Two',
+    'Cursed Three'
+];
+
+let cursedDiceImages = {
+    'Cursed One': "images/dice/dice_cursed_01.png",
+    'Cursed Two': "images/dice/dice_cursed_02.png",
+    'Cursed Three': "images/dice/dice_cursed_03.png",
+}
+
+let bowserDice = [
+    { side: 'Minus 10 Coins', weight: 2 },  // 20% chance
+    { side: 'Minus 20 Coins', weight: 2 },  // 20% chance
+    { side: 'Bowser Revolution', weight: 2 },  // 20% chance
+    { side: 'Minus 1 Star', weight: 1 },  // 10% chance
+];
+
+let bowserDiceImages = {
+    'Minus 10 Coins': "images/dice/dice_bowser_minus_10.png",
+    'Minus 20 Coins': "images/dice/dice_bowser_minus_20.png",
+    'Minus 1 Star': "images/dice/dice_bowser_minus_1.png",
+    'Bowser Revolution': "images/dice/dice_bowser_revolution.png",
+}
+
+let bowserFuryDice = [
+    { side: 'Minus 50 Coins', weight: 2 },  // 20% chance
+    { side: 'Minus 75 Coins', weight: 2 },  // 20% chance
+    { side: 'Minus 100 Coins', weight: 1 },  // 10% chance
+    { side: 'Minus 2 Star', weight: 1 },  // 10% chance
+    { side: 'Minus 3 Star', weight: 1 },  // 10% chance
+    { side: 'Minus All Coins', weight: 1 }, // 10% chance
+];
+
+let bowserFuryDiceImages = {
+    'Minus 50 Coins': "images/dice/dice_bowser_fury_minus_50.png",
+    'Minus 75 Coins': "images/dice/dice_bowser_fury_minus_75.png",
+    'Minus 100 Coins': "images/dice/dice_bowser_fury_minus_100.png",
+    'Minus 2 Star': "images/dice/dice_bowser_fury_minus_2.png",
+    'Minus 3 Star': "images/dice/dice_bowser_fury_minus_3.png",
+    'Minus All Coins': "images/dice/dice_bowser_fury_anarchy.png",
+}
+
+// Function to get a random item based on weights (I am using this with the bowser and bowser fury dice so that the chances of getting the really bad stuff is not as high)
+function getRandomItemWithWeightedProbability(array) {
+    const totalWeight = array.reduce((sum, item) => sum + item.weight, 0);
+    let random = Math.random() * totalWeight;
+    for (const item of array) {
+        if (random < item.weight) {
+            return item.side;
+        }
+        random -= item.weight;
+    }
+}
+
 // Function to display the total of all moves
 function displayTotalMoves() {
     const totalMovesElement = document.getElementById('total-moves-content');
@@ -79,25 +143,31 @@ function displayTotalMoves() {
 // Function to update the "turn" dropdown menu by 1. This must be above the rollDice function for this to work.
 function updateTurnDropdown() {
     const turnSelect = document.getElementById('turn_drop_down');
-    const currentTurn = parseInt(turnSelect.value, 10);
     // Update the dropdown
-    const newTurn = currentTurn + 1;
-    turnSelect.value = newTurn.toString();
+    turnSelect.value = currentTurn.toString();
+    //const currentTurn = parseInt(turnSelect.value, 10);
+    // Update the dropdown
+    //const newTurn = currentTurn + 1;
+    //turnSelect.value = newTurn.toString();
     // Display the totalMoves after updating the dropdown
     displayTotalMoves();
 }
 
-// Function to open the total moves modal
-function openTotalMovesModal() {
-    const modal = document.getElementById('total-moves-modal');
+// Function to open the stats modal
+function openStatsModal() {
+    const modal = document.getElementById('stats-modal');
     const contentElement = document.getElementById('total-moves-content');
-    contentElement.textContent = `Total Spaces Moved: ${totalMoves}`;
-    modal.style.display = 'block';
+    // Check if the element exists before manipulating it
+    if (contentElement) {
+        contentElement.textContent = `Total Spaces Moved: ${totalMoves}`;
+    } else {
+        console.error('Element with ID "total-moves-content" not found.');
+    }    modal.style.display = 'block';
   }
   
-  // Function to close the total moves modal
-  function closeTotalMovesModal() {
-    const modal = document.getElementById('total-moves-modal');
+  // Function to close the stats modal
+  function closeStatsModal() {
+    const modal = document.getElementById('stats-modal');
     modal.style.display = 'none';
   }
 
@@ -107,10 +177,30 @@ function setDefaultImage() {
     document.querySelector("#die-0").setAttribute("src", defaultImage);
 }
 
+// Function to toggle mute state
+function toggleMute() {
+    var audio = document.getElementById("diceAudio");
+    var muteIcon = document.getElementById("muteIcon");
+
+    // Toggle the muted property of the audio element
+    audio.muted = !audio.muted;
+
+    // Change the icon based on the muted state
+    if (audio.muted) {
+        muteIcon.className = "fa fa-volume-off";
+    } else {
+        muteIcon.className = "fa fa-volume-up";
+    }
+}
+
 //This function plays a rolling dice audio file when the dice is clicked.
 function playAudio() {
     var audio = document.getElementById("diceAudio");
-    audio.play();
+    
+    // Check if the audio is not muted before playing
+    if (!audio.muted) {
+        audio.play();
+    }
 }
 
 // Function to shake the dice images
@@ -138,7 +228,33 @@ function preloadImages(images) {
     return preloadedImages;
 }
 
+// Function to display the modal
+function showSpacesModal() {
+    console.log('showSpacesModal Function');
+    const modal = document.getElementById('spaceModal');
+    modal.style.display = 'block';
+
+    // Attach click event listeners to space options
+    const spaceOptions = document.querySelectorAll('.space-option');
+    spaceOptions.forEach(option => {
+        option.addEventListener('click', (event) => {
+            console.log('Click Event Listener Called');
+            // Stop event propagation to prevent calling the function multiple times
+            event.stopPropagation();
+            selectedSpace = option.getAttribute('data-space-type');
+            modal.style.display = 'none';
+            updateStats();
+            console.log('updateStats via Event Listener');
+        });
+    });
+}
+
 function rollMove() {
+    // Check if the maximum number of turns (15) has been reached
+    if (currentTurn >= 15) {
+        alert('Game over!');
+        return;
+    }
     shakeDice();
     setTimeout(function () {
         let dieValue = Math.floor(Math.random() * (10-1+1))+1;
@@ -151,10 +267,66 @@ function rollMove() {
         document.querySelector("#die-0").setAttribute("src", moveDiceImages[dieValue]);
         // Make the dice image visible
         document.querySelector("#die-0").style.visibility = "visible";
-        // Trigger the updateTurnDropdown and displayTotalMoves functions
+        // Increment the turn counter
+        currentTurn++;
         updateTurnDropdown();
     }, 1250);
+    // After 3 seconds, show the modal for selecting the space
+    setTimeout(() => {
+        showSpacesModal();
+        console.log('showSpacesModal Function Called');
+    }, 3000);
 }
+
+function updateStats() {
+    // Log the selected space to the console
+    console.log('updateStats Function');
+    console.log('Selected Space:', selectedSpace);
+
+    // Increment the count based on the selected space and adjust for the current turn
+    switch (selectedSpace) {
+        case 'blue':
+            blueSpacesCount ++;
+            console.log('Blue Space:', blueSpacesCount);   
+            break;
+        case 'red':
+            redSpacesCount ++;
+            console.log('Red Space:', redSpacesCount);
+            break;
+        case 'event':
+            eventSpacesCount ++;
+            console.log('Event Space:', eventSpacesCount);
+            break;
+    }
+
+    // Display the updated counts on the stats page
+    updateStatsOnPage();
+    console.log('updateStatsOnPage Called');
+    console.log('Blue Space:', blueSpacesCount);
+    console.log('Red Space:', redSpacesCount);
+    console.log('Event Space:', eventSpacesCount);
+}
+
+function updateStatsOnPage() {
+    // Update the statistics on the stats page
+    const blueSpacesElement = document.getElementById('blue-spaces-count');
+    const redSpacesElement = document.getElementById('red-spaces-count');
+    const eventSpacesElement = document.getElementById('event-spaces-count');
+
+    blueSpacesElement.textContent = `Blue Spaces: ${blueSpacesCount}`;
+    console.log('updateStatsOnPage Function Blue Space');
+    console.log('Blue Space:', blueSpacesCount);
+    redSpacesElement.textContent = `Red Spaces: ${redSpacesCount}`;
+    console.log('updateStatsOnPage Function Red Space');
+    console.log('Red Space:', redSpacesCount);
+    eventSpacesElement.textContent = `Event Spaces: ${eventSpacesCount}`;
+    console.log('updateStatsOnPage Function Event Space');
+    console.log('Event Space:', eventSpacesCount);
+}
+
+//Event listener for DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function () {
+});
 
 function rollCharacter() {
     shakeDice();
@@ -181,6 +353,43 @@ function rollItem() {
     }, 1250);
 }
 
+function rollCursedDice() {
+    shakeDice();
+    setTimeout(function () {
+        let randomIndex = Math.floor(Math.random() * cursedDice.length);
+        let selectedSide = cursedDice[randomIndex];
+        console.log(selectedSide);
+        // Set the cursed image source
+        document.querySelector("#die-0").setAttribute("src", cursedDiceImages[selectedSide]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollBowserDice() {
+    shakeDice();
+    setTimeout(function () {
+        let selectedSide = getRandomItemWithWeightedProbability(bowserDice);
+        console.log(selectedSide);
+        // Set the Bowser dice image source
+        document.querySelector("#die-0").setAttribute("src", bowserDiceImages[selectedSide]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollBowserFuryDice() {
+    shakeDice();
+    setTimeout(function () {
+        let selectedSide = getRandomItemWithWeightedProbability(bowserFuryDice);
+        console.log(selectedSide);
+        // Set the Bowser Fury dice image source
+        document.querySelector("#die-0").setAttribute("src", bowserFuryDiceImages[selectedSide]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
 // Update the rollType when the dropdown changes
 function setRollType(value) {
     rollType = value;
@@ -198,11 +407,20 @@ function rollDice() {
         rollCharacter();
     } else if (rollType === 'item') {
         rollItem();
+    } else if (rollType === 'cursed') {
+        rollCursedDice();
+    } else if (rollType === 'bowser') {
+        rollBowserDice();
+    } else if (rollType === 'bowserFury') {
+        rollBowserFuryDice();
     }
 }
 
 // Add a click event listener to the dice image
-document.getElementById('die-0').addEventListener('click', rollDice);
+document.getElementById('die-0').addEventListener('click', function(event) {
+    event.stopPropagation();
+    rollDice();
+});
 
 //This informs the user that the "Changes you made may not be saved" if you reload the page. It is a fail safe option in case someone accidentally refreshes their screen. If a refresh is successful, then the data on the page is lost.
 window.addEventListener('beforeunload', function (e) {
@@ -352,7 +570,8 @@ function updateItemImage3() {
 }
 
 // Show the modal when the user clicks on the 1st item image
-document.getElementById('item-image1').addEventListener('click', function () {
+document.getElementById('item-image1').addEventListener('click', function (event) {
+    event.stopPropagation();
     const modal = document.getElementById('image-description-modal');
     const modalDescription = document.getElementById('modal-description');
     const selectedItem = document.getElementById('item1_drop_down').value;
@@ -361,7 +580,8 @@ document.getElementById('item-image1').addEventListener('click', function () {
 });
 
 // Add an event listener to toggle the item description on 1st item image click
-document.getElementById('item-image1').addEventListener('click', function () {
+document.getElementById('item-image1').addEventListener('click', function (event) {
+    event.stopPropagation();
     const descriptionElement = document.getElementById('image-description');
 
     if (descriptionElement.style.display === 'none') {
@@ -372,7 +592,8 @@ document.getElementById('item-image1').addEventListener('click', function () {
 });
 
 // Show the modal when the user clicks on the 2nd item image
-document.getElementById('item-image2').addEventListener('click', function () {
+document.getElementById('item-image2').addEventListener('click', function (event) {
+    event.stopPropagation();
     const modal = document.getElementById('image-description-modal');
     const modalDescription = document.getElementById('modal-description');
     const selectedItem = document.getElementById('item2_drop_down').value;
@@ -381,7 +602,8 @@ document.getElementById('item-image2').addEventListener('click', function () {
 });
 
 // Add an event listener to toggle the item description on 2nd item image click
-document.getElementById('item-image2').addEventListener('click', function () {
+document.getElementById('item-image2').addEventListener('click', function (event) {
+    event.stopPropagation();
     const descriptionElement = document.getElementById('image-description');
 
     if (descriptionElement.style.display === 'none') {
@@ -392,7 +614,8 @@ document.getElementById('item-image2').addEventListener('click', function () {
 });
 
 // Show the modal when the user clicks on the 3rd item image
-document.getElementById('item-image3').addEventListener('click', function () {
+document.getElementById('item-image3').addEventListener('click', function (event) {
+    event.stopPropagation();
     const modal = document.getElementById('image-description-modal');
     const modalDescription = document.getElementById('modal-description');
     const selectedItem = document.getElementById('item3_drop_down').value;
@@ -401,7 +624,8 @@ document.getElementById('item-image3').addEventListener('click', function () {
 });
 
 // Add an event listener to toggle the item description on 3rd item image click
-document.getElementById('item-image3').addEventListener('click', function () {
+document.getElementById('item-image3').addEventListener('click', function (event) {
+    event.stopPropagation();
     const descriptionElement = document.getElementById('image-description');
 
     if (descriptionElement.style.display === 'none') {
@@ -412,7 +636,8 @@ document.getElementById('item-image3').addEventListener('click', function () {
 });
 
 // Close the modal when the user clicks the close button (×)
-document.getElementById('modal-close').addEventListener('click', function () {
+document.getElementById('modal-close').addEventListener('click', function(event) {
+    event.stopPropagation();
     const modal = document.getElementById('image-description-modal');
     modal.style.display = 'none';
 });
