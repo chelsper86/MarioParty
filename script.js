@@ -121,6 +121,22 @@ let bowserFuryDiceImages = {
     'Minus All Coins': "images/dice/dice_bowser_fury_anarchy.png",
 }
 
+window.addEventListener("load", (event) => {
+   const spaceOptions = document.querySelectorAll('.space-option');
+   const modal = document.getElementById('spaceModal');
+    spaceOptions.forEach(option => {
+        option.addEventListener('click', (event) => {
+            console.log('Click Event Listener Called');
+            // Stop event propagation to prevent calling the function multiple times
+            event.stopPropagation();
+            selectedSpace = option.getAttribute('data-space-type');
+            modal.style.display = 'none';
+            updateStats();
+            console.log('updateStats via Event Listener');
+        });
+    });
+});
+
 // Function to get a random item based on weights (I am using this with the bowser and bowser fury dice so that the chances of getting the really bad stuff is not as high)
 function getRandomItemWithWeightedProbability(array) {
     const totalWeight = array.reduce((sum, item) => sum + item.weight, 0);
@@ -234,19 +250,7 @@ function showSpacesModal() {
     const modal = document.getElementById('spaceModal');
     modal.style.display = 'block';
 
-    // Attach click event listeners to space options
-    const spaceOptions = document.querySelectorAll('.space-option');
-    spaceOptions.forEach(option => {
-        option.addEventListener('click', (event) => {
-            console.log('Click Event Listener Called');
-            // Stop event propagation to prevent calling the function multiple times
-            event.stopPropagation();
-            selectedSpace = option.getAttribute('data-space-type');
-            modal.style.display = 'none';
-            updateStats();
-            console.log('updateStats via Event Listener');
-        });
-    });
+   
 }
 
 function rollMove() {
