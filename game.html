@@ -1,11 +1,3 @@
-<!--BUG LIST
-option1 class is not coloring the select option properly. Check how to make a default selector that is grayed out-->
-<!--TO DO
-Maybe add a item wheel that auto populates the item drop down when used?
-Add spreadsheet that can be acessed real time for turn data
-Allow editing of spreadsheet data in case someone makes a mistake
-Add space selector
-Add to the mobile app the option for a random hidden block...maybe a 1 in 10 chance?-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,6 +5,7 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="noindex, nofollow">
         <link type="text/css" rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
     </head>
     <body>
         <div class="headerContainer">
@@ -47,12 +40,12 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
                                             <option value="8">8</option>
                                             <option value="9">9</option>
                                             <option value="10">10</option>
-                                            <!--<option value="11">11</option>
+                                            <option value="11">11</option>
                                             <option value="12">12</option>
                                             <option value="13">13</option>
                                             <option value="14">14</option>
                                             <option value="15">15</option>
-                                            <option value="16">16</option>
+                                            <!--<option value="16">16</option>
                                             <option value="17">17</option>
                                             <option value="18">18</option>
                                             <option value="19">19</option>
@@ -261,34 +254,50 @@ Add to the mobile app the option for a random hidden block...maybe a 1 in 10 cha
         </div>
         <div class="diceContainer" id="dice">
             <div class="dice-wrapper" id="diceWrapper">
-                <img src="images/dice/dice_move_00.png" id="die-0">
+                <img src="" id="die-0">
             </div>
         </div>
-        <script src="script.js"></script>
+        <!-- Mute button and icon -->
+        <button id="muteButton" onclick="toggleMute()">
+            <i id="muteIcon" class="fa fa-volume-up"></i>
+        </button>
         <audio id="diceAudio" src="audio/dice-roll-01.mp3"></audio>
         <div class="diceDropdown">
             <select id="rollType" onchange="setRollType(this.value)">
-                <option value="move">Move</option>
-                <option value="item">Item</option>
-                <option value="character">Character</option>
-                <option value="threeSided">Three Sided</option>
+                <option value="move">Move Dice</option>
+                <option value="item">Item Dice</option>
+                <option value="character">Character Dice</option>
+                <option value="cursed">Cursed Dice</option>
+                <option value="bowser">Bowser Dice</option>
+                <option value="bowserFury">Bowser Fury Dice</option>
             </select>
             <div id="dice_dropdown_img">
                 <img src="images/dice/dice_dropdown.png">
             </div>   
         </div>
-        <!-- Wrap the total-moves in a container with a clickable link -->
-        <div class="stat-container" onclick="openTotalMovesModal()">
-            <a href="#">Stat</a>
-            <!--<div id="total-moves">Total Spaces Moved: 0</div>-->
+        <!-- Wrap the stats in a container with a clickable link -->
+        <div class="stats-container" id="stats-container" onclick="openStatsModal()">
+            <a href="#">Stats</a>
         </div>
-        <!--Modal for displaying the total moves -->
-        <div id="total-moves-modal" class="modal">
+        <!--Modal for displaying the stats -->
+        <div id="stats-modal" class="modal">
             <div class="modal-content">
-                <span class="close" onclick="closeTotalMovesModal()">&times;</span>
+                <span class="close" onclick="closeStatsModal()">&times;</span>
                 <h2>Game Statistics</h2>
                 <p id="total-moves-content">0</p>
+                <p id="blue-spaces-count">Blue Spaces: 0</p>
+                <p id="red-spaces-count">Red Spaces: 0</p>
+                <p id="event-spaces-count">Event Spaces: 0</p>
             </div>
         </div>
+        <div id="spaceModal" class="modal">
+            <div class="modal-content">
+                <h2>Select the Space You Landed On</h2>
+                <img src="images/spaces/spaces_blue.png" class="space-option" data-space-type="blue" alt="Blue Space">
+                <img src="images/spaces/spaces_red.png" class="space-option" data-space-type="red" alt="Red Space">
+                <img src="images/spaces/spaces_event.png" class="space-option" data-space-type="event" alt="Event Space">
+            </div>
+        </div>
+        <script src="script.js"></script>
     </body>
 </html>
