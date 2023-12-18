@@ -5,6 +5,15 @@ let selectedSpace; // Variable to store the selected space
 let blueSpacesCount = 0;
 let redSpacesCount = 0;
 let eventSpacesCount = 0;
+let luckySpacesCount = 0;
+let itemSpacesCount = 0;
+let bowserSpacesCount = 0;
+let gameguySpacesCount = 0;
+let battleSpacesCount = 0;
+let starSpacesCount = 0;
+let bankSpacesCount = 0;
+let booSpacesCount = 0;
+let chanceSpacesCount = 0;
 let currentTurn = 0; // Keeps track of the current turn
 
 let moveDiceImages = [
@@ -122,21 +131,19 @@ let bowserFuryDiceImages = {
 }
 
 window.addEventListener("load", (event) => {
-   const spaceOptions = document.querySelectorAll('.space-option');
-   const modal = document.getElementById('spaceModal');
-    spaceOptions.forEach(option => {
-        option.addEventListener('click', (event) => {
-            console.log('Click Event Listener Called');
-            // Stop event propagation to prevent calling the function multiple times
-            event.stopPropagation();
-            selectedSpace = option.getAttribute('data-space-type');
-            modal.style.display = 'none';
-            updateStats();
-            console.log('updateStats via Event Listener');
-        });
-    });
-});
-
+    const spaceOptions = document.querySelectorAll('.space-option');
+    const modal = document.getElementById('spaceModal');
+     spaceOptions.forEach(option => {
+         option.addEventListener('click', (event) => {
+             // Stop event propagation to prevent calling the function multiple times
+             event.stopPropagation();
+             selectedSpace = option.getAttribute('data-space-type');
+             modal.style.display = 'none';
+             updateStats();
+         });
+     });
+ });
+ 
 // Function to get a random item based on weights (I am using this with the bowser and bowser fury dice so that the chances of getting the really bad stuff is not as high)
 function getRandomItemWithWeightedProbability(array) {
     const totalWeight = array.reduce((sum, item) => sum + item.weight, 0);
@@ -246,11 +253,8 @@ function preloadImages(images) {
 
 // Function to display the modal
 function showSpacesModal() {
-    console.log('showSpacesModal Function');
     const modal = document.getElementById('spaceModal');
     modal.style.display = 'block';
-
-   
 }
 
 function rollMove() {
@@ -278,37 +282,55 @@ function rollMove() {
     // After 3 seconds, show the modal for selecting the space
     setTimeout(() => {
         showSpacesModal();
-        console.log('showSpacesModal Function Called');
     }, 3000);
 }
 
 function updateStats() {
     // Log the selected space to the console
-    console.log('updateStats Function');
     console.log('Selected Space:', selectedSpace);
 
     // Increment the count based on the selected space and adjust for the current turn
     switch (selectedSpace) {
         case 'blue':
             blueSpacesCount ++;
-            console.log('Blue Space:', blueSpacesCount);   
             break;
         case 'red':
             redSpacesCount ++;
-            console.log('Red Space:', redSpacesCount);
             break;
         case 'event':
             eventSpacesCount ++;
-            console.log('Event Space:', eventSpacesCount);
             break;
+        case 'lucky':
+            luckySpacesCount ++;
+            break;
+        case 'item':
+            itemSpacesCount ++;
+            break;
+        case 'bowser':
+            bowserSpacesCount ++;
+            break;
+        case 'gameguy':
+            gameguySpacesCount ++;
+            break;
+        case 'battle':
+            battleSpacesCount ++;
+            break;
+        case 'star':
+            starSpacesCount ++;
+            break;
+        case 'bank':
+            bankSpacesCount ++;
+            break;
+        case 'boo':
+            booSpacesCount ++;
+            break;
+        case 'chance':
+            chanceSpacesCount ++;
+            break;            
     }
 
     // Display the updated counts on the stats page
     updateStatsOnPage();
-    console.log('updateStatsOnPage Called');
-    console.log('Blue Space:', blueSpacesCount);
-    console.log('Red Space:', redSpacesCount);
-    console.log('Event Space:', eventSpacesCount);
 }
 
 function updateStatsOnPage() {
@@ -316,20 +338,33 @@ function updateStatsOnPage() {
     const blueSpacesElement = document.getElementById('blue-spaces-count');
     const redSpacesElement = document.getElementById('red-spaces-count');
     const eventSpacesElement = document.getElementById('event-spaces-count');
+    const luckySpacesElement = document.getElementById('lucky-spaces-count');
+    const itemSpacesElement = document.getElementById('item-spaces-count');
+    const bowserSpacesElement = document.getElementById('bowser-spaces-count');
+    const gameguySpacesElement = document.getElementById('gameguy-spaces-count');
+    const battleSpacesElement = document.getElementById('battle-spaces-count');
+    const starSpacesElement = document.getElementById('star-spaces-count');
+    const bankSpacesElement = document.getElementById('bank-spaces-count');
+    const booSpacesElement = document.getElementById('boo-spaces-count');
+    const chanceSpacesElement = document.getElementById('chance-spaces-count');
 
     blueSpacesElement.textContent = `Blue Spaces: ${blueSpacesCount}`;
-    console.log('updateStatsOnPage Function Blue Space');
-    console.log('Blue Space:', blueSpacesCount);
     redSpacesElement.textContent = `Red Spaces: ${redSpacesCount}`;
-    console.log('updateStatsOnPage Function Red Space');
-    console.log('Red Space:', redSpacesCount);
     eventSpacesElement.textContent = `Event Spaces: ${eventSpacesCount}`;
-    console.log('updateStatsOnPage Function Event Space');
-    console.log('Event Space:', eventSpacesCount);
+    luckySpacesElement.textContent = `Lucky Spaces: ${luckySpacesCount}`;
+    itemSpacesElement.textContent = `Item Spaces: ${itemSpacesCount}`;
+    bowserSpacesElement.textContent = `Bowser Spaces: ${bowserSpacesCount}`;
+    gameguySpacesElement.textContent = `Game Guy Spaces: ${gameguySpacesCount}`;
+    battleSpacesElement.textContent = `Battle Spaces: ${battleSpacesCount}`;
+    starSpacesElement.textContent = `Star Spaces: ${starSpacesCount}`;
+    bankSpacesElement.textContent = `Bank Spaces: ${bankSpacesCount}`;
+    booSpacesElement.textContent = `Boo Spaces: ${booSpacesCount}`;
+    chanceSpacesElement.textContent = `Chance Spaces: ${chanceSpacesCount}`;
 }
 
 //Event listener for DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function(event) {
+    event.stopPropagation();
 });
 
 function rollCharacter() {
