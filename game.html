@@ -9,6 +9,10 @@
     </head>
     <body>
         <div class="headerContainer">
+<!--******************** Mute Button and Icon ********************-->
+            <button id="muteButton" onclick="toggleMute()">
+                <i id="muteIcon" class="fa fa-volume-up"></i>
+            </button>
             <div class="headerGrid">
                 <div class="box">
                     <div id="main_character_img">
@@ -20,266 +24,202 @@
                 </div>    
             </div>
         </div>
-        <div class="dropDownMainContainer">
-            <div class="dropDownMenusContainer1">
-                <div class="row">
-                    <div class="column">
-                        <div id="turn_menu">
-                            <div class="subRow">
-                                <div class="subColumn">
-                                    <form action="#">
-                                        <select name="turn_drop_down" id="turn_drop_down">
-                                            <option value="0">0</option>  
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <!--<option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>-->
-                                        </select>
-                                    </form>
-                                </div>
-                                <div class="subColumn">
-                                    <div id="turn_img">
-                                        <img src="images/turn.svg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>     
-                    <div class="column">
-                        <div id="star_menu">
-                            <div class="subRow">
-                                <div class="subColumn">
-                                    <form action="#">
-                                        <select name="star_drop_down" id="star_drop_down">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </form>
-                                </div>
-                                <div class="subColumn">
-                                    <div id="star_img">
-                                        <img src="images/star.svg">
-                                    </div>
-                                </div>
-                            </div>    
-                        </div>
+        <div class="dropDownParentContainer">
+            <div class="dropDownContainersWrapper">
+<!--******************** Turn Selection Menu ********************-->
+                <div class="container">
+                    <div class="dropDownContainer">
+                        <select name="turn_drop_down" class="dropdown" id="turn_drop_down">
+                            <option value="0">0</option>  
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                        </select>
+                        <img src="images/turn.svg" class="image">
                     </div>
-                    <div class="column">
-                        <div id="coin_menu">
-                            <div class="subRow">
-                                <div class="subColumn">
-                                    <form action="#">
-                                        <select name="coin_drop_down" id="coin_drop_down">
-                                            <option value="0">0</option>
-                                            <option value="5">5</option>
-                                            <option value="10">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                            <option value="30">30</option>
-                                            <option value="35">35</option>
-                                            <option value="40">40</option>
-                                            <option value="45">45</option>
-                                            <option value="50">50</option>
-                                            <option value="55">55</option>
-                                            <option value="60">60</option>
-                                            <option value="65">65</option>
-                                            <option value="70">70</option>
-                                            <option value="75">75</option>
-                                            <option value="80">80</option>
-                                            <option value="85">85</option>
-                                            <option value="90">90</option>
-                                            <option value="95">95</option>
-                                            <option value="100">100</option>
-                                            <option value="110">110</option>
-                                            <option value="115">115</option>
-                                            <option value="120">120</option>
-                                            <option value="125">125</option>
-                                            <option value="130">130</option>
-                                            <option value="135">135</option>
-                                            <option value="140">140</option>
-                                            <option value="145">145</option>
-                                            <option value="150">150</option>
-                                            <option value="155">155</option>
-                                            <option value="160">160</option>
-                                            <option value="165">165</option>
-                                            <option value="170">170</option>
-                                            <option value="175">175</option>
-                                            <option value="180">180</option>
-                                            <option value="185">185</option>
-                                            <option value="190">190</option>
-                                            <option value="195">195</option>
-                                            <option value="200">200</option>
-                                        </select>
-                                    </form>
-                                </div>
-                                <div class="subColumn">  
-                                    <div id="coin_img">
-                                        <img src="images/coin.svg">
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
+                </div>
+<!--******************** Star Selection Menu ********************-->                
+                <div class="container">
+                    <div class="dropDownContainer">
+                        <select name="star_drop_down" class="dropdown" id="star_drop_down">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <img src="images/star.svg" class="image">
+                    </div>
+                </div>
+<!--******************** Coin Selection Menu ********************-->                
+                <div class="container">
+                    <div class="dropDownContainer">
+                        <select name="coin_drop_down" class="dropdown" id="coin_drop_down">
+                            <option value="0">0</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50">50</option>
+                            <option value="55">55</option>
+                            <option value="60">60</option>
+                            <option value="65">65</option>
+                            <option value="70">70</option>
+                            <option value="75">75</option>
+                            <option value="80">80</option>
+                            <option value="85">85</option>
+                            <option value="90">90</option>
+                            <option value="95">95</option>
+                            <option value="100">100</option>
+                            <option value="110">110</option>
+                            <option value="115">115</option>
+                            <option value="120">120</option>
+                            <option value="125">125</option>
+                            <option value="130">130</option>
+                            <option value="135">135</option>
+                            <option value="140">140</option>
+                            <option value="145">145</option>
+                            <option value="150">150</option>
+                            <option value="155">155</option>
+                            <option value="160">160</option>
+                            <option value="165">165</option>
+                            <option value="170">170</option>
+                            <option value="175">175</option>
+                            <option value="180">180</option>
+                            <option value="185">185</option>
+                            <option value="190">190</option>
+                            <option value="195">195</option>
+                            <option value="200">200</option>
+                        </select>
+                        <img src="images/coin.svg" class="image">
                     </div>    
                 </div>
             </div>
-            <div class="dropDownMenusContainer2">
-                <div class="row">
-                    <div class="column">
-                        <div id="item1">
-                            <div class="subRow">
-                                <div class="subColumn">
-                                    <form action="#">
-                                        <select name="item1_drop_down" id="item1_drop_down">
-                                            <option value="Item">Item</option>
-                                            <option value="Red Mushroom">Red Mushroom</option>
-                                            <option value="Gold Mushroom">Gold Mushroom</option>
-                                            <option value="Poison Mushroom">Poison Mushroom</option>
-                                            <option value="Reverse Mushroom">Reverse Mushroom</option>
-                                            <option value="Genie Lamp">Genie Lamp</option>
-                                            <option value="Blue Lamp">Blue Lamp</option>
-                                            <option value="Key">Key</option>
-                                            <option value="Boo Bell">Boo Bell</option>
-                                            <option value="Boo Spray">Boo Spray</option>
-                                            <option value="Dueling Glove">Dueling Glove</option>
-                                            <option value="Plunder Chest">Plunder Chest</option>
-                                            <option value="Warp Block">Warp Block</option>                                        
-                                        </select>
-                                    </form>
-                                </div>
-                                <div class="subColumn">
-                                    <div id="item_drop_down_image1">
-                                        <img src="images/items/item_box_alt.png" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
-                                        <div id="image-description-modal" class="modal" style="display: none;">
-                                            <div class="modal-content">
-                                                <span class="close" id="modal-close">&times;</span>
-                                                <p id="modal-description"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="image-description"></div>
-                                </div>
-                            </div>    
-                        </div>    
+        </div>
+        <div class="dropDownParentContainer">
+            <div class="dropDownContainersWrapper">
+ <!--******************** Item Selection Menu 1 ********************-->               
+                <div class="container">
+                    <div class="dropDownContainer">
+                        <select name="item1_drop_down" class="dropdown" id="item1_drop_down">
+                            <option value="Item">Item</option>
+                            <option value="Red Mushroom">Red Mushroom</option>
+                            <option value="Gold Mushroom">Gold Mushroom</option>
+                            <option value="Poison Mushroom">Poison Mushroom</option>
+                            <option value="Reverse Mushroom">Reverse Mushroom</option>
+                            <option value="Genie Lamp">Genie Lamp</option>
+                            <option value="Blue Lamp">Blue Lamp</option>
+                            <option value="Key">Key</option>
+                            <option value="Boo Bell">Boo Bell</option>
+                            <option value="Boo Spray">Boo Spray</option>
+                            <option value="Dueling Glove">Dueling Glove</option>
+                            <option value="Plunder Chest">Plunder Chest</option>
+                            <option value="Warp Block">Warp Block</option>                                        
+                        </select>
+                        <img src="images/items/item_box_alt.png" class="image" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
+                    <!--******************** Item Description Modal ********************-->    
+                        <div id="image-description-modal" class="modal" style="display: none;">
+                            <div class="modal-content">
+                                <span class="close" id="modal-close">&times;</span>
+                                <p id="modal-description"></p>
+                            </div>
+                        </div>
+                        <div id="image-description"></div>
                     </div>
-                    <div class="column">
-                        <div id="item2">
-                            <div class="subRow">
-                                <div class="subColumn">
-                                    <form action="#">
-                                        <select name="item2_drop_down" id="item2_drop_down">
-                                            <option value="Item">Item</option>
-                                            <option value="Red Mushroom">Red Mushroom</option>
-                                            <option value="Gold Mushroom">Gold Mushroom</option>
-                                            <option value="Poison Mushroom">Poison Mushroom</option>
-                                            <option value="Reverse Mushroom">Reverse Mushroom</option>
-                                            <option value="Genie Lamp">Genie Lamp</option>
-                                            <option value="Blue Lamp">Blue Lamp</option>
-                                            <option value="Key">Key</option>
-                                            <option value="Boo Bell">Boo Bell</option>
-                                            <option value="Boo Spray">Boo Spray</option>
-                                            <option value="Dueling Glove">Dueling Glove</option>
-                                            <option value="Plunder Chest">Plunder Chest</option>
-                                            <option value="Warp Block">Warp Block</option>                                        
-                                        </select>
-                                    </form>
-                                </div>
-                                <div class="subColumn">
-                                    <div id="item_drop_down_image2"> <!-- Unique ID for the second item image -->
-                                        <img src="images/items/item_box_alt.png" id="item-image2" onerror="this.style.display='none'"> <!-- Unique ID for the second item image -->
-                                    </div>
-                                </div>
-                            </div>    
-                        </div>    
+                </div>
+<!--******************** Item Selection Menu 2 ********************-->                
+                <div class="container">
+                    <div class="dropDownContainer">
+                        <select name="item2_drop_down" class="dropdown" id="item2_drop_down">
+                            <option value="Item">Item</option>
+                            <option value="Red Mushroom">Red Mushroom</option>
+                            <option value="Gold Mushroom">Gold Mushroom</option>
+                            <option value="Poison Mushroom">Poison Mushroom</option>
+                            <option value="Reverse Mushroom">Reverse Mushroom</option>
+                            <option value="Genie Lamp">Genie Lamp</option>
+                            <option value="Blue Lamp">Blue Lamp</option>
+                            <option value="Key">Key</option>
+                            <option value="Boo Bell">Boo Bell</option>
+                            <option value="Boo Spray">Boo Spray</option>
+                            <option value="Dueling Glove">Dueling Glove</option>
+                            <option value="Plunder Chest">Plunder Chest</option>
+                            <option value="Warp Block">Warp Block</option>                                        
+                        </select>
+                        <img src="images/items/item_box_alt.png" class="image" id="item-image2" onerror="this.style.display='none'"> <!-- Unique ID for the second item image -->
                     </div>
-                    <div class="column">
-                        <div id="item3">
-                            <form action="#">
-                                <div class="subRow">
-                                    <div class="subColumn">
-                                        <form action="#">
-                                            <select name="item3_drop_down" id="item3_drop_down">
-                                                <option value="Item">Item</option>
-                                                <option value="Red Mushroom">Red Mushroom</option>
-                                                <option value="Gold Mushroom">Gold Mushroom</option>
-                                                <option value="Poison Mushroom">Poison Mushroom</option>
-                                                <option value="Reverse Mushroom">Reverse Mushroom</option>
-                                                <option value="Genie Lamp">Genie Lamp</option>
-                                                <option value="Blue Lamp">Blue Lamp</option>
-                                                <option value="Key">Key</option>
-                                                <option value="Boo Bell">Boo Bell</option>
-                                                <option value="Boo Spray">Boo Spray</option>
-                                                <option value="Dueling Glove">Dueling Glove</option>
-                                                <option value="Plunder Chest">Plunder Chest</option>
-                                                <option value="Warp Block">Warp Block</option>
-                                            </select>
-                                        </form>
-                                    </div>
-                                    <div class="subColumn">
-                                        <div id="item_drop_down_image3"> <!-- Unique ID for the third item image -->
-                                            <img src="images/items/item_box_alt.png" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->
-                                        </div>
-                                    </div>
-                                </div>    
-                            </form>
-                        </div>    
+                </div>
+<!--******************** Item Selection Menu 3 ********************-->
+                <div class="container">
+                    <div class="dropDownContainer">
+                        <select name="item3_drop_down" class="dropdown" id="item3_drop_down">
+                            <option value="Item">Item</option>
+                            <option value="Red Mushroom">Red Mushroom</option>
+                            <option value="Gold Mushroom">Gold Mushroom</option>
+                            <option value="Poison Mushroom">Poison Mushroom</option>
+                            <option value="Reverse Mushroom">Reverse Mushroom</option>
+                            <option value="Genie Lamp">Genie Lamp</option>
+                            <option value="Blue Lamp">Blue Lamp</option>
+                            <option value="Key">Key</option>
+                            <option value="Boo Bell">Boo Bell</option>
+                            <option value="Boo Spray">Boo Spray</option>
+                            <option value="Dueling Glove">Dueling Glove</option>
+                            <option value="Plunder Chest">Plunder Chest</option>
+                            <option value="Warp Block">Warp Block</option>
+                        </select>
+                        <img src="images/items/item_box_alt.png" class="image" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->  
                     </div>
                 </div>
             </div>
         </div>
-        <div class="diceContainer" id="dice">
-            <div class="dice-wrapper" id="diceWrapper">
-                <img src="" id="die-0">
+<!--******************** Dice Container ********************-->
+        <div class="diceContainer">
+            <div class="dice-wrapper">
+                <img src="" id="die-0" alt="Dice Image">
             </div>
         </div>
-        <!-- Mute button and icon -->
-        <button id="muteButton" onclick="toggleMute()">
-            <i id="muteIcon" class="fa fa-volume-up"></i>
-        </button>
+<!--******************** Dice Audio ********************-->
         <audio id="diceAudio" src="audio/dice-roll-01.mp3"></audio>
-        <div class="diceDropdown">
-            <select id="rollType" onchange="setRollType(this.value)">
-                <option value="move">Move Dice</option>
-                <option value="item">Item Dice</option>
-                <option value="character">Character Dice</option>
-                <option value="cursed">Cursed Dice</option>
-                <option value="bowser">Bowser Dice</option>
-                <option value="bowserFury">Bowser Fury Dice</option>
-            </select>
-            <div id="dice_dropdown_img">
-                <img src="images/dice/dice_dropdown.png">
-            </div>   
+<!--******************** Dice Selection Dropdown Menu ********************-->
+        <div class="diceDropDownParentContainer">
+            <div class="diceDropDownContainer">   
+                    <select id="rollType" class="dropdown" onchange="setRollType(this.value)">
+                        <option value="move">Move Dice</option>
+                        <option value="item">Item Dice</option>
+                        <option value="character">Character Dice</option>
+                        <option value="cursed">Cursed Dice</option>
+                        <option value="bowser">Bowser Dice</option>
+                        <option value="bowserFury">Bowser Fury Dice</option>
+                    </select>
+                    <img src="images/dice/dice_dropdown.png" class="image">
+            </div>
         </div>
-        <!-- Wrap the stats in a container with a clickable link -->
-        <div class="stats-container" id="stats-container" onclick="openStatsModal()">
-            <a href="#">Stats</a>
-        </div>
-        <!--Modal for displaying the stats -->
+<!--******************** Stats Modal ********************-->
+        <div class="button-container">
+            <a href="#" class="button" onclick="openStatsModal()">Stats</a>
+        </div>        
         <div id="stats-modal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeStatsModal()">&times;</span>
@@ -288,16 +228,36 @@
                 <p id="blue-spaces-count">Blue Spaces: 0</p>
                 <p id="red-spaces-count">Red Spaces: 0</p>
                 <p id="event-spaces-count">Event Spaces: 0</p>
+                <p id="lucky-spaces-count">Lucky Spaces: 0</p>
+                <p id="item-spaces-count">Item Spaces: 0</p>
+                <p id="bowser-spaces-count">Bowser Spaces: 0</p>
+                <p id="gameguy-spaces-count">Game Guy Spaces: 0</p>
+                <p id="battle-spaces-count">Battle Spaces: 0</p>
+                <p id="star-spaces-count">Star Spaces: 0</p>
+                <p id="bank-spaces-count">Bank Spaces: 0</p>
+                <p id="boo-spaces-count">Boo Spaces: 0</p>
+                <p id="chance-spaces-count">Chance Spaces: 0</p>
             </div>
         </div>
+<!--******************** Space Selection Modal ********************-->
         <div id="spaceModal" class="modal">
             <div class="modal-content">
-                <h2>Select the Space You Landed On</h2>
+                <h3>Select the Space You Landed On</h3>
                 <img src="images/spaces/spaces_blue.png" class="space-option" data-space-type="blue" alt="Blue Space">
                 <img src="images/spaces/spaces_red.png" class="space-option" data-space-type="red" alt="Red Space">
                 <img src="images/spaces/spaces_event.png" class="space-option" data-space-type="event" alt="Event Space">
+                <img src="images/spaces/spaces_lucky.png" class="space-option" data-space-type="lucky" alt="Lucky Space">
+                <img src="images/spaces/spaces_item.png" class="space-option" data-space-type="item" alt="Item Space">
+                <img src="images/spaces/spaces_bowser.png" class="space-option" data-space-type="bowser" alt="Bowser Space">
+                <img src="images/spaces/spaces_game_guy.png" class="space-option" data-space-type="gameguy" alt="Game Guy Space">
+                <img src="images/spaces/spaces_battle.png" class="space-option" data-space-type="battle" alt="Battle Space">
+                <img src="images/spaces/spaces_star.png" class="space-option" data-space-type="star" alt="Star Space">
+                <img src="images/spaces/spaces_bank.png" class="space-option" data-space-type="bank" alt="Bank Space">
+                <img src="images/spaces/spaces_boo.png" class="space-option" data-space-type="boo" alt="Boo Space">
+                <img src="images/spaces/spaces_chance.png" class="space-option" data-space-type="chance" alt="Chance Space">
             </div>
         </div>
+<!--******************** JavaScript ********************-->
         <script src="script.js"></script>
     </body>
 </html>
