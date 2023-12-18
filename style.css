@@ -16,8 +16,12 @@
 }
 
 body{
+    height: 100%;
     padding: 0;
     margin: 0;
+   /* display: flex;
+    flex-direction: column;
+    align-items: center;*/
 }
 
 h1{
@@ -43,12 +47,30 @@ h1{
     }
 }
 
+@media only screen and (max-width: 1199px){
+    h1 {
+        font-size: 11.5vw; /* Adjust for screens smaller than 1799px */
+    }
+}
+
+@media only screen and (max-width: 999px){
+    h1 {
+        font-size: 13vw; /* Adjust for screens smaller than 1799px */
+    }
+}
+
+@media only screen and (max-width: 599px){
+    h1 {
+        font-size: 11.5vw; /* Adjust for screens smaller than 1799px */
+    }
+}
+
 #main_character_img img{
     max-width: 100%; /* Set a maximum width to fit the container */
     max-height: 100%; /* Set a maximum height to fit the container */
     display: block; /* Ensure it's a block-level element for horizontal centering */
     float: left;
-    margin: 0px 0px 0px 30px;
+    margin: 0vw 0vw 0vw 5vw;
 }
 
 #character-name{
@@ -56,126 +78,114 @@ h1{
     justify-content: center;
 }
 
-.dropDownMainContainer{
-    width: 100%;
+.dropDownParentContainer{
+    margin: 1%;
 }
 
-.dropDownMenusContainer1{
-    width: 100%;
+.dropDownContainersWrapper{
     display: flex;
-    justify-content: space-evenly;
-    margin: auto;
+    gap: 1%;
+    overflow-x: auto;
+    margin: 0 auto;
+    justify-content: center;
 }
 
-.dropDownMenusContainer2{
-    width: 100%;
+.dropDownDiceContainerWrapper{
     display: flex;
-    justify-content: space-evenly;
-    margin: auto;
+    gap: 1%;
+    overflow-x: auto;
+    margin: 0 auto;
+    justify-content: right;
 }
 
-#turn_menu, #star_menu, #coin_menu{
-    border: 5px solid black;
-    border-radius: 25px;
-    background-color: lightgray;
-    padding: 20px;
-    margin: 10px;
-}
-
-#star_menu{
-    margin: 10px 0px 10px 0px;
-}
-
-#item1, #item2, #item3{
-    border: 5px solid black;
-    border-radius: 25px;
-    background-color: lightgray;
-    padding: 20px 0px 20px 20px;
-    margin: 10px;
-}
-
-#item2{
-    margin: 10px 0px 10px 0px;
-}
-
-#turn_drop_down, #star_drop_down, #coin_drop_down{
-    width: 175px;
-    padding: 20px;
-    box-sizing: border-box;
+.container{
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    font-size: 50px;
-    border-radius: 15px; /*Changes the roundness of the corners of the selector box*/
+    border: .5vw solid black;
+    border-radius: 1vw;
+    padding: 1vw;
+    background-color: lightgray;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 30vw;
+    text-align: center;
 }
 
-#item1_drop_down, #item2_drop_down, #item3_drop_down{
-    /* "," signifies the class and "#" signifies the id value being referenced in the html files*/
-    width: 175px;
-    /*width: 100%;*/
-    padding: 20px;
-    box-sizing: border-box;
+.diceDropDownParentContainer{
     display: flex;
     align-items: center;
-    justify-content: center;
     margin: 0 auto;
-    font-size: 50px;
-    border-radius: 15px; /*Changes the roundness of the corners of the selector box*/
+    border: .5vw solid black;
+    border-radius: 1vw;
+    padding: 1vw;
+    background-color: lightgray;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 50vw;
+    text-align: center;
 }
 
-.column{
-    float: left;
-    width: 33.33%;    
-}
-
-/* Clear floats after the columns */
-.row:after{
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-.subRow{
+.diceDropDownContainer{
+   flex: 1;
     display: flex;
-  }
-
-.subColumn{ 
-    flex: 50%;
+    gap: 10px;
+    align-items: center; 
 }
 
-#turn_img, #star_img, #coin_img{
-    display: block; /* Ensure it's a block-level element */
-    margin: 0 auto; /* Center the image horizontally */
-    padding: 0px 0px 0px 20px;
+.dropDownContainer{
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    align-items: center; 
 }
 
-.diceContainer{
-    width: 900px;
-    height: 900px;
-    padding: 50px;
-    border: 25px solid black;
-    position: relative;
+.dropdown{
+    width: 70%;
+    box-sizing: border-box;
+    border: .5vw solid black;
+    border-radius: 1vw;
+    padding: 1vw;
+    font-size: 7vw;
+}
+
+.image {
+    width: 30%;
+}
+
+.diceDropDownContainer .image {
+    width: 20%;
+}
+
+.diceContainer {
+    width: 75vmin;
+    height: 75vmin;
+    min-width: 125px;
+    min-height: 125px;
+    max-width: 700px;
+    max-height: 700px;
+    padding: 7vmin;
+    border: 1.5vmin solid black;
+    margin: 5% auto; /* Center horizontally using margin */
     background-color: #ffffff;
-    box-shadow: 0 15px 35px rgba(50, 50, 50, 0.2);
+    box-shadow: 0 3vmin 7vmin rgba(50, 50, 50, 0.2);
     border-radius: 50%;
-    display: flex;
-    flex-direction: column; /* Change flex direction to column */
-    justify-content: center;
-    align-items: center; /* Center horizontally */
     font-family: "Poppins", sans-serif;
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center horizontally */
-    margin: 25px;
 }
 
-.dice-wrapper{
-    height:100%;
+.dice-wrapper {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /*visibility: hidden;*/
+}
+
+#die-0 {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
 }
 
 .shake{
@@ -194,21 +204,10 @@ h1{
     }
 }
 
-#item_drop_down_image1, #item_drop_down_image2, #item_drop_down_image3{
-    width: 100px; /* Adjust to your preferred width */
-    height: 100px; /* Adjust to your preferred height */
-    /*overflow: hidden;*/ /* Ensure the image doesn't overflow the container */
-    display: block; /* Ensure the image is treated as a block element */
-    margin: 0 auto; /* Center the image horizontally */
-    /*vertical-align: middle; /* Center the image vertically */
-    margin: 0px 20px 0px 20px;
-}
-
 #image-description{
     display: none; /* Hide the item description initially */
 }
 
-/* Style the modal container */
 .modal{
     display: none;
     position: fixed;
@@ -217,11 +216,9 @@ h1{
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* Style the modal content */
 .modal-content{
     background-color: #fefefe;
     margin: 10% auto;
@@ -231,11 +228,10 @@ h1{
     width: 70%;
     max-width: 800px;
     position: relative;
-    font-size: 50px;
+    font-size: 5vw;
     font-family: "Poppins", sans-serif;
 }
 
-/* Style the modal close button */
 .close{
     position: absolute;
     right: 0;
@@ -251,47 +247,23 @@ h1{
   cursor: pointer;
 }
 
-.diceDropdown{
-    position: relative;
-    float: right;
-    bottom: 25px;
-    right: 25px;
-    font-size: 50px;
-    padding: 10px;
-    padding-left: 90%;
-    border: 5px solid black;
-    border-radius: 25px;
-    background-color: lightgray;
-    padding: 20px;
-    margin: 10px;
+.stats-container {
     display: flex;
-    align-items: center;
-  }
-
-  #rollType{
-    width: 0 auto;
-    font-size: 50px;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    font-size: 50px;
-    border-radius: 15px; /*Changes the roundness of the corners of the selector box*/
-    margin-right: 20px;
-  }
-
-  .stat-container {
-    cursor: pointer;
-    font-size: 50px;
-  }
+    align-items: center;
+}
   
   #total-moves-modal {
     display: none;
   }
   
   #total-moves-modal h2 {
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 7vw;
+    font-family: "Poppins", sans-serif;
     text-align: center;
   }
   
@@ -328,7 +300,7 @@ h1{
     cursor: pointer;
   }
 
-#spaceModal {
+  #spaceModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -351,6 +323,9 @@ h1{
     position: relative;
     font-size: 50px;
     font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .space-option {
@@ -361,12 +336,41 @@ h1{
 }
 
 #muteButton {
-    position: fixed;
-    top: 10px;
-    right: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 75px;
-    padding: 25px;
+    font-size: 7vw;
+    padding: 2%;
+    z-index: 1; /* Ensure the button appears above other elements */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    border: .5vw solid black;
+    border-radius: 1vw;
+    padding: 15px;
+    background-color: lightgray;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 20vw;
+    font-size: 5vw;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin: 20px;
+    white-space: nowrap;
+    text-decoration: none; /* Remove underline */
+    color: inherit;
+    text-align: center;
+    justify-content: center;
 }
