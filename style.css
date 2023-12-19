@@ -98,7 +98,7 @@ h1{
     justify-content: right;
 }
 
-.container{
+.container, .diceDropDownParentContainer {
     display: flex;
     align-items: center;
     border: .5vw solid black;
@@ -139,13 +139,27 @@ h1{
     align-items: center; 
 }
 
-.dropdown{
+.dropdown, .diceDropDownContainer .dropdown{
     width: 70%;
     box-sizing: border-box;
     border: .5vw solid black;
     border-radius: 1vw;
     padding: 1vw;
     font-size: 7vw;
+    color: black;
+    appearance: none; /* Reset default browser styling */
+    -webkit-appearance: none; /* WebKit browsers (Chrome, Safari) */
+    -moz-appearance: none; /* Firefox */
+    background-image: url('images/drop_down_arrow.png');
+    background-size: .25em; /* Adjust the size of the arrow */
+    padding-right: .35em;
+    background-repeat: no-repeat;
+    background-position: calc(100% - .1em) center;}
+
+/*LAST*/
+.dropdown option, .diceDropDownContainer .dropdown option{
+    background-color: lightgray;
+    color: black;
 }
 
 .image {
@@ -340,6 +354,7 @@ h1{
     top: 0;
     right: 0;
     background-color: transparent;
+    color: #646464;
     border: none;
     cursor: pointer;
     font-size: 7vw;
