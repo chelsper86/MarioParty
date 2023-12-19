@@ -695,4 +695,3 @@ updateItemImage3();
 // Listen for changes in the third item dropdown menu
 document.getElementById('item3_drop_down').addEventListener('change', updateItemImage3);
 });
-
