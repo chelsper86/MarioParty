@@ -7,12 +7,33 @@
 }
 
 .headerContainer{
-    margin: 25px;
+    display: flex;
+    align-items: center;
+    padding: 1vw;
+    flex-shrink: 0;
+    width: 100vw;
+    text-align: center;
 }
 
 .headerGrid{
-    width: 100%;
+    flex: 1;
     display: flex;
+    align-items: center; 
+}
+
+.box{
+    width: 35%;
+    padding: 1vw;
+    gap: 10px;
+}
+
+#main_character_img {
+    width: 70%;
+}
+
+#character-name {
+    margin: 0;
+    padding: 0;
 }
 
 body{
