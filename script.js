@@ -191,12 +191,12 @@ let bowserFuryDiceImages = {
 }
 
 let blockDice = [
-    'Lucky Charm',
-    'Star',
-    'Twenty Coins',
-    'Item Bag',
-    'Koopa Card',
-]
+    { side: 'Lucky Charm', weight: 2 },  // 20% chance
+    { side: 'Star', weight: 1 },  // 10% chance
+    { side: 'Twenty Coins', weight: 3 },  // 30% chance
+    { side: 'Item Bag', weight: 2 },  // 20% chance
+    { side: 'Koopa Card', weight: 2 },  // 20% chance
+];
 
 let blockDiceImages = {
     'Lucky Charm': 'images/dice/dice_block_charm.png',
@@ -605,8 +605,7 @@ function rollBowserFuryDice() {
 function rollBlockDice() {
     shakeDice();
     setTimeout(function () {
-        let randomIndex = Math.floor(Math.random() * blockDice.length);
-        let selectedBlock = blockDice[randomIndex];
+        let selectedBlock = getRandomItemWithWeightedProbability(blockDice);
         console.log(selectedBlock);
         // Set the dice image source
         document.querySelector("#die-0").setAttribute("src", blockDiceImages[selectedBlock]);
