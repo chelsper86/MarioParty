@@ -1,7 +1,7 @@
 let moveDice = document.querySelectorAll(".dice-wrapper");
-let totalMoves = 0;  // Variable to store the total of all moves
+let totalMoves = 0;
 let rollType = 'move'; // Default roll type
-let selectedSpace; // Variable to store the selected space
+let selectedSpace;
 let blueSpacesCount = 0;
 let redSpacesCount = 0;
 let eventSpacesCount = 0;
@@ -14,7 +14,17 @@ let starSpacesCount = 0;
 let bankSpacesCount = 0;
 let booSpacesCount = 0;
 let chanceSpacesCount = 0;
-let currentTurn = 0; // Keeps track of the current turn
+let currentTurn = 0;
+
+function preloadImages(images) {
+    const preloadedImages = [];
+    for (let i = 0; i < images.length; i++) {
+        const img = new Image();
+        img.src = images[i];
+        preloadedImages.push(img);
+    }
+    return preloadedImages;
+}
 
 let moveDiceImages = [
 "images/dice/dice_00.png",
@@ -29,52 +39,73 @@ let moveDiceImages = [
 "images/dice/dice_09.png",
 "images/dice/dice_10.png"];
 
-// Preload the moveDiceImages to prevent display delays during network latency
-const preloadedImages = [];
-for (let i = 0; i < moveDiceImages.length; i++) {
-    const img = new Image();
-    img.src = moveDiceImages[i];
-    preloadedImages.push(img);
-}
+// Define item images for each item
+const itemImages = {
+    'Item': 'images/items/item_box_alt.png',
+    'Red Mushroom': 'images/items/mushroom_red.png',
+    'Gold Mushroom': 'images/items/mushroom_gold.png',
+    'Poison Mushroom': 'images/items/mushroom_poison.png',
+    'Reverse Mushroom': 'images/items/mushroom_reverse.png',
+    'Mini Mushroom': 'images/items/mushroom_mini.png',
+    'Custom Mushroom': 'images/items/mushroom_custom.png',
+    'Genie Lamp': 'images/items/lamp_genie.png',
+    'Blue Lamp': 'images/items/lamp_blue.png',
+    'Key': 'images/items/key.png',
+    'Boo Bell': 'images/items/boo_bell.png',
+    'Boo Spray': 'images/items/boo_spray.png',
+    'Dueling Glove': 'images/items/dueling_glove.png',
+    'Plunder Chest': 'images/items/plunder_chest.png',
+    'Warp Block': 'images/items/warp_block.png',
+    'Koopa Card': 'images/items/koopa_card.png',
+    'Item Bag': 'images/items/item_bag.png',
+    'Lucky Charm': 'images/items/lucky_charm.png'
+    // Add more items and image paths as needed
+};
 
 // Add default image sources for each roll type
 const defaultImages = {
     'move': 'images/dice/dice_move_default.png',
     'character': 'images/dice/dice_character_default.png',
-    'item': 'images/dice/dice_item_default.png',
+    'lucky': 'images/dice/dice_lucky_default.png',
     'cursed': 'images/dice/dice_cursed_default.png',
     'bowser': 'images/dice/dice_bowser_default.png',
-    'bowserFury': 'images/dice/dice_bowser_fury_default.png'
+    'bowserFury': 'images/dice/dice_bowser_fury_default.png',
+    'toadShop': 'images/dice/dice_shop_toad_default.png',
+    'bowserShop': 'images/dice/dice_shop_bowser_default.png',
+    'block': 'images/dice/dice_block_default.png',
+    'mini': 'images/dice/dice_mini_default.png',
+    'battle': 'images/dice/dice_battle_default.png',
+    'chance': 'images/dice/dice_chance_default.png',
 };
 
-let diceItems = [
+let diceLucky = [
     'Red Mushroom',
     'Gold Mushroom',
-    'Poison Mushroom',
-    'Reverse Mushroom',
+    'Mini Mushroom',
+    'Custom Mushroom',
     'Genie Lamp',
-    'Blue Lamp',
     'Key',
-    'Boo Bell',
-    'Boo Spray',
     'Dueling Glove',
-    'Plunder Chest',
-    'Warp Block'
+    'Warp Block',
+    'Five Coin',
+    'Ten Coin',
+    'Fifteen Coin',
+    'Twenty Coin',
 ];
 
-let diceItemImages = {
-    'Red Mushroom': 'images/dice/dice_item_mushroom_red.png',
-    'Gold Mushroom': 'images/dice/dice_item_mushroom_gold.png',
-    'Poison Mushroom': 'images/dice/dice_item_mushroom_poison.png',
-    'Reverse Mushroom': 'images/dice/dice_item_mushroom_reverse.png',
-    'Genie Lamp': 'images/dice/dice_item_lamp_genie.png',
-    'Blue Lamp': 'images/dice/dice_item_lamp_blue.png',
-    'Key': 'images/dice/dice_item_key.png',
-    'Boo Bell': 'images/dice/dice_item_boo_bell.png',
-    'Boo Spray': 'images/dice/dice_item_boo_spray.png',
-    'Dueling Glove': 'images/dice/dice_item_dueling_glove.png',
-    'Plunder Chest': 'images/dice/dice_item_plunder_chest.png',
-    'Warp Block': 'images/dice/dice_item_warp_block.png'
+let diceLuckySpaceImages = {
+    'Red Mushroom': 'images/dice/dice_lucky_mushroom_red.png',
+    'Gold Mushroom': 'images/dice/dice_lucky_mushroom_gold.png',
+    'Mini Mushroom': 'images/dice/dice_lucky_mushroom_mini.png',
+    'Custom Mushroom': 'images/dice/dice_lucky_mushroom_custom.png',
+    'Genie Lamp': 'images/dice/dice_lucky_lamp_genie.png',
+    'Key': 'images/dice/dice_lucky_key.png',
+    'Dueling Glove': 'images/dice/dice_lucky_dueling_glove.png',
+    'Warp Block': 'images/dice/dice_lucky_warp_block.png',
+    'Five Coin': 'images/dice/dice_lucky_five.png',
+    'Ten Coin': 'images/dice/dice_lucky_ten.png',
+    'Fifteen Coin': 'images/dice/dice_lucky_fifteen.png',
+    'Twenty Coin': 'images/dice/dice_lucky_twenty.png',
 };
 
 let characterDiceImages = {
@@ -85,6 +116,41 @@ let characterDiceImages = {
     'rosalina': "images/dice/dice_character_rosalina.png",
     'cattoad': "images/dice/dice_character_cat_toad.png",
 };
+
+let toadShopDice = [
+    'Gold Mushroom',
+    'Red Mushroom',
+    'Reverse Mushroom',
+    'Warp Block',
+    'Genie Lamp',
+    'Key',
+]
+let diceToadShopImages = {
+    'Gold Mushroom': "images/dice/dice_shop_toad_gold.png",
+    'Red Mushroom': "images/dice/dice_shop_toad_red.png",
+    'Reverse Mushroom': "images/dice/dice_shop_toad_reverse.png",
+    'Warp Block': "images/dice/dice_shop_toad_warp.png",
+    'Genie Lamp': "images/dice/dice_shop_toad_lamp.png",
+    'Key': "images/dice/dice_shop_toad_key.png",
+}
+
+let bowserShopDice = [
+    'Cursed Mushroom',
+    'Boo Bell',
+    'Boo Spray',
+    'Dueling Glove',
+    'Plunder Chest',
+    'Blue Lamp',
+]
+
+let diceBowserShopImages = {
+    'Cursed Mushroom': "images/dice/dice_shop_bowser_curse.png",
+    'Boo Bell': "images/dice/dice_shop_bowser_bell.png",
+    'Boo Spray': "images/dice/dice_shop_bowser_spray.png",
+    'Dueling Glove': "images/dice/dice_shop_bowser_duel.png",
+    'Plunder Chest': "images/dice/dice_shop_bowser_plunder.png",
+    'Blue Lamp': "images/dice/dice_shop_bowser_lamp.png",
+}
 
 let cursedDice = [
     'Cursed One',
@@ -113,8 +179,8 @@ let bowserDiceImages = {
 }
 
 let bowserFuryDice = [
-    { side: 'Minus 50 Coins', weight: 2 },  // 20% chance
-    { side: 'Minus 75 Coins', weight: 2 },  // 20% chance
+    { side: 'Minus 50 Coins', weight: 1.5 },  // 15% chance
+    { side: 'Minus 75 Coins', weight: 1.5 },  // 15% chance
     { side: 'Minus 100 Coins', weight: 1 },  // 10% chance
     { side: 'Minus 2 Star', weight: 1 },  // 10% chance
     { side: 'Minus 3 Star', weight: 1 },  // 10% chance
@@ -130,6 +196,78 @@ let bowserFuryDiceImages = {
     'Minus All Coins': "images/dice/dice_bowser_fury_anarchy.png",
 }
 
+let blockDice = [
+    'Lucky Charm',
+    'Star',
+    'Twenty Coins',
+    'Item Bag',
+    'Koopa Card',
+]
+
+let blockDiceImages = {
+    'Lucky Charm': 'images/dice/dice_block_charm.png',
+    'Star': 'images/dice/dice_block_star.png',
+    'Twenty Coins': 'images/dice/dice_block_twenty.png',
+    'Item Bag': 'images/dice/dice_block_bag.png',
+    'Koopa Card': 'images/dice/dice_block_koopa.png',
+}
+
+let miniDice = [
+    'Mini One',
+    'Mini Two',
+    'Mini Three',
+    'Mini Four',
+    'Mini Five',
+    'Mini Six',
+]
+
+let miniDiceImages = {
+    'Mini One': 'images/dice/dice_mini_01.png',
+    'Mini Two': 'images/dice/dice_mini_02.png',
+    'Mini Three': 'images/dice/dice_mini_03.png',
+    'Mini Four': 'images/dice/dice_mini_04.png',
+    'Mini Five': 'images/dice/dice_mini_05.png',
+    'Mini Six': 'images/dice/dice_mini_06.png',
+}
+
+let chanceDice = [
+    'Chance Ten',
+    'Chance Twenty',
+    'Chance Thirty',
+    'Chance All Coins',
+    'Chance One Star',
+    'Chance Two Star',
+    'Chance All Stars',
+]
+
+let chanceDiceImages = {
+    'Chance Ten': 'images/dice/dice_chance_ten.png',
+    'Chance Twenty': 'images/dice/dice_chance_twenty.png',
+    'Chance Thirty': 'images/dice/dice_chance_thirty.png',
+    'Chance All Coins': 'images/dice/dice_chance_all_coins.png',
+    'Chance One Star': 'images/dice/dice_chance_one_star.png',
+    'Chance Two Star': 'images/dice/dice_chance_two_stars.png',
+    'Chance All Stars': 'images/dice/dice_chance_all_stars.png',
+}
+
+let battleDice = [
+    'Battle Five',
+    'Battle Ten',
+    'Battle Fifteen',
+    'Battle Twenty',
+    'Battle Twenty Five',
+    'Battle Thirty',
+]
+
+let battleDiceImages = {
+    'Battle Five': 'images/dice/dice_battle_five.png',
+    'Battle Ten': 'images/dice/dice_battle_ten.png',
+    'Battle Fifteen': 'images/dice/dice_battle_fifteen.png',
+    'Battle Twenty': 'images/dice/dice_battle_twenty.png',
+    'Battle Twenty Five': 'images/dice/dice_battle_twenty_five.png',
+    'Battle Thirty': 'images/dice/dice_battle_thirty.png',
+}
+
 window.addEventListener("load", (event) => {
     const spaceOptions = document.querySelectorAll('.space-option');
     const modal = document.getElementById('spaceModal');
@@ -142,7 +280,25 @@ window.addEventListener("load", (event) => {
              updateStats();
          });
      });
- });
+     // Preload all dice images
+    const allImages = [
+        ...Object.values(defaultImages),
+        ...Object.values(diceLuckySpaceImages),
+        ...Object.values(characterDiceImages),
+        ...Object.values(diceToadShopImages),
+        ...Object.values(diceBowserShopImages),
+        ...Object.values(cursedDiceImages),
+        ...Object.values(bowserDiceImages),
+        ...Object.values(bowserFuryDiceImages),
+        ...Object.values(blockDiceImages),
+        ...Object.values(miniDiceImages),
+        ...Object.values(chanceDiceImages),
+        ...Object.values(battleDiceImages),
+        ...Object.values(moveDiceImages),
+        ...Object.values(itemImages),
+    ];
+    const preloadedDiceImages = preloadImages(allImages);
+});
  
 // Function to get a random item based on weights (I am using this with the bowser and bowser fury dice so that the chances of getting the really bad stuff is not as high)
 function getRandomItemWithWeightedProbability(array) {
@@ -166,13 +322,7 @@ function displayTotalMoves() {
 // Function to update the "turn" dropdown menu by 1. This must be above the rollDice function for this to work.
 function updateTurnDropdown() {
     const turnSelect = document.getElementById('turn_drop_down');
-    // Update the dropdown
     turnSelect.value = currentTurn.toString();
-    //const currentTurn = parseInt(turnSelect.value, 10);
-    // Update the dropdown
-    //const newTurn = currentTurn + 1;
-    //turnSelect.value = newTurn.toString();
-    // Display the totalMoves after updating the dropdown
     displayTotalMoves();
 }
 
@@ -219,7 +369,6 @@ function toggleMute() {
 //This function plays a rolling dice audio file when the dice is clicked.
 function playAudio() {
     var audio = document.getElementById("diceAudio");
-    
     // Check if the audio is not muted before playing
     if (!audio.muted) {
         audio.play();
@@ -257,7 +406,7 @@ function showSpacesModal() {
     modal.style.display = 'block';
 }
 
-function rollMove() {
+function checkMaxTurns() {
     // Check if the maximum number of turns (15) has been reached
     if (currentTurn >= 15) {
         alert('Game over!');
@@ -379,14 +528,40 @@ function rollCharacter() {
     }, 1250);
 }
 
-function rollItem() {
+function rollLuckySpace() {
     shakeDice();
     setTimeout(function () {
-        let randomIndex = Math.floor(Math.random() * diceItems.length);
-        let selectedItem = diceItems[randomIndex];
-        console.log(selectedItem);
+        let randomIndex = Math.floor(Math.random() * diceLucky.length);
+        let selectedLucky = diceLucky[randomIndex];
+        console.log(selectedLucky);
         // Set the item image source
-        document.querySelector("#die-0").setAttribute("src", diceItemImages[selectedItem]);
+        document.querySelector("#die-0").setAttribute("src", diceLuckySpaceImages[selectedLucky]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollToadShopDice() {
+    shakeDice();
+    setTimeout(function () {
+        let randomIndex = Math.floor(Math.random() * toadShopDice.length);
+        let selectedToadShop = toadShopDice[randomIndex];
+        console.log(selectedToadShop);
+        // Set the item image source
+        document.querySelector("#die-0").setAttribute("src", diceToadShopImages[selectedToadShop]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollBowserShopDice() {
+    shakeDice();
+    setTimeout(function () {
+        let randomIndex = Math.floor(Math.random() * bowserShopDice.length);
+        let selectedBowserShop = bowserShopDice[randomIndex];
+        console.log(selectedBowserShop);
+        // Set the item image source
+        document.querySelector("#die-0").setAttribute("src", diceBowserShopImages[selectedBowserShop]);
         // Make the dice image visible
         document.querySelector("#die-0").style.visibility = "visible";
     }, 1250);
@@ -396,10 +571,10 @@ function rollCursedDice() {
     shakeDice();
     setTimeout(function () {
         let randomIndex = Math.floor(Math.random() * cursedDice.length);
-        let selectedSide = cursedDice[randomIndex];
-        console.log(selectedSide);
+        let selectedCurse = cursedDice[randomIndex];
+        console.log(selectedCurse);
         // Set the cursed image source
-        document.querySelector("#die-0").setAttribute("src", cursedDiceImages[selectedSide]);
+        document.querySelector("#die-0").setAttribute("src", cursedDiceImages[selectedCurse]);
         // Make the dice image visible
         document.querySelector("#die-0").style.visibility = "visible";
     }, 1250);
@@ -408,10 +583,10 @@ function rollCursedDice() {
 function rollBowserDice() {
     shakeDice();
     setTimeout(function () {
-        let selectedSide = getRandomItemWithWeightedProbability(bowserDice);
-        console.log(selectedSide);
+        let selectedBowser = getRandomItemWithWeightedProbability(bowserDice);
+        console.log(selectedBowser);
         // Set the Bowser dice image source
-        document.querySelector("#die-0").setAttribute("src", bowserDiceImages[selectedSide]);
+        document.querySelector("#die-0").setAttribute("src", bowserDiceImages[selectedBowser]);
         // Make the dice image visible
         document.querySelector("#die-0").style.visibility = "visible";
     }, 1250);
@@ -420,10 +595,62 @@ function rollBowserDice() {
 function rollBowserFuryDice() {
     shakeDice();
     setTimeout(function () {
-        let selectedSide = getRandomItemWithWeightedProbability(bowserFuryDice);
-        console.log(selectedSide);
+        let selectedFury = getRandomItemWithWeightedProbability(bowserFuryDice);
+        console.log(selectedFury);
         // Set the Bowser Fury dice image source
-        document.querySelector("#die-0").setAttribute("src", bowserFuryDiceImages[selectedSide]);
+        document.querySelector("#die-0").setAttribute("src", bowserFuryDiceImages[selectedFury]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollBlockDice() {
+    shakeDice();
+    setTimeout(function () {
+        let randomIndex = Math.floor(Math.random() * blockDice.length);
+        let selectedBlock = blockDice[randomIndex];
+        console.log(selectedBlock);
+        // Set the dice image source
+        document.querySelector("#die-0").setAttribute("src", blockDiceImages[selectedBlock]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollMiniDice() {
+    shakeDice();
+    setTimeout(function () {
+        let randomIndex = Math.floor(Math.random() * miniDice.length);
+        let selectedMini = miniDice[randomIndex];
+        console.log(selectedMini);
+        // Set the dice image source
+        document.querySelector("#die-0").setAttribute("src", miniDiceImages[selectedMini]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollBattleDice() {
+    shakeDice();
+    setTimeout(function () {
+        let randomIndex = Math.floor(Math.random() * battleDice.length);
+        let selectedBattle = battleDice[randomIndex];
+        console.log(selectedBattle);
+        // Set the dice image source
+        document.querySelector("#die-0").setAttribute("src", battleDiceImages[selectedBattle]);
+        // Make the dice image visible
+        document.querySelector("#die-0").style.visibility = "visible";
+    }, 1250);
+}
+
+function rollChanceDice() {
+    shakeDice();
+    setTimeout(function () {
+        let randomIndex = Math.floor(Math.random() * chanceDice.length);
+        let selectedChance = chanceDice[randomIndex];
+        console.log(selectedChance);
+        // Set the dice image source
+        document.querySelector("#die-0").setAttribute("src", chanceDiceImages[selectedChance]);
         // Make the dice image visible
         document.querySelector("#die-0").style.visibility = "visible";
     }, 1250);
@@ -441,17 +668,29 @@ setDefaultImage();
 // This function triggers the updateTurnDropdown menu when the dice image is clicked
 function rollDice() {
     if (rollType === 'move') {
-        rollMove();
+        checkMaxTurns();
     } else if (rollType === 'character') {
         rollCharacter();
-    } else if (rollType === 'item') {
-        rollItem();
+    } else if (rollType === 'lucky') {
+        rollLuckySpace();
     } else if (rollType === 'cursed') {
         rollCursedDice();
     } else if (rollType === 'bowser') {
         rollBowserDice();
     } else if (rollType === 'bowserFury') {
         rollBowserFuryDice();
+    } else if (rollType === 'toadShop') {
+        rollToadShopDice();
+    } else if (rollType === 'bowserShop') {
+        rollBowserShopDice();
+    } else if (rollType === 'block') {
+        rollBlockDice();
+    } else if (rollType === 'mini') {
+        rollMiniDice();
+    } else if (rollType === 'chance') {
+        rollChanceDice();
+    } else if (rollType === 'battle') {
+        rollBattleDice();
     }
 }
 
@@ -538,29 +777,12 @@ if (characterData[character]) {
     document.getElementById('character-image').src = characterData[character].image;
 }
 
-// Define item images for each item
-const itemImages = {
-    'Item': 'images/items/item_box_alt.png',
-    'Red Mushroom': 'images/items/mushroom_red.png',
-    'Gold Mushroom': 'images/items/mushroom_gold.png',
-    'Poison Mushroom': 'images/items/mushroom_poison.png',
-    'Reverse Mushroom': 'images/items/mushroom_reverse.png',
-    'Genie Lamp': 'images/items/lamp_genie.png',
-    'Blue Lamp': 'images/items/lamp_blue.png',
-    'Key': 'images/items/key.png',
-    'Boo Bell': 'images/items/boo_bell.png',
-    'Boo Spray': 'images/items/boo_spray.png',
-    'Dueling Glove': 'images/items/dueling_glove.png',
-    'Plunder Chest': 'images/items/plunder_chest.png',
-    'Warp Block': 'images/items/warp_block.png'
-
-    // Add more items and image paths as needed
-};
-
 const itemDescriptions = {
     'Item': 'Select an item from the dropdown menu to display it here.',
     'Red Mushroom': 'Adds 5 to your roll.',
     'Gold Mushroom': 'Adds 10 to your roll.',
+    'Mini Mushroom': 'Make any player, including yourself, small for 1 turn. Small players may only move up to 6 spaces, but they can squeeze through gates with no key. If another player lands on or moves past a mini player, they are squished, and lose 5 coins.',
+    'Custom Mushroom': 'Choose a number 1-10. Move that many spaces.',
     'Poison Mushroom': 'Choose who to poison. Poisoned players can only move 1 to 3 spaces this turn.',
     'Reverse Mushroom': 'Move backwards for this turn',
     'Genie Lamp': 'Takes you directly to the star.',
@@ -570,7 +792,10 @@ const itemDescriptions = {
     'Boo Spray': 'Prevents someone from using Boo against you.',
     'Dueling Glove': 'Triggers a duel mini game. You choose your opponent and the wager. Min/Max = 5 Coins/All the coins you have',
     'Plunder Chest': 'Take one item from another player.',
-    'Warp Block': 'Roll a character dice. Switch spots with that character.'
+    'Warp Block': 'Roll a character dice. Switch spots with that character.',
+    'Koopa Card': 'Gain all coins in the bank when you pass the bank space.',
+    'Item Bag': 'Gain three items using the Item Dice.',
+    'Lucky Charm': 'Make any player, including yourself, compete against Game Guy.'
     // Add descriptions for other items
 };
 
@@ -583,10 +808,8 @@ function updateItemImage() {
     // Get the image path and description from your itemImages and itemDescriptions objects
     const imagePath = itemImages[selectedItem];
     const description = itemDescriptions[selectedItem];
-
     // Update the item image's src
     itemImage.src = imagePath;
-
     // Update the modal description content
     const modalDescriptionElement = document.getElementById('modal-description');
     modalDescriptionElement.textContent = description;
@@ -622,7 +845,6 @@ document.getElementById('item-image1').addEventListener('click', function (event
 document.getElementById('item-image1').addEventListener('click', function (event) {
     event.stopPropagation();
     const descriptionElement = document.getElementById('image-description');
-
     if (descriptionElement.style.display === 'none') {
         descriptionElement.style.display = 'block'; // Show the description
     } else {
@@ -644,7 +866,6 @@ document.getElementById('item-image2').addEventListener('click', function (event
 document.getElementById('item-image2').addEventListener('click', function (event) {
     event.stopPropagation();
     const descriptionElement = document.getElementById('image-description');
-
     if (descriptionElement.style.display === 'none') {
         descriptionElement.style.display = 'block'; // Show the description
     } else {
@@ -666,7 +887,6 @@ document.getElementById('item-image3').addEventListener('click', function (event
 document.getElementById('item-image3').addEventListener('click', function (event) {
     event.stopPropagation();
     const descriptionElement = document.getElementById('image-description');
-
     if (descriptionElement.style.display === 'none') {
         descriptionElement.style.display = 'block'; // Show the description
     } else {
@@ -695,3 +915,4 @@ updateItemImage3();
 // Listen for changes in the third item dropdown menu
 document.getElementById('item3_drop_down').addEventListener('change', updateItemImage3);
 });
+
