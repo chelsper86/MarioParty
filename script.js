@@ -805,7 +805,7 @@ const itemDescriptions = {
     'Plunder Chest': 'Take one item from another player.',
     'Warp Block': 'Roll a character dice. Switch spots with that character.',
     'Koopa Card': 'Gain all coins in the bank when you pass the bank space.',
-    'Item Bag': 'Gain three items using the Item Dice.',
+    'Item Bag': 'Gain three items using the Toad Shop Dice &/or Bowser Shop Dice.',
     'Lucky Charm': 'Make any player, including yourself, compete against Game Guy.'
     // Add descriptions for other items
 };
