@@ -6,6 +6,8 @@
         <meta name="robots" content="noindex, nofollow">
         <link type="text/css" rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     </head>
     <body>
         <div class="headerContainer">
@@ -13,6 +15,7 @@
             <button id="muteButton" onclick="toggleMute()">
                 <i id="muteIcon" class="fa fa-volume-up"></i>
             </button>
+<!--******************** Header Image/Name ********************-->
             <div class="headerGrid">
                 <div class="box">
                     <div id="main_character_img">
@@ -113,6 +116,26 @@
                             <option value="190">190</option>
                             <option value="195">195</option>
                             <option value="200">200</option>
+                            <option value="205">205</option>
+                            <option value="210">210</option>
+                            <option value="215">215</option>
+                            <option value="220">220</option>
+                            <option value="225">225</option>
+                            <option value="230">230</option>
+                            <option value="235">235</option>
+                            <option value="240">240</option>
+                            <option value="245">245</option>
+                            <option value="250">250</option>
+                            <option value="255">255</option>
+                            <option value="260">260</option>
+                            <option value="265">265</option>
+                            <option value="270">270</option>
+                            <option value="275">275</option>
+                            <option value="280">280</option>
+                            <option value="285">285</option>
+                            <option value="290">290</option>
+                            <option value="295">295</option>
+                            <option value="300">300</option>
                         </select>
                         <img src="images/coin.svg" class="image">
                     </div>    
@@ -130,6 +153,8 @@
                             <option value="Gold Mushroom">Gold Mushroom</option>
                             <option value="Poison Mushroom">Poison Mushroom</option>
                             <option value="Reverse Mushroom">Reverse Mushroom</option>
+                            <option value="Mini Mushroom">Mini Mushroom</option>
+                            <option value="Custom Mushroom">Custom Mushroom</option>
                             <option value="Genie Lamp">Genie Lamp</option>
                             <option value="Blue Lamp">Blue Lamp</option>
                             <option value="Key">Key</option>
@@ -137,7 +162,10 @@
                             <option value="Boo Spray">Boo Spray</option>
                             <option value="Dueling Glove">Dueling Glove</option>
                             <option value="Plunder Chest">Plunder Chest</option>
-                            <option value="Warp Block">Warp Block</option>                                        
+                            <option value="Warp Block">Warp Block</option>
+                            <option value="Koopa Card">Koopa Card</option>
+                            <option value="Item Bag">Item Bag</option>
+                            <option value="Lucky Charm">Lucky Charm</option>                                        
                         </select>
                         <img src="images/items/item_box_alt.png" class="image" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
                     <!--******************** Item Description Modal ********************-->    
@@ -159,6 +187,8 @@
                             <option value="Gold Mushroom">Gold Mushroom</option>
                             <option value="Poison Mushroom">Poison Mushroom</option>
                             <option value="Reverse Mushroom">Reverse Mushroom</option>
+                            <option value="Mini Mushroom">Mini Mushroom</option>
+                            <option value="Custom Mushroom">Custom Mushroom</option>
                             <option value="Genie Lamp">Genie Lamp</option>
                             <option value="Blue Lamp">Blue Lamp</option>
                             <option value="Key">Key</option>
@@ -166,7 +196,10 @@
                             <option value="Boo Spray">Boo Spray</option>
                             <option value="Dueling Glove">Dueling Glove</option>
                             <option value="Plunder Chest">Plunder Chest</option>
-                            <option value="Warp Block">Warp Block</option>                                        
+                            <option value="Warp Block">Warp Block</option>
+                            <option value="Koopa Card">Koopa Card</option>
+                            <option value="Item Bag">Item Bag</option>
+                            <option value="Lucky Charm">Lucky Charm</option>                                        
                         </select>
                         <img src="images/items/item_box_alt.png" class="image" id="item-image2" onerror="this.style.display='none'"> <!-- Unique ID for the second item image -->
                     </div>
@@ -180,6 +213,8 @@
                             <option value="Gold Mushroom">Gold Mushroom</option>
                             <option value="Poison Mushroom">Poison Mushroom</option>
                             <option value="Reverse Mushroom">Reverse Mushroom</option>
+                            <option value="Mini Mushroom">Mini Mushroom</option>
+                            <option value="Custom Mushroom">Custom Mushroom</option>
                             <option value="Genie Lamp">Genie Lamp</option>
                             <option value="Blue Lamp">Blue Lamp</option>
                             <option value="Key">Key</option>
@@ -188,6 +223,9 @@
                             <option value="Dueling Glove">Dueling Glove</option>
                             <option value="Plunder Chest">Plunder Chest</option>
                             <option value="Warp Block">Warp Block</option>
+                            <option value="Koopa Card">Koopa Card</option>
+                            <option value="Item Bag">Item Bag</option>
+                            <option value="Lucky Charm">Lucky Charm</option>
                         </select>
                         <img src="images/items/item_box_alt.png" class="image" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->  
                     </div>
@@ -200,6 +238,10 @@
                 <img src="" id="die-0" alt="Dice Image">
             </div>
         </div>
+<!-- ******************** Dice Images Container ******************** -->
+<div class="diceImagesContainer" id="diceImagesContainer">
+  <!-- Dice images will be dynamically added here -->
+</div>
 <!--******************** Dice Audio ********************-->
         <audio id="diceAudio" src="audio/dice-roll-01.mp3"></audio>
 <!--******************** Dice Selection Dropdown Menu ********************-->
@@ -207,11 +249,17 @@
             <div class="diceDropDownContainer">   
                     <select id="rollType" class="dropdown" onchange="setRollType(this.value)">
                         <option value="move">Move Dice</option>
-                        <option value="item">Item Dice</option>
+                        <option value="lucky">Lucky Dice</option>
                         <option value="character">Character Dice</option>
                         <option value="cursed">Cursed Dice</option>
                         <option value="bowser">Bowser Dice</option>
                         <option value="bowserFury">Bowser Fury Dice</option>
+                        <option value="toadShop">Toad Shop Dice</option>
+                        <option value="bowserShop">Bowser Shop Dice</option>
+                        <option value="block">Hidden Block Dice</option>
+                        <option value="mini">Mini Dice</option>
+                        <option value="battle">Battle Dice</option>
+                        <option value="chance">Chance Dice</option>
                     </select>
                     <img src="images/dice/dice_dropdown.png" class="image">
             </div>
