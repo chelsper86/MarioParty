@@ -18,7 +18,8 @@
 .headerGrid{
     flex: 1;
     display: flex;
-    align-items: center; 
+    align-items: center;
+    gap: 3vw; 
 }
 
 .box{
@@ -40,9 +41,6 @@ body{
     height: 100%;
     padding: 0;
     margin: 0;
-   /* display: flex;
-    flex-direction: column;
-    align-items: center;*/
 }
 
 h1{
@@ -53,7 +51,7 @@ h1{
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-size: 5vw; /* Default size for larger screens */
+    font-size: 5vw;
 }
 
 @media only screen and (max-width: 2499px){
@@ -87,9 +85,9 @@ h1{
 }
 
 #main_character_img img{
-    max-width: 100%; /* Set a maximum width to fit the container */
-    max-height: 100%; /* Set a maximum height to fit the container */
-    display: block; /* Ensure it's a block-level element for horizontal centering */
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
     float: left;
     margin: 0vw 0vw 0vw 5vw;
 }
@@ -156,7 +154,7 @@ h1{
 .dropDownContainer{
     flex: 1;
     display: flex;
-    gap: 10px;
+    gap: 1vw;
     align-items: center; 
 }
 
@@ -175,9 +173,9 @@ h1{
     background-size: .25em; /* Adjust the size of the arrow */
     padding-right: .35em;
     background-repeat: no-repeat;
-    background-position: calc(100% - .1em) center;}
+    background-position: calc(100% - .1em) center;
+}
 
-/*LAST*/
 .dropdown option, .diceDropDownContainer .dropdown option{
     background-color: lightgray;
     color: black;
@@ -199,8 +197,8 @@ h1{
     max-width: 700px;
     max-height: 700px;
     padding: 7vmin;
-    border: 1.5vmin solid black;
-    margin: 5% auto; /* Center horizontally using margin */
+    border: 1.5vmin solid #646464;
+    margin: 5% auto;
     background-color: #ffffff;
     box-shadow: 0 3vmin 7vmin rgba(50, 50, 50, 0.2);
     border-radius: 50%;
@@ -217,8 +215,8 @@ h1{
 }
 
 #die-0 {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 80%;
+    max-height: 80%;
     width: auto;
     height: auto;
 }
@@ -277,9 +275,9 @@ h1{
 
 .close:hover,
 .close:focus{
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .stats-container {
@@ -288,26 +286,26 @@ h1{
     align-items: center;
 }
   
-  #total-moves-modal {
+#total-moves-modal {
     display: none;
-  }
+}
   
-  #total-moves-modal h2 {
+#total-moves-modal h2 {
     text-align: center;
-  }
+}
 
-  h3 {
+h3 {
     font-size: 7vw;
     font-family: "Poppins", sans-serif;
     text-align: center;
-  }
+}
   
-  #total-moves-modal p {
+#total-moves-modal p {
     text-align: center;
     font-size: 30px;
-  }
+}
   
-  #total-moves-modal .modal-content {
+#total-moves-modal .modal-content {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -317,25 +315,25 @@ h1{
     max-width: 800px;
     position: relative;
     font-family: "Poppins", sans-serif;
-  }
+}
   
-  #total-moves-modal .close {
+#total-moves-modal .close {
     position: absolute;
     right: 0;
     top: 0;
     padding: 5px;
     cursor: pointer;
     font-size: 30px;
-  }
-  
-  #total-moves-modal .close:hover,
-  #total-moves-modal .close:focus {
+}
+
+#total-moves-modal .close:hover,
+#total-moves-modal .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
-  #spaceModal {
+#spaceModal {
     display: none;
     position: fixed;
     z-index: 1;
