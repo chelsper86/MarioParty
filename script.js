@@ -152,17 +152,11 @@ let diceBowserShopImages = {
     'Blue Lamp': "images/dice/dice_shop_bowser_lamp.png",
 }
 
-let cursedDice = [
-    'Cursed One',
-    'Cursed Two',
-    'Cursed Three'
+const cursedDiceImages = [
+    'images/dice/dice_cursed_01.png',
+    'images/dice/dice_cursed_02.png',
+    'images/dice/dice_cursed_03.png',
 ];
-
-let cursedDiceImages = {
-    'Cursed One': "images/dice/dice_cursed_01.png",
-    'Cursed Two': "images/dice/dice_cursed_02.png",
-    'Cursed Three': "images/dice/dice_cursed_03.png",
-}
 
 let bowserDice = [
     { side: 'Minus 10 Coins', weight: 2 },  // 20% chance
@@ -212,23 +206,14 @@ let blockDiceImages = {
     'Koopa Card': 'images/dice/dice_block_koopa.png',
 }
 
-let miniDice = [
-    'Mini One',
-    'Mini Two',
-    'Mini Three',
-    'Mini Four',
-    'Mini Five',
-    'Mini Six',
-]
-
-let miniDiceImages = {
-    'Mini One': 'images/dice/dice_mini_01.png',
-    'Mini Two': 'images/dice/dice_mini_02.png',
-    'Mini Three': 'images/dice/dice_mini_03.png',
-    'Mini Four': 'images/dice/dice_mini_04.png',
-    'Mini Five': 'images/dice/dice_mini_05.png',
-    'Mini Six': 'images/dice/dice_mini_06.png',
-}
+const miniDiceImages = [
+    'images/dice/dice_mini_01.png',
+    'images/dice/dice_mini_02.png',
+    'images/dice/dice_mini_03.png',
+    'images/dice/dice_mini_04.png',
+    'images/dice/dice_mini_05.png',
+    'images/dice/dice_mini_06.png',
+];
 
 let chanceDice = [
     'Chance Ten',
@@ -406,7 +391,7 @@ function showSpacesModal() {
     modal.style.display = 'block';
 }
 
-function checkMaxTurns() {
+function rollMoveDice() {
     // Check if the maximum number of turns (15) has been reached
     if (currentTurn >= 15) {
         alert('Game over!');
@@ -568,16 +553,29 @@ function rollBowserShopDice() {
 }
 
 function rollCursedDice() {
+    // Check if the maximum number of turns (15) has been reached
+    if (currentTurn >= 15) {
+        alert('Game over!');
+        return;
+    }
     shakeDice();
     setTimeout(function () {
-        let randomIndex = Math.floor(Math.random() * cursedDice.length);
-        let selectedCurse = cursedDice[randomIndex];
-        console.log(selectedCurse);
-        // Set the cursed image source
-        document.querySelector("#die-0").setAttribute("src", cursedDiceImages[selectedCurse]);
+        let dieValue = Math.floor(Math.random() * 3) + 1;
+        console.log(dieValue);
+        // Add the current roll value to the total
+        totalMoves += dieValue;
+        // Set the image source using cursedDiceImages
+        document.querySelector("#die-0").setAttribute("src", cursedDiceImages[dieValue - 1]);
         // Make the dice image visible
         document.querySelector("#die-0").style.visibility = "visible";
+        // Increment the turn counter
+        currentTurn++;
+        updateTurnDropdown();
     }, 1250);
+    // After 3 seconds, show the modal for selecting the space
+    setTimeout(() => {
+        showSpacesModal();
+    }, 3000);
 }
 
 function rollBowserDice() {
@@ -618,16 +616,29 @@ function rollBlockDice() {
 }
 
 function rollMiniDice() {
+    // Check if the maximum number of turns (15) has been reached
+    if (currentTurn >= 15) {
+        alert('Game over!');
+        return;
+    }
     shakeDice();
     setTimeout(function () {
-        let randomIndex = Math.floor(Math.random() * miniDice.length);
-        let selectedMini = miniDice[randomIndex];
-        console.log(selectedMini);
-        // Set the dice image source
-        document.querySelector("#die-0").setAttribute("src", miniDiceImages[selectedMini]);
+        let dieValue = Math.floor(Math.random() * 6) + 1;
+        console.log(dieValue);
+        // Add the current roll value to the total
+        totalMoves += dieValue;
+        // Set the image source using cursedDiceImages
+        document.querySelector("#die-0").setAttribute("src", miniDiceImages[dieValue - 1]);
         // Make the dice image visible
         document.querySelector("#die-0").style.visibility = "visible";
+        // Increment the turn counter
+        currentTurn++;
+        updateTurnDropdown();
     }, 1250);
+    // After 3 seconds, show the modal for selecting the space
+    setTimeout(() => {
+        showSpacesModal();
+    }, 3000);
 }
 
 function rollBattleDice() {
@@ -668,7 +679,7 @@ setDefaultImage();
 // This function triggers the updateTurnDropdown menu when the dice image is clicked
 function rollDice() {
     if (rollType === 'move') {
-        checkMaxTurns();
+        rollMoveDice();
     } else if (rollType === 'character') {
         rollCharacter();
     } else if (rollType === 'lucky') {
