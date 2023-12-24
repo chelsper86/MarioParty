@@ -16,13 +16,28 @@ let booSpacesCount = 0;
 let chanceSpacesCount = 0;
 let currentTurn = 0;
 
+//This function will load all arrayed images on the page to ensure that images load seamlessly during dice rolls and item selections.
 function preloadImages(images) {
     const preloadedImages = [];
-    for (let i = 0; i < images.length; i++) {
-        const img = new Image();
-        img.src = images[i];
-        preloadedImages.push(img);
+
+    if (Array.isArray(images)) {
+        // Handle array of image URLs
+        for (let i = 0; i < images.length; i++) {
+            const img = new Image();
+            img.src = images[i];
+            preloadedImages.push(img);
+        }
+    } else if (typeof images === 'object') {
+        // Handle object with image URLs
+        for (const key in images) {
+            if (images.hasOwnProperty(key)) {
+                const img = new Image();
+                img.src = images[key];
+                preloadedImages.push(img);
+            }
+        }
     }
+
     return preloadedImages;
 }
 
@@ -252,6 +267,20 @@ let battleDiceImages = {
     'Battle Twenty Five': 'images/dice/dice_battle_twenty_five.png',
     'Battle Thirty': 'images/dice/dice_battle_thirty.png',
 }
+
+preloadImages(Object.values(defaultImages));
+preloadImages(Object.values(diceLuckySpaceImages));
+preloadImages(Object.values(characterDiceImages));
+preloadImages(Object.values(diceToadShopImages));
+preloadImages(Object.values(diceBowserShopImages));
+preloadImages(Object.values(bowserDiceImages));
+preloadImages(Object.values(bowserFuryDiceImages));
+preloadImages(Object.values(blockDiceImages));
+preloadImages(Object.values(chanceDiceImages));
+preloadImages(Object.values(battleDiceImages));
+preloadImages(miniDiceImages);
+preloadImages(moveDiceImages);
+preloadImages(Object.values(itemImages));
 
 window.addEventListener("load", (event) => {
     const spaceOptions = document.querySelectorAll('.space-option');
