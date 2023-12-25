@@ -699,6 +699,8 @@ function rollChanceDice() {
 function setRollType(value) {
     rollType = value;
     setDefaultImage();
+    // Display all images after changing the roll type
+    displayAllImages(getCurrentDiceImages());
 }
 
 // Initially set the default image
@@ -706,31 +708,98 @@ setDefaultImage();
 
 // This function triggers the updateTurnDropdown menu when the dice image is clicked
 function rollDice() {
-    if (rollType === 'move') {
-        rollMoveDice();
-    } else if (rollType === 'character') {
-        rollCharacter();
-    } else if (rollType === 'lucky') {
-        rollLuckySpace();
-    } else if (rollType === 'cursed') {
-        rollCursedDice();
-    } else if (rollType === 'bowser') {
-        rollBowserDice();
-    } else if (rollType === 'bowserFury') {
-        rollBowserFuryDice();
-    } else if (rollType === 'toadShop') {
-        rollToadShopDice();
-    } else if (rollType === 'bowserShop') {
-        rollBowserShopDice();
-    } else if (rollType === 'block') {
-        rollBlockDice();
-    } else if (rollType === 'mini') {
-        rollMiniDice();
-    } else if (rollType === 'chance') {
-        rollChanceDice();
-    } else if (rollType === 'battle') {
-        rollBattleDice();
+    setTimeout(function () {
+        if (rollType === 'move') {
+            rollMoveDice();
+        } else if (rollType === 'character') {
+            rollCharacter();
+        } else if (rollType === 'lucky') {
+            rollLuckySpace();
+        } else if (rollType === 'cursed') {
+            rollCursedDice();
+        } else if (rollType === 'bowser') {
+            rollBowserDice();
+        } else if (rollType === 'bowserFury') {
+            rollBowserFuryDice();
+        } else if (rollType === 'toadShop') {
+            rollToadShopDice();
+        } else if (rollType === 'bowserShop') {
+            rollBowserShopDice();
+        } else if (rollType === 'block') {
+            rollBlockDice();
+        } else if (rollType === 'mini') {
+            rollMiniDice();
+        } else if (rollType === 'chance') {
+            rollChanceDice();
+        } else if (rollType === 'battle') {
+            rollBattleDice();
+        }
+    });
+}
+
+function displayAllImages(imageObject) {
+    // Select the new container
+    const diceThumbnailContainer = document.getElementById('diceThumbnailContainer');
+
+    // Clear the existing content in the container
+    diceThumbnailContainer.innerHTML = '';
+
+    // Iterate over the images and display each one in the new container
+    for (const key in imageObject) {
+        if (imageObject.hasOwnProperty(key)) {
+            const imageUrl = imageObject[key];
+            displayImageInContainer(imageUrl, diceThumbnailContainer);
+        }
     }
+}
+
+function displayImageInContainer(imageUrl, container) {
+    // Create an image element
+    const imageElement = document.createElement('img');
+    // Set the source of the image
+    imageElement.setAttribute('src', imageUrl);
+    // Append the image element to the specified container
+    container.appendChild(imageElement);
+}
+
+function getCurrentDiceImages() {
+    // Return the corresponding image object based on the current roll type
+    if (rollType === 'move') {
+        return '';
+    } else if (rollType === 'character') {
+        return characterDiceImages;
+    } else if (rollType === 'lucky') {
+        return diceLuckySpaceImages;
+    } else if (rollType === 'cursed') {
+        return cursedDiceImages;
+    } else if (rollType === 'bowser') {
+        return bowserDiceImages;
+    } else if (rollType === 'bowserFury') {
+        return bowserFuryDiceImages;
+    } else if (rollType === 'toadShop') {
+        return diceToadShopImages;
+    } else if (rollType === 'bowserShop') {
+        return diceBowserShopImages;
+    } else if (rollType === 'block') {
+        return blockDiceImages;
+    } else if (rollType === 'mini') {
+        return miniDiceImages;
+    } else if (rollType === 'chance') {
+        return chanceDiceImages;
+    } else if (rollType === 'battle') {
+        return battleDiceImages;
+    }
+}
+
+function displayImageOnScreen(imageUrl) {
+    // Create an image element
+    const imageElement = document.createElement('img');
+
+    // Set the source of the image
+    imageElement.setAttribute('src', imageUrl);
+
+    // Append the image element to the body (or another container element)
+    document.body.appendChild(imageElement);
 }
 
 // Add a click event listener to the dice image
