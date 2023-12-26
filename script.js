@@ -194,6 +194,7 @@ let bowserFuryDice = [
     { side: 'Minus 2 Star', weight: 1 },  // 10% chance
     { side: 'Minus 3 Star', weight: 1 },  // 10% chance
     { side: 'Minus All Coins', weight: 1 }, // 10% chance
+    { side: 'Plus 500 Coins', weight: .1}, // 1% chance
 ];
 
 let bowserFuryDiceImages = {
@@ -203,6 +204,7 @@ let bowserFuryDiceImages = {
     'Minus 2 Star': "images/dice/dice_bowser_fury_minus_2.png",
     'Minus 3 Star': "images/dice/dice_bowser_fury_minus_3.png",
     'Minus All Coins': "images/dice/dice_bowser_fury_anarchy.png",
+    'Plus 500 Coins': "images/dice/dice_bowser_fury_plus_500.png",
 }
 
 let blockDice = [
@@ -1023,3 +1025,4 @@ updateItemImage3();
 // Listen for changes in the third item dropdown menu
 document.getElementById('item3_drop_down').addEventListener('change', updateItemImage3);
 });
+
