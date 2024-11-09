@@ -280,8 +280,8 @@ preloadImages(Object.values(bowserFuryDiceImages));
 preloadImages(Object.values(blockDiceImages));
 preloadImages(Object.values(chanceDiceImages));
 preloadImages(Object.values(battleDiceImages));
-preloadImages(miniDiceImages);
-preloadImages(moveDiceImages);
+preloadImages(Object.values(miniDiceImages));
+preloadImages(Object.values(moveDiceImages));
 preloadImages(Object.values(itemImages));
 
 window.addEventListener("load", (event) => {
