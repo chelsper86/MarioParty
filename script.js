@@ -360,6 +360,19 @@ function openStatsModal() {
     modal.style.display = 'none';
   }
 
+// Function to open the wheel modal
+function openWheelModal() {
+    const modal = document.getElementById('wheel-modal');
+    modal.style.display = 'block';
+}
+
+  // Function to close the wheel modal
+  function closeWheelModal() {
+    const modal = document.getElementById('wheel-modal');
+    modal.style.display = 'none';
+  }
+
+
 // Function to set the default image based on the selected roll type
 function setDefaultImage() {
     const defaultImage = defaultImages[rollType];

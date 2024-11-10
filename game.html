@@ -228,7 +228,7 @@
                             <option value="Lucky Charm">Lucky Charm</option>                                        
                         </select>
                         <img src="images/items/item_box_alt.png" class="image" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
-                    <!--******************** Item Description Modal ********************-->    
+<!--******************** Item Description Modal ********************-->    
                         <div id="image-description-modal" class="modal" style="display: none;">
                             <div class="modal-content">
                                 <span class="close" id="modal-close">&times;</span>
@@ -328,25 +328,38 @@
         </div>
 <!--******************** Stats Modal ********************-->
         <div class="button-container">
-            <a href="#" class="button" onclick="openStatsModal()">Stats</a>
-        </div>        
-        <div id="stats-modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeStatsModal()">&times;</span>
-                <h2>Game Statistics</h2>
-                <p id="total-moves-content">0</p>
-                <p id="blue-spaces-count">Blue Spaces: 0</p>
-                <p id="red-spaces-count">Red Spaces: 0</p>
-                <p id="event-spaces-count">Event Spaces: 0</p>
-                <p id="lucky-spaces-count">Lucky Spaces: 0</p>
-                <p id="item-spaces-count">Item Spaces: 0</p>
-                <p id="bowser-spaces-count">Bowser Spaces: 0</p>
-                <p id="gameguy-spaces-count">Game Guy Spaces: 0</p>
-                <p id="battle-spaces-count">Battle Spaces: 0</p>
-                <p id="star-spaces-count">Star Spaces: 0</p>
-                <p id="bank-spaces-count">Bank Spaces: 0</p>
-                <p id="boo-spaces-count">Boo Spaces: 0</p>
-                <p id="chance-spaces-count">Chance Spaces: 0</p>
+            <a href="#" class="button" onclick="openStatsModal()">Stats</a>       
+            <div id="stats-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeStatsModal()">&times;</span>
+                    <h2>Game Statistics</h2>
+                    <p id="total-moves-content">0</p>
+                    <p id="blue-spaces-count">Blue Spaces: 0</p>
+                    <p id="red-spaces-count">Red Spaces: 0</p>
+                    <p id="event-spaces-count">Event Spaces: 0</p>
+                    <p id="lucky-spaces-count">Lucky Spaces: 0</p>
+                    <p id="item-spaces-count">Item Spaces: 0</p>
+                    <p id="bowser-spaces-count">Bowser Spaces: 0</p>
+                    <p id="gameguy-spaces-count">Game Guy Spaces: 0</p>
+                    <p id="battle-spaces-count">Battle Spaces: 0</p>
+                    <p id="star-spaces-count">Star Spaces: 0</p>
+                    <p id="bank-spaces-count">Bank Spaces: 0</p>
+                    <p id="boo-spaces-count">Boo Spaces: 0</p>
+                    <p id="chance-spaces-count">Chance Spaces: 0</p>
+                </div>
+            </div>
+<!--******************** Spin the Wheel Modal ********************-->
+            <a href="#" class="button" onclick="openWheelModal()">Wheel</a>       
+            <div id="wheel-modal" class="modal">
+                <div class="modal-content" style="max-height:700px; overflow:auto;">
+                    <span class="close" onclick="closeWheelModal()">&times;</span>
+                    <h3>Star Location Wheel</h3>
+                    <iframe src="https://spinthewheel.app/NNE3cNgKA3"width="250" height="250" style="border: 0px"></iframe><!--Star Space-->
+                    <h3>Special Ability Wheel</h3>
+                    <iframe src="https://spinthewheel.app/CAjE0optW6" width="250" height="250" style="border: 0px"></iframe><!--Special Ability-->
+                    <h3>Boo Coin Wheel</h3>
+                    <iframe src="https://spinthewheel.app/1vLml7X7ts" width="250" height="250" style="border: 0px"></iframe><!--Boo Coin-->
+                </div>
             </div>
         </div>
 <!--******************** Space Selection Modal ********************-->
