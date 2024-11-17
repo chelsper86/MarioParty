@@ -840,47 +840,47 @@ const character = urlParams.get('character');
 const characterData = {
     'mario': {
         cssFile: 'mario.css',
-        name: 'Mario',
+        // name: 'Mario',
         image: 'images/mario_main_img.png'
     },
     'boo': {
         cssFile: 'boo.css',
-        name: 'Boo',
+        // name: 'Boo',
         image: 'images/boo_main_img.png'
     },
     'bobomb': {
         cssFile: 'bobomb.css',
-        name: 'Bob-omb',
+        // name: 'Bob-omb',
         image: 'images/bobomb_main_img.png'
     },
     'drybones': {
         cssFile: 'drybones.css',
-        name: 'Dry Bones',
+        // name: 'Dry Bones',
         image: 'images/drybones_main_img.png'
     },
     'yoshi': {
         cssFile: 'yoshi.css',
-        name: 'Yoshi',
+        // name: 'Yoshi',
         image: 'images/yoshi_main_img.png'
     },
     'peach': {
         cssFile: 'peach.css',
-        name: 'Peach',
+        // name: 'Peach',
         image: 'images/peach_main_img.png'
     },
     'rosalina': {
         cssFile: 'rosalina.css',
-        name: 'Rosalina',
+        // name: 'Rosalina',
         image: 'images/rosalina_main_img.png'
     },
     'koopa': {
         cssFile: 'koopa.css',
-        name: 'Koopa',
+        // name: 'Koopa',
         image: 'images/koopa_main_img.png'
     },
     'cattoad': {
         cssFile: 'cattoad.css',
-        name: 'Cat Toad',
+        // name: 'Cat Toad',
         image: 'images/cat_toad_main_img.png'
     },
     // Add more characters and CSS files as needed
@@ -894,7 +894,7 @@ if (characterData[character]) {
     document.head.appendChild(link);
 
     // Update the character name in the <h1> element
-    document.getElementById('character-name').textContent = characterData[character].name;
+    // document.getElementById('character-name').textContent = characterData[character].name;
 
     // Update the character and item images
     document.getElementById('character-image').src = characterData[character].image;

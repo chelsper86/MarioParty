@@ -1,8 +1,29 @@
 body{
     background: linear-gradient(
-        /*#ff6e6a*/#e92e3d,
-        #0000ff
+        #e53847,
+        #ea0115
     ) 0 100% no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed; /* This makes the background fixed and extend beyond the initial viewport */
+}
+
+.button {
+    background-color: #e6bfc2;
+}
+
+#muteButton {
+    background-color: #e6bfc2;
+    border-radius: 1vw;
+}
+
+.diceDropDownParentContainer{
+    background-color: #e6bfc2;
+}
+
+.headerGrid{
+    background-color: #e6bfc2;
+}
+
+.diceContainer{
+    background-color: #e6bfc2;
 }

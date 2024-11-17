@@ -7,3 +7,24 @@ body{
     background-size: 100% 100%;
     background-attachment: fixed; /* This makes the background fixed and extend beyond the initial viewport */
 }
+
+.button {
+    background-color: #def5f1;
+}
+
+#muteButton {
+    background-color: #def5f1;
+    border-radius: 1vw;
+}
+
+.diceDropDownParentContainer{
+    background-color: #def5f1;
+}
+
+.headerGrid{
+    background-color: #def5f1;
+}
+
+.diceContainer{
+    background-color: #def5f1;
+}

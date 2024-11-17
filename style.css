@@ -6,54 +6,6 @@
     box-sizing: border-box; /*When you set an element's box-sizing to border-box, it means that the element's specified width and height include the padding and border. In other words, the padding and border are included within the box, and they do not increase the overall dimensions of the element.*/
 }
 
-.headerContainer{
-    display: flex;
-    align-items: center;
-    padding: 1vw;
-    flex-shrink: 0;
-    width: 100vw;
-    text-align: center;
-}
-
-.headerGrid{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 3vw; 
-}
-
-.box{
-    width: 35%;
-    padding: 1vw;
-    gap: 10px;
-}
-
-#main_character_img {
-    width: 70%;
-}
-
-#character-name {
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-h1{
-    font-family: sans-serif;
-    color: #ffffff;
-    padding-left: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-size: 5vw;
-}
-
 @media only screen and (max-width: 2499px){
     h1 {
         font-size: 7.5vw; /* Adjust for screens between 1800px and 2499px */
@@ -84,86 +36,159 @@ h1{
     }
 }
 
+body{
+    height: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+.logoContainer{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#index_logo{
+    padding: 15vw 5vw 5vw 5vw;
+}
+
+#index_logo img{
+    max-width: 80vw;
+    height: 10vw;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+.modal-content{
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 800px;
+    position: relative;
+    font-size: 5vw;
+    font-family: "Poppins", sans-serif;
+}
+
+.headerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+    flex-shrink: 0;
+    width: auto;
+    max-width: 90vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#muteButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #646464;
+    border: none;
+    cursor: pointer;
+    font-size: 5vw;
+    padding: 2%;
+    margin: 3vw;
+    z-index: 1; /* Ensure the button appears above other elements */
+}
+
+.headerGrid{
+    position: relative; /* Make this the positioning context */
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centers the .box elements horizontally */
+    align-items: center;
+    gap: 3vw;
+    border: .5vw transparent;
+    border-radius: 2vw;
+    padding: 3vw;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.box{
+    width: 45%;
+    margin: 0;
+}
+
+#main_character_img{
+    width: 100%;
+}
+
 #main_character_img img{
     max-width: 100%;
     max-height: 100%;
     display: block;
     float: left;
-    margin: 0vw 0vw 0vw 5vw;
 }
 
-#character-name{
+/*#character-name{
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-}
+}*/
 
-.dropDownParentContainer{
-    margin: 1%;
-}
-
-.dropDownContainersWrapper{
+h1{
+    font-family: sans-serif;
+    color: #ffffff;
+    padding-left: 100px;
     display: flex;
-    gap: 1%;
-    overflow-x: auto;
-    margin: 0 auto;
     justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 5vw;
 }
 
-.dropDownDiceContainerWrapper{
-    display: flex;
+.starCoinContainersWrapper{
     gap: 1%;
-    overflow-x: auto;
-    margin: 0 auto;
-    justify-content: right;
+    justify-content: center;
+    margin-left: 2.5vw;
 }
 
-.container, .diceDropDownParentContainer {
+.container, .diceDropDownParentContainer{
     display: flex;
     align-items: center;
-    border: .5vw solid black;
-    border-radius: 1vw;
     padding: 1vw;
-    background-color: lightgray;
     box-sizing: border-box;
     flex-shrink: 0;
-    width: 30vw;
+    width: 40vw;
     text-align: center;
-}
-
-.diceDropDownParentContainer{
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    border: .5vw solid black;
-    border-radius: 1vw;
-    padding: 1vw;
-    background-color: lightgray;
-    box-sizing: border-box;
-    flex-shrink: 0;
-    width: 50vw;
-    text-align: center;
-}
-
-.diceDropDownContainer{
-   flex: 1;
-    display: flex;
-    gap: 10px;
-    align-items: center; 
 }
 
 .dropDownContainer{
     flex: 1;
     display: flex;
-    gap: 1vw;
-    align-items: center; 
+    gap: 1.5vw;
+    align-items: center;
+    margin: .5vw;
 }
 
-.dropdown, .diceDropDownContainer .dropdown{
-    width: 70%;
+.image{
+    width: 12.5vw;
+}
+
+.starCoinDropdown{
+    width: 40%;
     box-sizing: border-box;
-    border: .5vw solid black;
-    border-radius: 1vw;
-    padding: 1vw;
+    border-style: none;
     font-size: 7vw;
     color: black;
     appearance: none; /* Reset default browser styling */
@@ -173,55 +198,73 @@ h1{
     background-size: .25em; /* Adjust the size of the arrow */
     padding-right: .35em;
     background-repeat: no-repeat;
-    background-position: calc(100% - .1em) center;
+    background-position: right;
+    background-color: inherit;
+    /*font-weight: bold;*/
+    text-align: center; /* Aligns text to the right */
+    text-align-last: center; /* Ensures the selected option is right-aligned */
 }
 
-.dropdown option, .diceDropDownContainer .dropdown option{
-    background-color: lightgray;
-    color: black;
-}
-
-.image {
-    width: 30%;
-}
-
-.diceDropDownContainer .image {
-    width: 20%;
-}
-
-.diceContainer {
-    width: 75vmin;
-    height: 75vmin;
-    min-width: 125px;
-    min-height: 125px;
-    max-width: 700px;
-    max-height: 700px;
-    padding: 7vmin;
-    border: 1.5vmin solid #646464;
-    margin: 5% auto 5% auto;
-    background-color: #ffffff;
-    box-shadow: 0 3vmin 7vmin rgba(50, 50, 50, 0.2);
-    border-radius: 50%;
-    font-family: "Poppins", sans-serif;
-}
-
-.dice-wrapper {
-    width: 100%;
-    height: 100%;
+.dropDownItemParentContainer{
+    /*The three lines below would place the item boxes approximately 50% overlap with the headerGrid*/
+    /*position: relative; /* Position relative to the nearest relative ancestor*/
+    /*top: 50%; /* Push it up so it hovers halfway */
+    /*transform: translateY(-60%); /* Adjust to hover over */
+    left: 0;
+    right: 0;
+    margin: 2vw 15vw 0 0; /* Center it horizontally */
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    cursor: pointer;
 }
 
-#die-0 {
-    max-width: 80%;
-    max-height: 80%;
+.itemContainersWrapper{
+    display: flex;
+    gap: 1%;
+}
+
+.itemContainer{
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.itemContainer select{
+    width: 5vw; /* Adjusts the width of the dropdown to fill its parent container */
+    height: 5vw; /* Adjusts the height of the dropdown */
+    overflow: hidden; /* Hide overflowed text */
+    font-size: 1.2rem; /* Optional: Adjusts the font size for readability */
+    padding: 0.5vw; /* Optional: Adds some padding inside the dropdown */
+    color: transparent; /* Hide the selected text */
+}
+
+.itemDropDownContainer{
+    position: relative; /* Make this the positioning context */
+    display: flex;
+    gap: 1.5vw;
+    align-items: center;
     width: auto;
-    height: auto;
+    justify-content: center;
 }
 
-#diceThumbnailContainer {
+.itemDropDownContainer img{
+    flex-shrink: 0; /* Prevents the image from resizing */
+    width: auto; /* Maintain the image's original aspect ratio */
+    height: auto; /* Maintain the image's original aspect ratio */
+    max-width: 12.5vw; /* Optional: Ensure the image doesn't exceed this size */
+    max-height: 12.5vw; /* Optional: Maintain proportionality */
+}
+
+.itemDropDownContainer select {
+    flex-grow: 1; /* Optional: Makes the dropdown fill the available space */
+    max-width: 100%; /* Prevents overflow */
+    height: auto;
+    padding: 0.5vw; /* Adjust for better alignment */
+}
+
+#diceThumbnailContainer{
     max-width: 100%;
     max-height: 100%;
     width: 100%;
@@ -239,6 +282,121 @@ h1{
     height: auto;
     max-height: 100%;
     margin: 1vw;
+}
+
+.diceContainer{
+    width: 75vmin;
+    height: 75vmin;
+    min-width: 125px;
+    min-height: 125px;
+    max-width: 700px;
+    max-height: 700px;
+    padding: 7vmin;
+    margin: 5% auto 5% auto;
+    box-shadow: 0 3vmin 7vmin rgba(50, 50, 50, 0.2);
+    border-radius: 50%;
+    font-family: "Poppins", sans-serif;
+}
+
+.dice-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.diceDropDownParentContainer{
+    display: flex;
+    align-items: center;
+    margin: 3% auto;
+    border-radius: 2vw;
+    padding: 1vw;
+    background-color: lightgray;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    height: 15vw;
+    width: 90vw;
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.diceDropDownContainer{
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    align-items: right;
+}
+
+.dropdown, .diceDropDownContainer .dropdown{
+    width: 75%;
+    box-sizing: border-box;
+    border-style: none;
+    padding: 1vw;
+    font-size: 5.5vw;
+    color: black;
+    appearance: none; /* Reset default browser styling */
+    -webkit-appearance: none; /* WebKit browsers (Chrome, Safari) */
+    -moz-appearance: none; /* Firefox */
+    background-image: url('images/drop_down_arrow.png');
+    background-size: .50em; /* Adjust the size of the arrow */
+    padding-right: .35em;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: inherit;
+}
+
+.dropdown option, .diceDropDownContainer .dropdown option{
+    background-color: white;
+}
+
+.diceDropDownContainer .image{
+    width: 13%;
+    margin-left: 5%;
+}
+
+.button-container{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.dropDownDiceContainerWrapper{
+    display: flex;
+    gap: 1%;
+    overflow-x: auto;
+    margin: 0 auto;
+    justify-content: right;
+}
+
+.itemDropdown{
+    position: absolute; /* Position relative to the nearest relative ancestor */
+    bottom: 0; /* Align to the bottom */
+    right: 0; /* Align to the right */
+    transform: translate(0%, 0%); /* Optional: add some offset to make it overlap nicely */
+    box-sizing: border-box;
+    border-style: none;
+    appearance: none; /* Reset default browser styling */
+    -webkit-appearance: none; /* WebKit browsers (Chrome, Safari) */
+    -moz-appearance: none; /* Firefox */
+    background-image: url('images/drop_down_triangle.png');
+    background-size: 50%; /* Scale the arrow relative to the container */
+    background-repeat: no-repeat;
+    background-position: right bottom; /* Keep arrow at the bottom-right */
+    background-color: inherit;
+    width: 100%; /* Ensure dropdown width matches container */
+    height: 3em; /* Allow height to adjust naturally */
+    line-height: .5em; /* Align text vertically inside the dropdown */
+    padding-right: 2em; /* Add padding to ensure arrow does not overlap text */
+}
+
+#die-0{
+    max-width: 60%;
+    max-height: 60%;
+    width: auto;
+    height: auto;
 }
 
 .shake{
@@ -261,30 +419,6 @@ h1{
     display: none; /* Hide the item description initially */
 }
 
-.modal{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content{
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 15px;
-    width: 70%;
-    max-width: 800px;
-    position: relative;
-    font-size: 5vw;
-    font-family: "Poppins", sans-serif;
-}
-
 .close{
     position: absolute;
     right: 0;
@@ -300,17 +434,17 @@ h1{
     cursor: pointer;
 }
 
-.stats-container {
+.stats-container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
   
-#total-moves-modal {
+#total-moves-modal{
     display: none;
 }
   
-#total-moves-modal h2 {
+#total-moves-modal h2{
     text-align: center;
 }
 
@@ -320,12 +454,12 @@ h3 {
     text-align: center;
 }
   
-#total-moves-modal p {
+#total-moves-modal p{
     text-align: center;
     font-size: 30px;
 }
   
-#total-moves-modal .modal-content {
+#total-moves-modal .modal-content{
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -337,7 +471,7 @@ h3 {
     font-family: "Poppins", sans-serif;
 }
   
-#total-moves-modal .close {
+#total-moves-modal .close{
     position: absolute;
     right: 0;
     top: 0;
@@ -347,13 +481,13 @@ h3 {
 }
 
 #total-moves-modal .close:hover,
-#total-moves-modal .close:focus {
+#total-moves-modal .close:focus{
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
-#spaceModal {
+#spaceModal{
     display: none;
     position: fixed;
     z-index: 1;
@@ -365,7 +499,7 @@ h3 {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-#spaceModal .modal-content {
+#spaceModal .modal-content{
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -381,47 +515,26 @@ h3 {
     justify-content: center;
 }
 
-.space-option {
+.space-option{
     width: 10vw;
     height: 10vw;
     margin: 10px;
     cursor: pointer;
 }
 
-#muteButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: transparent;
-    color: #646464;
-    border: none;
-    cursor: pointer;
-    font-size: 7vw;
-    padding: 2%;
-    z-index: 1; /* Ensure the button appears above other elements */
-}
-
-.button-container {
+.button{
     display: flex;
     align-items: center;
-    text-align: center;
-    justify-content: center;
-}
-
-.button {
-    display: flex;
-    align-items: center;
-    border: .5vw solid black;
-    border-radius: 1vw;
+    border-radius: 2vw;
     padding: 15px;
-    background-color: lightgray;
     box-sizing: border-box;
     flex-shrink: 0;
-    width: 20vw;
-    font-size: 5vw;
+    height: 15vw;
+    width: 40vw;
+    font-size: 5.5vw;
     font-family: "Poppins", sans-serif;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    margin: 20px;
+    margin: 0 auto;
     white-space: nowrap;
     text-decoration: none; /* Remove underline */
     color: inherit;

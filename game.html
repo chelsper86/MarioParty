@@ -10,377 +10,378 @@
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <div class="headerContainer">
-<!--******************** Mute Button and Icon ********************-->
-            <button id="muteButton" onclick="toggleMute()">
-                <i id="muteIcon" class="fa fa-volume-up"></i>
-            </button>
-<!--******************** Header Image/Name ********************-->
-            <div class="headerGrid">
-                <div class="box">
-                    <div id="main_character_img">
-                        <img src="" id="character-image">
-                    </div>
-                </div>
-                <div class="box">
-                    <h1 id="character-name">Character Name</h1>
-                </div>    
-            </div>
+        <div class="logoContainer">
+            <div id="index_logo"><img src="images/index_logo.png" alt="Logo"></div>
         </div>
-        <div class="dropDownParentContainer">
-            <div class="dropDownContainersWrapper">
-<!--******************** Turn Selection Menu ********************-->
-                <div class="container">
-                    <div class="dropDownContainer">
-                        <select name="turn_drop_down" class="dropdown" id="turn_drop_down">
-                            <option value="0">0</option>  
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                        </select>
-                        <img src="images/turn.svg" class="image">
-                    </div>
-                </div>
-<!--******************** Star Selection Menu ********************-->                
-                <div class="container">
-                    <div class="dropDownContainer">
-                        <select name="star_drop_down" class="dropdown" id="star_drop_down">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                        <img src="images/star.svg" class="image">
-                    </div>
-                </div>
-<!--******************** Coin Selection Menu ********************-->                
-                <div class="container">
-                    <div class="dropDownContainer">
-                        <select name="coin_drop_down" class="dropdown" id="coin_drop_down">
-                            <option value="0">0</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="25">25</option>
-                            <option value="30">30</option>
-                            <option value="35">35</option>
-                            <option value="40">40</option>
-                            <option value="45">45</option>
-                            <option value="50">50</option>
-                            <option value="55">55</option>
-                            <option value="60">60</option>
-                            <option value="65">65</option>
-                            <option value="70">70</option>
-                            <option value="75">75</option>
-                            <option value="80">80</option>
-                            <option value="85">85</option>
-                            <option value="90">90</option>
-                            <option value="95">95</option>
-                            <option value="100">100</option>
-                            <option value="110">110</option>
-                            <option value="115">115</option>
-                            <option value="120">120</option>
-                            <option value="125">125</option>
-                            <option value="130">130</option>
-                            <option value="135">135</option>
-                            <option value="140">140</option>
-                            <option value="145">145</option>
-                            <option value="150">150</option>
-                            <option value="155">155</option>
-                            <option value="160">160</option>
-                            <option value="165">165</option>
-                            <option value="170">170</option>
-                            <option value="175">175</option>
-                            <option value="180">180</option>
-                            <option value="185">185</option>
-                            <option value="190">190</option>
-                            <option value="195">195</option>
-                            <option value="200">200</option>
-                            <option value="205">205</option>
-                            <option value="210">210</option>
-                            <option value="215">215</option>
-                            <option value="220">220</option>
-                            <option value="225">225</option>
-                            <option value="230">230</option>
-                            <option value="235">235</option>
-                            <option value="240">240</option>
-                            <option value="245">245</option>
-                            <option value="250">250</option>
-                            <option value="255">255</option>
-                            <option value="260">260</option>
-                            <option value="265">265</option>
-                            <option value="270">270</option>
-                            <option value="275">275</option>
-                            <option value="280">280</option>
-                            <option value="285">285</option>
-                            <option value="290">290</option>
-                            <option value="295">295</option>
-                            <option value="300">300</option>
-                            <option value="305">305</option>
-                            <option value="310">310</option>
-                            <option value="315">315</option>
-                            <option value="320">320</option>
-                            <option value="325">325</option>
-                            <option value="330">330</option>
-                            <option value="335">335</option>
-                            <option value="340">340</option>
-                            <option value="345">345</option>
-                            <option value="350">350</option>
-                            <option value="355">355</option>
-                            <option value="360">360</option>
-                            <option value="365">365</option>
-                            <option value="370">370</option>
-                            <option value="375">375</option>
-                            <option value="380">380</option>
-                            <option value="385">385</option>
-                            <option value="390">390</option>
-                            <option value="395">395</option>
-                            <option value="400">400</option>
-                            <option value="405">405</option>
-                            <option value="410">410</option>
-                            <option value="415">415</option>
-                            <option value="420">420</option>
-                            <option value="425">425</option>
-                            <option value="430">430</option>
-                            <option value="435">435</option>
-                            <option value="440">440</option>
-                            <option value="445">445</option>
-                            <option value="450">450</option>
-                            <option value="455">455</option>
-                            <option value="460">460</option>
-                            <option value="465">465</option>
-                            <option value="470">470</option>
-                            <option value="475">475</option>
-                            <option value="480">480</option>
-                            <option value="485">485</option>
-                            <option value="490">490</option>
-                            <option value="495">495</option>
-                            <option value="500">500</option>
-                            <option value="505">505</option>
-                            <option value="510">510</option>
-                            <option value="515">515</option>
-                            <option value="520">520</option>
-                            <option value="525">525</option>
-                            <option value="530">530</option>
-                            <option value="535">535</option>
-                            <option value="540">540</option>
-                            <option value="545">545</option>
-                            <option value="550">550</option>
-                            <option value="555">555</option>
-                            <option value="560">560</option>
-                            <option value="565">565</option>
-                            <option value="570">570</option>
-                            <option value="575">575</option>
-                            <option value="580">580</option>
-                            <option value="585">585</option>
-                            <option value="590">590</option>
-                            <option value="595">595</option>
-                            <option value="600">600</option>
-                        </select>
-                        <img src="images/coin.svg" class="image">
-                    </div>    
-                </div>
-            </div>
-        </div>
-        <div class="dropDownParentContainer">
-            <div class="dropDownContainersWrapper">
- <!--******************** Item Selection Menu 1 ********************-->               
-                <div class="container">
-                    <div class="dropDownContainer">
-                        <select name="item1_drop_down" class="dropdown" id="item1_drop_down">
-                            <option value="Item">Item</option>
-                            <option value="Red Mushroom">Red Mushroom</option>
-                            <option value="Gold Mushroom">Gold Mushroom</option>
-                            <option value="Poison Mushroom">Poison Mushroom</option>
-                            <option value="Reverse Mushroom">Reverse Mushroom</option>
-                            <option value="Mini Mushroom">Mini Mushroom</option>
-                            <option value="Custom Mushroom">Custom Mushroom</option>
-                            <option value="Genie Lamp">Genie Lamp</option>
-                            <option value="Blue Lamp">Blue Lamp</option>
-                            <option value="Key">Key</option>
-                            <option value="Boo Bell">Boo Bell</option>
-                            <option value="Boo Spray">Boo Spray</option>
-                            <option value="Dueling Glove">Dueling Glove</option>
-                            <option value="Plunder Chest">Plunder Chest</option>
-                            <option value="Warp Block">Warp Block</option>
-                            <option value="Koopa Card">Koopa Card</option>
-                            <option value="Item Bag">Item Bag</option>
-                            <option value="Lucky Charm">Lucky Charm</option>                                        
-                        </select>
-                        <img src="images/items/item_box_alt.png" class="image" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
 <!--******************** Item Description Modal ********************-->    
-                        <div id="image-description-modal" class="modal" style="display: none;">
-                            <div class="modal-content">
-                                <span class="close" id="modal-close">&times;</span>
-                                <p id="modal-description"></p>
+        <div id="image-description-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" id="modal-close">&times;</span>
+                <p id="modal-description"></p>
+            </div>
+        </div>
+        <div class="bodyContainer">
+            <div class="headerContainer">
+<!--******************** Mute Button and Icon ********************-->
+                <button id="muteButton" onclick="toggleMute()">
+                    <i id="muteIcon" class="fa fa-volume-up"></i>
+                </button>
+<!--******************** Header Image/Name ********************-->
+                <div class="headerGrid">
+                    <div class="box">
+                        <div id="main_character_img">
+                            <img src="" id="character-image">
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="dropDownStarCoinParentContainer">
+                            <div class="starCoinContainersWrapper">
+<!--******************** Turn Selection Menu ********************-->
+                                <div class="container">
+                                    <div class="dropDownContainer">
+                                        <img src="images/turn.svg" class="image">
+                                        <select name="turn_drop_down" class="starCoinDropdown" id="turn_drop_down">
+                                            <option value="0">0</option>  
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </div>
+                                </div>
+<!--******************** Star Selection Menu ********************-->                
+                                <div class="container">
+                                    <div class="dropDownContainer">
+                                        <img src="images/star.svg" class="image">
+                                        <select name="star_drop_down" class="starCoinDropdown" id="star_drop_down">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+<!--******************** Coin Selection Menu ********************-->                
+                                <div class="container">
+                                    <div class="dropDownContainer">
+                                        <img src="images/coin.svg" class="image">
+                                        <select name="coin_drop_down" class="starCoinDropdown" id="coin_drop_down">
+                                            <option value="0">0</option>
+                                            <option value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="25">25</option>
+                                            <option value="30">30</option>
+                                            <option value="35">35</option>
+                                            <option value="40">40</option>
+                                            <option value="45">45</option>
+                                            <option value="50">50</option>
+                                            <option value="55">55</option>
+                                            <option value="60">60</option>
+                                            <option value="65">65</option>
+                                            <option value="70">70</option>
+                                            <option value="75">75</option>
+                                            <option value="80">80</option>
+                                            <option value="85">85</option>
+                                            <option value="90">90</option>
+                                            <option value="95">95</option>
+                                            <option value="100">100</option>
+                                            <option value="110">110</option>
+                                            <option value="115">115</option>
+                                            <option value="120">120</option>
+                                            <option value="125">125</option>
+                                            <option value="130">130</option>
+                                            <option value="135">135</option>
+                                            <option value="140">140</option>
+                                            <option value="145">145</option>
+                                            <option value="150">150</option>
+                                            <option value="155">155</option>
+                                            <option value="160">160</option>
+                                            <option value="165">165</option>
+                                            <option value="170">170</option>
+                                            <option value="175">175</option>
+                                            <option value="180">180</option>
+                                            <option value="185">185</option>
+                                            <option value="190">190</option>
+                                            <option value="195">195</option>
+                                            <option value="200">200</option>
+                                            <option value="205">205</option>
+                                            <option value="210">210</option>
+                                            <option value="215">215</option>
+                                            <option value="220">220</option>
+                                            <option value="225">225</option>
+                                            <option value="230">230</option>
+                                            <option value="235">235</option>
+                                            <option value="240">240</option>
+                                            <option value="245">245</option>
+                                            <option value="250">250</option>
+                                            <option value="255">255</option>
+                                            <option value="260">260</option>
+                                            <option value="265">265</option>
+                                            <option value="270">270</option>
+                                            <option value="275">275</option>
+                                            <option value="280">280</option>
+                                            <option value="285">285</option>
+                                            <option value="290">290</option>
+                                            <option value="295">295</option>
+                                            <option value="300">300</option>
+                                            <option value="305">305</option>
+                                            <option value="310">310</option>
+                                            <option value="315">315</option>
+                                            <option value="320">320</option>
+                                            <option value="325">325</option>
+                                            <option value="330">330</option>
+                                            <option value="335">335</option>
+                                            <option value="340">340</option>
+                                            <option value="345">345</option>
+                                            <option value="350">350</option>
+                                            <option value="355">355</option>
+                                            <option value="360">360</option>
+                                            <option value="365">365</option>
+                                            <option value="370">370</option>
+                                            <option value="375">375</option>
+                                            <option value="380">380</option>
+                                            <option value="385">385</option>
+                                            <option value="390">390</option>
+                                            <option value="395">395</option>
+                                            <option value="400">400</option>
+                                            <option value="405">405</option>
+                                            <option value="410">410</option>
+                                            <option value="415">415</option>
+                                            <option value="420">420</option>
+                                            <option value="425">425</option>
+                                            <option value="430">430</option>
+                                            <option value="435">435</option>
+                                            <option value="440">440</option>
+                                            <option value="445">445</option>
+                                            <option value="450">450</option>
+                                            <option value="455">455</option>
+                                            <option value="460">460</option>
+                                            <option value="465">465</option>
+                                            <option value="470">470</option>
+                                            <option value="475">475</option>
+                                            <option value="480">480</option>
+                                            <option value="485">485</option>
+                                            <option value="490">490</option>
+                                            <option value="495">495</option>
+                                            <option value="500">500</option>
+                                            <option value="505">505</option>
+                                            <option value="510">510</option>
+                                            <option value="515">515</option>
+                                            <option value="520">520</option>
+                                            <option value="525">525</option>
+                                            <option value="530">530</option>
+                                            <option value="535">535</option>
+                                            <option value="540">540</option>
+                                            <option value="545">545</option>
+                                            <option value="550">550</option>
+                                            <option value="555">555</option>
+                                            <option value="560">560</option>
+                                            <option value="565">565</option>
+                                            <option value="570">570</option>
+                                            <option value="575">575</option>
+                                            <option value="580">580</option>
+                                            <option value="585">585</option>
+                                            <option value="590">590</option>
+                                            <option value="595">595</option>
+                                            <option value="600">600</option>
+                                        </select>
+                                    </div>    
+                                </div>
                             </div>
                         </div>
-                        <div id="image-description"></div>
                     </div>
                 </div>
+            </div>
+            <div class="dropDownItemParentContainer">
+                <div class="itemContainersWrapper">
+<!--******************** Item Selection Menu 1 ********************-->               
+                    <div class="itemContainer">
+                        <div class="itemDropDownContainer">
+                            <select name="item1_drop_down" class="itemDropdown" id="item1_drop_down">
+                                <option value="Item">[NO ITEM]</option>
+                                <option value="Red Mushroom">Red Mushroom</option>
+                                <option value="Gold Mushroom">Gold Mushroom</option>
+                                <option value="Poison Mushroom">Poison Mushroom</option>
+                                <option value="Reverse Mushroom">Reverse Mushroom</option>
+                                <option value="Mini Mushroom">Mini Mushroom</option>
+                                <option value="Custom Mushroom">Custom Mushroom</option>
+                                <option value="Genie Lamp">Genie Lamp</option>
+                                <option value="Blue Lamp">Blue Lamp</option>
+                                <option value="Key">Key</option>
+                                <option value="Boo Bell">Boo Bell</option>
+                                <option value="Boo Spray">Boo Spray</option>
+                                <option value="Dueling Glove">Dueling Glove</option>
+                                <option value="Plunder Chest">Plunder Chest</option>
+                                <option value="Warp Block">Warp Block</option>
+                                <option value="Koopa Card">Koopa Card</option>
+                                <option value="Item Bag">Item Bag</option>
+                                <option value="Lucky Charm">Lucky Charm</option>                                        
+                            </select>
+                            <img src="images/items/item_box_alt.png" class="image" id="item-image1" onerror="this.style.display='none'"> <!-- Unique ID for the first item image -->
+                            <div id="image-description"></div>
+                        </div>
+                    </div>
 <!--******************** Item Selection Menu 2 ********************-->                
-                <div class="container">
-                    <div class="dropDownContainer">
-                        <select name="item2_drop_down" class="dropdown" id="item2_drop_down">
-                            <option value="Item">Item</option>
-                            <option value="Red Mushroom">Red Mushroom</option>
-                            <option value="Gold Mushroom">Gold Mushroom</option>
-                            <option value="Poison Mushroom">Poison Mushroom</option>
-                            <option value="Reverse Mushroom">Reverse Mushroom</option>
-                            <option value="Mini Mushroom">Mini Mushroom</option>
-                            <option value="Custom Mushroom">Custom Mushroom</option>
-                            <option value="Genie Lamp">Genie Lamp</option>
-                            <option value="Blue Lamp">Blue Lamp</option>
-                            <option value="Key">Key</option>
-                            <option value="Boo Bell">Boo Bell</option>
-                            <option value="Boo Spray">Boo Spray</option>
-                            <option value="Dueling Glove">Dueling Glove</option>
-                            <option value="Plunder Chest">Plunder Chest</option>
-                            <option value="Warp Block">Warp Block</option>
-                            <option value="Koopa Card">Koopa Card</option>
-                            <option value="Item Bag">Item Bag</option>
-                            <option value="Lucky Charm">Lucky Charm</option>                                        
-                        </select>
-                        <img src="images/items/item_box_alt.png" class="image" id="item-image2" onerror="this.style.display='none'"> <!-- Unique ID for the second item image -->
+                    <div class="itemContainer">
+                        <div class="itemDropDownContainer">
+                            <select name="item2_drop_down" class="itemDropdown" id="item2_drop_down">
+                                <option value="Item">[NO ITEM]</option>
+                                <option value="Red Mushroom">Red Mushroom</option>
+                                <option value="Gold Mushroom">Gold Mushroom</option>
+                                <option value="Poison Mushroom">Poison Mushroom</option>
+                                <option value="Reverse Mushroom">Reverse Mushroom</option>
+                                <option value="Mini Mushroom">Mini Mushroom</option>
+                                <option value="Custom Mushroom">Custom Mushroom</option>
+                                <option value="Genie Lamp">Genie Lamp</option>
+                                <option value="Blue Lamp">Blue Lamp</option>
+                                <option value="Key">Key</option>
+                                <option value="Boo Bell">Boo Bell</option>
+                                <option value="Boo Spray">Boo Spray</option>
+                                <option value="Dueling Glove">Dueling Glove</option>
+                                <option value="Plunder Chest">Plunder Chest</option>
+                                <option value="Warp Block">Warp Block</option>
+                                <option value="Koopa Card">Koopa Card</option>
+                                <option value="Item Bag">Item Bag</option>
+                                <option value="Lucky Charm">Lucky Charm</option>                                        
+                            </select>
+                            <img src="images/items/item_box_alt.png" class="image" id="item-image2" onerror="this.style.display='none'"> <!-- Unique ID for the second item image -->
+                        </div>
                     </div>
-                </div>
 <!--******************** Item Selection Menu 3 ********************-->
-                <div class="container">
-                    <div class="dropDownContainer">
-                        <select name="item3_drop_down" class="dropdown" id="item3_drop_down">
-                            <option value="Item">Item</option>
-                            <option value="Red Mushroom">Red Mushroom</option>
-                            <option value="Gold Mushroom">Gold Mushroom</option>
-                            <option value="Poison Mushroom">Poison Mushroom</option>
-                            <option value="Reverse Mushroom">Reverse Mushroom</option>
-                            <option value="Mini Mushroom">Mini Mushroom</option>
-                            <option value="Custom Mushroom">Custom Mushroom</option>
-                            <option value="Genie Lamp">Genie Lamp</option>
-                            <option value="Blue Lamp">Blue Lamp</option>
-                            <option value="Key">Key</option>
-                            <option value="Boo Bell">Boo Bell</option>
-                            <option value="Boo Spray">Boo Spray</option>
-                            <option value="Dueling Glove">Dueling Glove</option>
-                            <option value="Plunder Chest">Plunder Chest</option>
-                            <option value="Warp Block">Warp Block</option>
-                            <option value="Koopa Card">Koopa Card</option>
-                            <option value="Item Bag">Item Bag</option>
-                            <option value="Lucky Charm">Lucky Charm</option>
-                        </select>
-                        <img src="images/items/item_box_alt.png" class="image" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->  
+                    <div class="itemContainer">
+                        <div class="itemDropDownContainer">
+                            <select name="item3_drop_down" class="itemDropdown" id="item3_drop_down">
+                                <option value="Item">[NO ITEM]</option>
+                                <option value="Red Mushroom">Red Mushroom</option>
+                                <option value="Gold Mushroom">Gold Mushroom</option>
+                                <option value="Poison Mushroom">Poison Mushroom</option>
+                                <option value="Reverse Mushroom">Reverse Mushroom</option>
+                                <option value="Mini Mushroom">Mini Mushroom</option>
+                                <option value="Custom Mushroom">Custom Mushroom</option>
+                                <option value="Genie Lamp">Genie Lamp</option>
+                                <option value="Blue Lamp">Blue Lamp</option>
+                                <option value="Key">Key</option>
+                                <option value="Boo Bell">Boo Bell</option>
+                                <option value="Boo Spray">Boo Spray</option>
+                                <option value="Dueling Glove">Dueling Glove</option>
+                                <option value="Plunder Chest">Plunder Chest</option>
+                                <option value="Warp Block">Warp Block</option>
+                                <option value="Koopa Card">Koopa Card</option>
+                                <option value="Item Bag">Item Bag</option>
+                                <option value="Lucky Charm">Lucky Charm</option>
+                            </select>
+                            <img src="images/items/item_box_alt.png" class="image" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->  
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 <!--******************** Dice Thumbnails ********************-->
-<div id="diceThumbnailContainer"></div>
+    <div id="diceThumbnailContainer"></div>
 <!--******************** Dice Container ********************-->
-<div class="diceContainer">
-    <div class="dice-wrapper">
-        <img src="" id="die-0" alt="Dice Image">
+    <div class="diceContainer">
+        <div class="dice-wrapper">
+            <img src="" id="die-0" alt="Dice Image">
+        </div>
     </div>
-</div>
 <!-- ******************** Dice Images Container ******************** -->
-<div class="diceImagesContainer" id="diceImagesContainer">
-  <!-- Dice images will be dynamically added here -->
-</div>
+    <div class="diceImagesContainer" id="diceImagesContainer">
+<!-- Dice images will be dynamically added here -->
+    </div>
 <!--******************** Dice Audio ********************-->
-        <audio id="diceAudio" src="audio/dice-roll-01.mp3"></audio>
+            <audio id="diceAudio" src="audio/dice-roll-01.mp3"></audio>
 <!--******************** Dice Selection Dropdown Menu ********************-->
-        <div class="diceDropDownParentContainer">
-            <div class="diceDropDownContainer">   
-                    <select id="rollType" class="dropdown" onchange="setRollType(this.value)">
-                        <option value="move">Move Dice</option>
-                        <option value="lucky">Lucky Dice</option>
-                        <option value="character">Character Dice</option>
-                        <option value="cursed">Cursed Dice</option>
-                        <option value="bowser">Bowser Dice</option>
-                        <option value="bowserFury">Bowser Fury Dice</option>
-                        <option value="toadShop">Toad Shop Dice</option>
-                        <option value="bowserShop">Bowser Shop Dice</option>
-                        <option value="block">Hidden Block Dice</option>
-                        <option value="mini">Mini Dice</option>
-                        <option value="battle">Battle Dice</option>
-                        <option value="chance">Chance Dice</option>
-                    </select>
-                    <img src="images/dice/dice_dropdown.png" class="image">
+            <div class="diceDropDownParentContainer">
+                <div class="diceDropDownContainer">
+                    <img src="images/dice/dice_dropdown.png" class="image">   
+                        <select id="rollType" class="dropdown" onchange="setRollType(this.value)">
+                            <option value="move">Move Dice</option>
+                            <option value="lucky">Lucky Dice</option>
+                            <option value="character">Character Dice</option>
+                            <option value="cursed">Cursed Dice</option>
+                            <option value="bowser">Bowser Dice</option>
+                            <option value="bowserFury">Bowser Fury Dice</option>
+                            <option value="toadShop">Toad Shop Dice</option>
+                            <option value="bowserShop">Bowser Shop Dice</option>
+                            <option value="block">Hidden Block Dice</option>
+                            <option value="mini">Mini Dice</option>
+                            <option value="battle">Battle Dice</option>
+                            <option value="chance">Chance Dice</option>
+                        </select>
+                </div>
             </div>
-        </div>
 <!--******************** Stats Modal ********************-->
-        <div class="button-container">
-            <a href="#" class="button" onclick="openStatsModal()">Stats</a>       
-            <div id="stats-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeStatsModal()">&times;</span>
-                    <h2>Game Statistics</h2>
-                    <p id="total-moves-content">0</p>
-                    <p id="blue-spaces-count">Blue Spaces: 0</p>
-                    <p id="red-spaces-count">Red Spaces: 0</p>
-                    <p id="event-spaces-count">Event Spaces: 0</p>
-                    <p id="lucky-spaces-count">Lucky Spaces: 0</p>
-                    <p id="item-spaces-count">Item Spaces: 0</p>
-                    <p id="bowser-spaces-count">Bowser Spaces: 0</p>
-                    <p id="gameguy-spaces-count">Game Guy Spaces: 0</p>
-                    <p id="battle-spaces-count">Battle Spaces: 0</p>
-                    <p id="star-spaces-count">Star Spaces: 0</p>
-                    <p id="bank-spaces-count">Bank Spaces: 0</p>
-                    <p id="boo-spaces-count">Boo Spaces: 0</p>
-                    <p id="chance-spaces-count">Chance Spaces: 0</p>
+            <div class="button-container">
+                <a href="#" class="button" onclick="openStatsModal()">Stats</a>       
+                <div id="stats-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeStatsModal()">&times;</span>
+                        <h2>Game Statistics</h2>
+                        <p id="total-moves-content">0</p>
+                        <p id="blue-spaces-count">Blue Spaces: 0</p>
+                        <p id="red-spaces-count">Red Spaces: 0</p>
+                        <p id="event-spaces-count">Event Spaces: 0</p>
+                        <p id="lucky-spaces-count">Lucky Spaces: 0</p>
+                        <p id="item-spaces-count">Item Spaces: 0</p>
+                        <p id="bowser-spaces-count">Bowser Spaces: 0</p>
+                        <p id="gameguy-spaces-count">Game Guy Spaces: 0</p>
+                        <p id="battle-spaces-count">Battle Spaces: 0</p>
+                        <p id="star-spaces-count">Star Spaces: 0</p>
+                        <p id="bank-spaces-count">Bank Spaces: 0</p>
+                        <p id="boo-spaces-count">Boo Spaces: 0</p>
+                        <p id="chance-spaces-count">Chance Spaces: 0</p>
+                    </div>
                 </div>
-            </div>
 <!--******************** Spin the Wheel Modal ********************-->
-            <a href="#" class="button" onclick="openWheelModal()">Wheel</a>       
-            <div id="wheel-modal" class="modal">
-                <div class="modal-content" style="max-height:700px; overflow:auto;">
-                    <span class="close" onclick="closeWheelModal()">&times;</span>
-                    <h3>Star Location Wheel</h3>
-                    <iframe src="https://spinthewheel.app/NNE3cNgKA3"width="250" height="250" style="border: 0px"></iframe><!--Star Space-->
-                    <h3>Special Ability Wheel</h3>
-                    <iframe src="https://spinthewheel.app/CAjE0optW6" width="250" height="250" style="border: 0px"></iframe><!--Special Ability-->
-                    <h3>Boo Coin Wheel</h3>
-                    <iframe src="https://spinthewheel.app/1vLml7X7ts" width="250" height="250" style="border: 0px"></iframe><!--Boo Coin-->
+                <a href="#" class="button" onclick="openWheelModal()">Wheel</a>       
+                <div id="wheel-modal" class="modal">
+                    <div class="modal-content" style="max-height:700px; overflow:auto;">
+                        <span class="close" onclick="closeWheelModal()">&times;</span>
+                        <h3>Star Location Wheel</h3>
+                        <iframe src="https://spinthewheel.app/NNE3cNgKA3" width="250" height="250" style="border: 0px"></iframe><!--Star Space-->
+                        <h3>Special Ability Wheel</h3>
+                        <iframe src="https://spinthewheel.app/CAjE0optW6" width="250" height="250" style="border: 0px"></iframe><!--Special Ability-->
+                        <h3>Boo Coin Wheel</h3>
+                        <iframe src="https://spinthewheel.app/1vLml7X7ts" width="250" height="250" style="border: 0px"></iframe><!--Boo Coin-->
+                    </div>
                 </div>
             </div>
-        </div>
 <!--******************** Space Selection Modal ********************-->
-        <div id="spaceModal" class="modal">
-            <div class="modal-content">
-                <h3>Select the Space You Landed On</h3>
-                <img src="images/spaces/spaces_blue.png" class="space-option" data-space-type="blue" alt="Blue Space">
-                <img src="images/spaces/spaces_red.png" class="space-option" data-space-type="red" alt="Red Space">
-                <img src="images/spaces/spaces_event.png" class="space-option" data-space-type="event" alt="Event Space">
-                <img src="images/spaces/spaces_lucky.png" class="space-option" data-space-type="lucky" alt="Lucky Space">
-                <img src="images/spaces/spaces_item.png" class="space-option" data-space-type="item" alt="Item Space">
-                <img src="images/spaces/spaces_bowser.png" class="space-option" data-space-type="bowser" alt="Bowser Space">
-                <img src="images/spaces/spaces_game_guy.png" class="space-option" data-space-type="gameguy" alt="Game Guy Space">
-                <img src="images/spaces/spaces_battle.png" class="space-option" data-space-type="battle" alt="Battle Space">
-                <img src="images/spaces/spaces_star.png" class="space-option" data-space-type="star" alt="Star Space">
-                <img src="images/spaces/spaces_bank.png" class="space-option" data-space-type="bank" alt="Bank Space">
-                <img src="images/spaces/spaces_boo.png" class="space-option" data-space-type="boo" alt="Boo Space">
-                <img src="images/spaces/spaces_chance.png" class="space-option" data-space-type="chance" alt="Chance Space">
+            <div id="spaceModal" class="modal">
+                <div class="modal-content">
+                    <h3>Select the Space You Landed On</h3>
+                    <img src="images/spaces/spaces_blue.png" class="space-option" data-space-type="blue" alt="Blue Space">
+                    <img src="images/spaces/spaces_red.png" class="space-option" data-space-type="red" alt="Red Space">
+                    <img src="images/spaces/spaces_event.png" class="space-option" data-space-type="event" alt="Event Space">
+                    <img src="images/spaces/spaces_lucky.png" class="space-option" data-space-type="lucky" alt="Lucky Space">
+                    <img src="images/spaces/spaces_item.png" class="space-option" data-space-type="item" alt="Item Space">
+                    <img src="images/spaces/spaces_bowser.png" class="space-option" data-space-type="bowser" alt="Bowser Space">
+                    <img src="images/spaces/spaces_game_guy.png" class="space-option" data-space-type="gameguy" alt="Game Guy Space">
+                    <img src="images/spaces/spaces_battle.png" class="space-option" data-space-type="battle" alt="Battle Space">
+                    <img src="images/spaces/spaces_star.png" class="space-option" data-space-type="star" alt="Star Space">
+                    <img src="images/spaces/spaces_bank.png" class="space-option" data-space-type="bank" alt="Bank Space">
+                    <img src="images/spaces/spaces_boo.png" class="space-option" data-space-type="boo" alt="Boo Space">
+                    <img src="images/spaces/spaces_chance.png" class="space-option" data-space-type="chance" alt="Chance Space">
+                </div>
             </div>
-        </div>
 <!--******************** JavaScript ********************-->
-        <script src="script.js"></script>
+            <script src="script.js"></script>
+        </div>
     </body>
 </html>
