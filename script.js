@@ -389,7 +389,7 @@ function toggleMute() {
 
     // Change the icon based on the muted state
     if (audio.muted) {
-        muteIcon.className = "fa fa-volume-off";
+        muteIcon.className = "fa fa-volume-mute";
     } else {
         muteIcon.className = "fa fa-volume-up";
     }
