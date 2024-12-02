@@ -124,12 +124,14 @@ let diceLuckySpaceImages = {
 };
 
 let characterDiceImages = {
+    // If you update this, you also must update the rollCharacter()
     'boo': "images/dice/dice_character_boo.png",
+    'peach': "images/dice/dice_character_peach.png",
     'yoshi': "images/dice/dice_character_yoshi.png",
-    'drybones': "images/dice/dice_character_dry_bones.png",
+    //'drybones': "images/dice/dice_character_dry_bones.png",
     'bobomb': "images/dice/dice_character_bobomb.png",
     'rosalina': "images/dice/dice_character_rosalina.png",
-    'cattoad': "images/dice/dice_character_cat_toad.png",
+    //'cattoad': "images/dice/dice_character_cat_toad.png",
 };
 
 let toadShopDice = [
@@ -436,8 +438,8 @@ function showSpacesModal() {
 }
 
 function rollMoveDice() {
-    // Check if the maximum number of turns (15) has been reached
-    if (currentTurn >= 15) {
+    // Check if the maximum number of turns (12) has been reached
+    if (currentTurn >= 12) {
         alert('Game over!');
         return;
     }
@@ -548,7 +550,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 function rollCharacter() {
     shakeDice();
     setTimeout(function () {
-        const characters = ['boo', 'yoshi', 'drybones', 'bobomb', 'rosalina', 'cattoad'];
+        const characters = ['boo', 'yoshi', 'peach', 'bobomb', 'rosalina'];
+        //const characters = ['boo', 'yoshi', 'drybones', 'bobomb', 'rosalina', 'cattoad'];
         const randomCharacter = characters[Math.floor(Math.random() * characters.length)];
         // Set the character image source
         document.querySelector("#die-0").setAttribute("src", characterDiceImages[randomCharacter]);
@@ -597,8 +600,8 @@ function rollBowserShopDice() {
 }
 
 function rollCursedDice() {
-    // Check if the maximum number of turns (15) has been reached
-    if (currentTurn >= 15) {
+    // Check if the maximum number of turns (12) has been reached
+    if (currentTurn >= 12) {
         alert('Game over!');
         return;
     }
@@ -659,8 +662,8 @@ function rollBlockDice() {
 }
 
 function rollMiniDice() {
-    // Check if the maximum number of turns (15) has been reached
-    if (currentTurn >= 15) {
+    // Check if the maximum number of turns (12) has been reached
+    if (currentTurn >= 12) {
         alert('Game over!');
         return;
     }
@@ -759,14 +762,59 @@ function displayAllImages(imageObject) {
     // Clear the existing content in the container
     diceThumbnailContainer.innerHTML = '';
 
-    // Iterate over the images and display each one in the new container
+    // Get the container dimensions for circular positioning
+    const containerWidth = diceThumbnailContainer.offsetWidth;
+    const containerHeight = diceThumbnailContainer.offsetHeight;
+    const centerX = containerWidth / 2;
+    const centerY = containerHeight / 2;
+    const radius = Math.min(centerX, centerY) * 0.8; // 80% of the smallest dimension
+    const totalImages = Object.keys(imageObject).length;
+
+    // Adjust starting angle to center the first image at 12 o'clock
+    const baseAngle = totalImages % 2 === 0 ? -Math.PI / totalImages : -Math.PI / 2;
+
+    let index = 0;
     for (const key in imageObject) {
         if (imageObject.hasOwnProperty(key)) {
             const imageUrl = imageObject[key];
-            displayImageInContainer(imageUrl, diceThumbnailContainer);
+
+            // Calculate position for each image
+            const angle = baseAngle + (index / totalImages) * 2 * Math.PI;
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+
+            // Create and position the image
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.style.position = 'absolute';
+            img.style.left = `${x}px`;
+            img.style.top = `${y}px`;
+            img.style.transform = 'translate(-50%, -50%)'; // Center the image
+            img.style.width = '10%'; // Adjust this as needed
+            img.style.height = 'auto';
+
+            // Append the image to the container
+            diceThumbnailContainer.appendChild(img);
+            index++;
         }
     }
 }
+
+//If you want the moveDiceImages to be displayed whenever the moveDice is selected (Or by default when the page loads, use the code below. Be sure to update the getCurrentDiceImages function as well...specifically, the return value of the move rolltype should be set to moveDiceImages instead of '')
+// Initialize the rollType to 'move' when the page loads
+//let rollType = 'move';  // Default to moveDiceImages
+
+// Call the function to display images for the default rollType
+//window.addEventListener('load', () => {
+    //const defaultImages = getCurrentDiceImages();  // Get images based on rollType
+    //displayAllImages(defaultImages);  // Display those images
+//});
+
+// Recalculate positions on window resize
+window.addEventListener("resize", () => {
+    const currentImages = getCurrentDiceImages(); // Reuse your existing logic
+    displayAllImages(currentImages);
+});
 
 function displayImageInContainer(imageUrl, container) {
     // Create an image element
@@ -779,8 +827,10 @@ function displayImageInContainer(imageUrl, container) {
 
 function getCurrentDiceImages() {
     // Return the corresponding image object based on the current roll type
+    //if (rollType === 'move') {
+        //return moveDiceImages;
     if (rollType === 'move') {
-        return '';
+    return '';
     } else if (rollType === 'character') {
         return characterDiceImages;
     } else if (rollType === 'lucky') {
@@ -1038,4 +1088,3 @@ updateItemImage3();
 // Listen for changes in the third item dropdown menu
 document.getElementById('item3_drop_down').addEventListener('change', updateItemImage3);
 });
-

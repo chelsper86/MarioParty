@@ -94,7 +94,7 @@ body{
     width: auto;
     max-width: 90vw;
     text-align: center;
-    margin: 5vw auto 0 auto;
+    margin: 5vw auto 2.5vw auto;
 }
 
 #muteButton{
@@ -178,8 +178,9 @@ h1{
 .dropDownContainer{
     flex: 1;
     display: flex;
+    align-items: right;
+    justify-content: right;
     gap: 1.5vw;
-    align-items: center;
     margin: .5vw;
 }
 
@@ -208,17 +209,26 @@ h1{
     text-align-last: center; /* Ensures the selected option is right-aligned */
 }
 
-.dropDownItemParentContainer{
-    position: absolute;
-    top: 50%;
-    right: -5%;
-    margin: 0 auto;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.starCoinDropdown option{
+    background-color: white;
 }
 
+.dropDownItemParentContainer {
+    display: flex; /* Activate flexbox layout */
+    justify-content: center; /* Align items horizontally at the center */
+    gap: 1.5vw; /* Add spacing between items */
+    margin: 0 auto; /* Center the container itself horizontally */
+}
+
+.itemContainersWrapper {
+    display: flex; /* Flexbox layout for the item containers */
+    flex-direction: row; /* Ensure items are arranged horizontally */
+    justify-content: center; /* Center the items */
+    align-items: center; /* Align items vertically */
+    gap: 2vw; /* Add space between item containers */
+}
+
+/*
 .itemContainer{
     display: flex;
     align-items: center;
@@ -226,7 +236,7 @@ h1{
     flex-shrink: 0;
     text-align: center;
     margin: 1vw;
-}
+}*/
 
 .itemContainer select{
     width: 5vw; /* Adjusts the width of the dropdown to fill its parent container */
@@ -246,13 +256,13 @@ h1{
     justify-content: center;
 }
 
-.itemDropDownContainer img{
-    flex-shrink: 0; /* Prevents the image from resizing */
-    width: auto; /* Maintain the image's original aspect ratio */
-    height: auto; /* Maintain the image's original aspect ratio */
-    max-width: 12.5vw; /* Optional: Ensure the image doesn't exceed this size */
-    max-height: 12.5vw; /* Optional: Maintain proportionality */
-}
+/*.itemDropDownContainer img{
+    /*flex-shrink: 0; /* Prevents the image from resizing */
+    /*width: auto; /* Maintain the image's original aspect ratio */
+    /*height: auto; /* Maintain the image's original aspect ratio */
+    /*max-width: 12.5vw; /* Optional: Ensure the image doesn't exceed this size */
+    /*max-height: 12.5vw; /* Optional: Maintain proportionality */
+/*}*/
 
 .itemDropDownContainer select {
     flex-grow: 1; /* Optional: Makes the dropdown fill the available space */
@@ -261,24 +271,24 @@ h1{
     padding: 0.5vw; /* Adjust for better alignment */
 }
 
-#diceThumbnailContainer{
-    max-width: 100%;
-    max-height: 100%;
+#diceThumbnailContainer {
+    position: absolute;
     width: 100%;
-    height: auto;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2vw 0vw 0vw 0vw;
-    flex-wrap: wrap;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Pass clicks through */
 }
 
-#diceThumbnailContainer img{
-    width: 10vw;
+#diceThumbnailContainer img {
+    position: absolute;
+    width: 10%;
     height: auto;
-    max-height: 100%;
-    margin: 1vw;
+    transform: translate(-50%, -50%);
+}
+
+.diceThumbnail{
+    pointer-events: auto; /* Thumbnails remain clickable */
 }
 
 .diceContainer{
@@ -293,6 +303,9 @@ h1{
     box-shadow: 0 3vmin 7vmin rgba(50, 50, 50, 0.2);
     border-radius: 50%;
     font-family: "Poppins", sans-serif;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden; /* Ensures thumbnails don't extend outside the circle */
 }
 
 .dice-wrapper{
@@ -307,50 +320,56 @@ h1{
 .diceDropDownParentContainer{
     display: flex;
     align-items: center;
-    margin: 3% auto;
+    justify-content: center;
     border-radius: 2vw;
     padding: 1vw;
-    background-color: lightgray;
     box-sizing: border-box;
     flex-shrink: 0;
-    height: 15vw;
-    width: 90vw;
+    height: 5vw;
+    width: 5vw;
     text-align: center;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: transparent;
+    margin: auto;
 }
 
 .diceDropDownContainer{
-    flex: 1;
-    display: flex;
-    gap: 10px;
-    align-items: right;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Vertically centers content within the container */
+    justify-content: center; /* Horizontally centers content */
+    background-color: transparent;
 }
 
-.dropdown, .diceDropDownContainer .dropdown{
-    width: 75%;
-    box-sizing: border-box;
-    border-style: none;
-    padding: 1vw;
-    font-size: 5.5vw;
-    color: black;
-    appearance: none; /* Reset default browser styling */
-    -webkit-appearance: none; /* WebKit browsers (Chrome, Safari) */
-    -moz-appearance: none; /* Firefox */
-    background-image: url('images/drop_down_arrow.png');
-    background-size: .50em; /* Adjust the size of the arrow */
-    padding-right: .35em;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-color: inherit;
+.diceDropdown{
+    position: relative; /* Ensure it can be styled properly */
+    box-sizing: border-box; /* Ensures consistent sizing */
+    border-style: none; /* Removes default border */
+    appearance: none; /* Hides default arrow */
+    -webkit-appearance: none; /* Hides arrow in WebKit browsers */
+    -moz-appearance: none; /* Hides arrow in Firefox */
+
+    /* Background properties for the arrow */
+    background-image: url('images/drop_down_arrow.png'); /* Path to the arrow image */
+    background-size: 50%; /* Arrow occupies 25% of the container */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-position: center; /* Centers the arrow both horizontally and vertically */
+
+    /* Dropdown dimensions */
+    width: 100%; /* Match parent width */
+    height: 1em; /* Adjust as needed for desired height */
+    background-color: transparent;
+
+    /* Optional styling for placeholder text */
+    color: transparent; /* Hides text to focus on arrow */
+    line-height: 3em; /* Centers text vertically if text becomes visible */
+    padding-right: 2em; /* Ensures padding on the right for alignment */
 }
 
-.dropdown option, .diceDropDownContainer .dropdown option{
+.diceDropdown option{
     background-color: white;
 }
 
-.diceDropDownContainer .image{
-    width: 13%;
-    margin-left: 5%;
+.dropdown option, .dropdown option{
+    background-color: white;
 }
 
 .button-container{
@@ -358,14 +377,6 @@ h1{
     align-items: center;
     text-align: center;
     justify-content: center;
-}
-
-.dropDownDiceContainerWrapper{
-    display: flex;
-    gap: 1%;
-    overflow-x: auto;
-    margin: 0 auto;
-    justify-content: right;
 }
 
 .itemDropdown{
@@ -387,6 +398,10 @@ h1{
     height: 3em; /* Allow height to adjust naturally */
     line-height: .5em; /* Align text vertically inside the dropdown */
     padding-right: 2em; /* Add padding to ensure arrow does not overlap text */
+}
+
+.itemDropdown option{
+    background-color: white;
 }
 
 #die-0{
