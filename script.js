@@ -471,47 +471,39 @@ function updateStats() {
 
     // Increment the count based on the selected space and adjust for the current turn
     switch (selectedSpace) {
-        case 'blue':
-            blueSpacesCount ++;
-            break;
-        case 'red':
-            redSpacesCount ++;
-            break;
-        case 'event':
-            eventSpacesCount ++;
-            break;
-        case 'lucky':
-            luckySpacesCount ++;
-            break;
-        case 'item':
-            itemSpacesCount ++;
-            break;
-        case 'bowser':
-            bowserSpacesCount ++;
-            break;
-        case 'gameguy':
-            gameguySpacesCount ++;
-            break;
-        case 'battle':
-            battleSpacesCount ++;
-            break;
-        case 'star':
-            starSpacesCount ++;
-            break;
-        case 'bank':
-            bankSpacesCount ++;
-            break;
-        case 'boo':
-            booSpacesCount ++;
-            break;
-        case 'chance':
-            chanceSpacesCount ++;
-            break;            
+        case 'blue': blueSpacesCount ++; break;
+        case 'red': redSpacesCount ++; break;
+        case 'event': eventSpacesCount ++; break;
+        case 'lucky': luckySpacesCount ++; break;
+        case 'item': itemSpacesCount ++; break;
+        case 'bowser': bowserSpacesCount ++; break;
+        case 'gameguy': gameguySpacesCount ++; break;
+        case 'battle': battleSpacesCount ++; break;
+        case 'star': starSpacesCount ++; break;
+        case 'bank': bankSpacesCount ++; break;
+        case 'boo': booSpacesCount ++; break;
+        case 'chance': chanceSpacesCount ++; break;            
     }
+
+    // Update the selected space image
+    const container = document.getElementById('selected-space-container');
+    container.innerHTML = ''; // Clear any existing image
+    const img = document.createElement('img');
+    img.src = `images/spaces/spaces_${selectedSpace}.png`; // Dynamically set based on selected space
+    img.alt = `${selectedSpace} Space`;
+    container.appendChild(img);
 
     // Display the updated counts on the stats page
     updateStatsOnPage();
 }
+
+const spaceImages = [
+    'blue', 'red', 'event', 'lucky', 'item',
+    'bowser', 'gameguy', 'battle', 'star',
+    'bank', 'boo', 'chance'
+].map(type => `images/spaces/spaces_${type}.png`);
+
+preloadImages(spaceImages);
 
 function updateStatsOnPage() {
     // Update the statistics on the stats page
@@ -718,7 +710,7 @@ function setRollType(value) {
     rollType = value;
     setDefaultImage();
     // Display all images after changing the roll type
-    displayAllImages(getCurrentDiceImages());
+    displayDiceThumbnailImages(getCurrentDiceImages());
 }
 
 // Initially set the default image
@@ -755,7 +747,7 @@ function rollDice() {
     });
 }
 
-function displayAllImages(imageObject) {
+function displayDiceThumbnailImages(imageObject) {
     // Select the new container
     const diceThumbnailContainer = document.getElementById('diceThumbnailContainer');
 
@@ -807,13 +799,13 @@ function displayAllImages(imageObject) {
 // Call the function to display images for the default rollType
 //window.addEventListener('load', () => {
     //const defaultImages = getCurrentDiceImages();  // Get images based on rollType
-    //displayAllImages(defaultImages);  // Display those images
+    //displayDiceThumbnailImages(defaultImages);  // Display those images
 //});
 
 // Recalculate positions on window resize
 window.addEventListener("resize", () => {
     const currentImages = getCurrentDiceImages(); // Reuse your existing logic
-    displayAllImages(currentImages);
+    displayDiceThumbnailImages(currentImages);
 });
 
 function displayImageInContainer(imageUrl, container) {
