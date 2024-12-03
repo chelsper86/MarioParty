@@ -302,7 +302,7 @@ window.addEventListener("load", (event) => {
              updateStats();
 
             // When a space is selected, this triggers a 1 in 15 chance to trigger the hidden block modal
-            if (Math.random() < 1 / 1) {
+            if (Math.random() < 1 / 15) {
                 setTimeout(() => {
                     hiddenBlockModal.style.display = 'flex'; // Show the hidden block modal
                 }, 500); // Add slight delay for UX
