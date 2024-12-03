@@ -786,7 +786,7 @@ function displayDiceThumbnailImages(imageObject) {
     const containerHeight = diceThumbnailContainer.offsetHeight;
     const centerX = containerWidth / 2;
     const centerY = containerHeight / 2;
-    const radius = Math.min(centerX, centerY) * 0.8; // 80% of the smallest dimension
+    const radius = Math.min(centerX, centerY) * 0.82; // 82% of the smallest dimension
     const totalImages = Object.keys(imageObject).length;
 
     // Adjust starting angle to center the first image at 12 o'clock

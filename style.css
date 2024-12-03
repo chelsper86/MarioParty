@@ -307,10 +307,8 @@ h1{
 }
 
 .diceContainer{
-    width: 75vmin;
-    height: 75vmin;
-    min-width: 125px;
-    min-height: 125px;
+    width: 80vmin;
+    height: 80vmin;
     max-width: 700px;
     max-height: 700px;
     padding: 7vmin;
