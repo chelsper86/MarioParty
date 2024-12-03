@@ -450,7 +450,7 @@ h1{
     position: absolute;
     right: 0;
     top: 0;
-    padding: 5px;
+    margin: 2vw;
     cursor: pointer;
 }
 
@@ -567,4 +567,49 @@ h3 {
     color: inherit;
     text-align: center;
     justify-content: center;
+}
+
+#hiddenBlockModal{
+    display: none;
+    position: fixed;
+    z-index: 1001; /* Higher than spaceModal */
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#hiddenBlockModal .modal-content{
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 800px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.hidden-block{
+    height: auto;
+    width: 25vw;
+    margin: 3vw;
+}
+
+.close-button{
+    position: absolute;
+    right: 0;
+    top: 0; 
+    margin: 2vw;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+h4{
+    font-size: 6vw;
+    font-weight: normal;
 }

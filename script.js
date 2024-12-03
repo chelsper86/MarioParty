@@ -289,15 +289,40 @@ preloadImages(Object.values(itemImages));
 window.addEventListener("load", (event) => {
     const spaceOptions = document.querySelectorAll('.space-option');
     const modal = document.getElementById('spaceModal');
-     spaceOptions.forEach(option => {
+    const hiddenBlockModal = document.getElementById('hiddenBlockModal');
+    const hiddenBlockClose = document.getElementById('hiddenBlockClose');
+
+    // Event listener for space options
+    spaceOptions.forEach(option => {
          option.addEventListener('click', (event) => {
              // Stop event propagation to prevent calling the function multiple times
              event.stopPropagation();
              selectedSpace = option.getAttribute('data-space-type');
              modal.style.display = 'none';
              updateStats();
-         });
-     });
+
+            // When a space is selected, this triggers a 1 in 15 chance to trigger the hidden block modal
+            if (Math.random() < 1 / 1) {
+                setTimeout(() => {
+                    hiddenBlockModal.style.display = 'flex'; // Show the hidden block modal
+                }, 500); // Add slight delay for UX
+            }
+        });
+    });
+
+    // Close the hidden block modal
+    hiddenBlockClose.addEventListener('click', () => {
+    hiddenBlockModal.style.display = 'none';
+
+    // Update rollType to "block" and refresh the dice display
+    setRollType('block');
+
+    // Trigger the onchange event for the dropdown to update the UI to show that the hidden block dice was selected. Without this, the dropdown menu will not update and will still think you are on the move dice.
+    const diceDropdown = document.getElementById('rollType');
+    diceDropdown.value = 'block'; // Set the dropdown to "block"
+    diceDropdown.dispatchEvent(new Event('change')); // Trigger the onchange event
+    });
+
      // Preload all dice images
     const allImages = [
         ...Object.values(defaultImages),
@@ -368,11 +393,11 @@ function openWheelModal() {
     modal.style.display = 'block';
 }
 
-  // Function to close the wheel modal
-  function closeWheelModal() {
-    const modal = document.getElementById('wheel-modal');
-    modal.style.display = 'none';
-  }
+// Function to close the wheel modal
+function closeWheelModal() {
+const modal = document.getElementById('wheel-modal');
+modal.style.display = 'none';
+}
 
 
 // Function to set the default image based on the selected roll type
@@ -716,7 +741,6 @@ function setRollType(value) {
 // Initially set the default image
 setDefaultImage();
 
-// This function triggers the updateTurnDropdown menu when the dice image is clicked
 function rollDice() {
     setTimeout(function () {
         if (rollType === 'move') {
