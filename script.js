@@ -301,6 +301,9 @@ window.addEventListener("load", (event) => {
              modal.style.display = 'none';
              updateStats();
 
+             // Prevent hidden block modal for star space
+            if (selectedSpace === 'star') return;
+
             // When a space is selected, this triggers a 1 in 15 chance to trigger the hidden block modal
             if (Math.random() < 1 / 15) {
                 setTimeout(() => {
