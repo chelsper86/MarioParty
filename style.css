@@ -197,10 +197,12 @@ h1{
     justify-content: right;
     gap: 1.5vw;
     margin: .5vw;
+    cursor: pointer;
 }
 
 .image{
     width: 12.5vw;
+    cursor: pointer;
 }
 
 .starCoinDropdown{
@@ -219,9 +221,9 @@ h1{
     background-repeat: no-repeat;
     background-position: right;
     background-color: inherit;
-    /*font-weight: bold;*/
-    text-align: center; /* Aligns text to the right */
-    text-align-last: center; /* Ensures the selected option is right-aligned */
+    text-align: center;
+    text-align-last: center;
+    cursor: pointer;
 }
 
 .starCoinDropdown option{

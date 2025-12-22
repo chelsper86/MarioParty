@@ -1,7 +1,7 @@
 let moveDice = document.querySelectorAll(".dice-wrapper");
 let totalMoves = 0;
 let rollType = 'move'; // Default roll type
-let selectedSpace;
+let selectedSpace = null;
 let blueSpacesCount = 0;
 let redSpacesCount = 0;
 let eventSpacesCount = 0;
@@ -15,6 +15,8 @@ let bankSpacesCount = 0;
 let booSpacesCount = 0;
 let chanceSpacesCount = 0;
 let currentTurn = 0;
+
+const STORAGE_KEY = 'board_game_tracker_v1';
 
 //This function will load all arrayed images on the page to ensure that images load seamlessly during dice rolls and item selections.
 function preloadImages(images) {
@@ -464,6 +466,37 @@ function showSpacesModal() {
     const modal = document.getElementById('spaceModal');
     modal.style.display = 'block';
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // For every dropDownContainer on the page…
+  document.querySelectorAll('.dropDownContainer').forEach(container => {
+    const img = container.querySelector('img');
+    const select = container.querySelector('select');
+
+    if (!img || !select) return; // safety check
+
+    img.style.cursor = 'pointer'; // visual cue
+
+    img.addEventListener('click', () => {
+      // Prefer modern showPicker if available
+      if (typeof select.showPicker === 'function') {
+        select.showPicker();
+        return;
+      }
+
+      // Fallback behavior
+      select.focus();
+
+      const event = new MouseEvent('mousedown', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+      });
+
+      select.dispatchEvent(event);
+    });
+  });
+});
 
 function rollMoveDice() {
     // Check if the maximum number of turns (12) has been reached
