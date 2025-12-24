@@ -1271,6 +1271,17 @@ document.getElementById('modal-close').addEventListener('click', function(event)
     modal.style.display = 'none';
 });
 
+// Close any modal when clicking outside its content
+window.addEventListener('click', function (event) {
+    // Select all modals on the page
+    document.querySelectorAll('.modal').forEach(modal => {
+        // If the click target *is* the modal overlay (not the content), close it
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+
 // Initially update the item image
 updateItemImage();
 // Listen for changes in the item dropdown menu
