@@ -18,6 +18,125 @@ let currentTurn = 0;
 
 const STORAGE_KEY = 'board_game_tracker_v1';
 
+/*************************************************
+ * LOCAL STORAGE PERSISTENCE (GAME STATE)
+ *************************************************/
+function saveState() {
+    const state = {
+        // counts
+        blueSpacesCount,
+        redSpacesCount,
+        eventSpacesCount,
+        luckySpacesCount,
+        itemSpacesCount,
+        bowserSpacesCount,
+        gameguySpacesCount,
+        battleSpacesCount,
+        starSpacesCount,
+        bankSpacesCount,
+        booSpacesCount,
+        chanceSpacesCount,
+
+        // other game state
+        selectedSpace,
+        currentTurn,
+        totalMoves,
+
+        // dropdowns (guarded if elements not present yet)
+        turnValue: document.getElementById('turn_drop_down')?.value ?? null,
+        starValue: document.getElementById('star_drop_down')?.value ?? null,
+        coinValue: document.getElementById('coin_drop_down')?.value ?? null,
+    };
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {
+        console.error('saveState failed:', e);
+    }
+}
+
+function loadState() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    try {
+        const state = JSON.parse(raw);
+
+        blueSpacesCount   = state.blueSpacesCount   ?? 0;
+        redSpacesCount    = state.redSpacesCount    ?? 0;
+        eventSpacesCount  = state.eventSpacesCount  ?? 0;
+        luckySpacesCount  = state.luckySpacesCount  ?? 0;
+        itemSpacesCount   = state.itemSpacesCount   ?? 0;
+        bowserSpacesCount = state.bowserSpacesCount ?? 0;
+        gameguySpacesCount= state.gameguySpacesCount?? 0;
+        battleSpacesCount = state.battleSpacesCount ?? 0;
+        starSpacesCount   = state.starSpacesCount   ?? 0;
+        bankSpacesCount   = state.bankSpacesCount   ?? 0;
+        booSpacesCount    = state.booSpacesCount    ?? 0;
+        chanceSpacesCount = state.chanceSpacesCount ?? 0;
+
+        selectedSpace = state.selectedSpace ?? null;
+        currentTurn   = state.currentTurn   ?? 0;
+        totalMoves    = state.totalMoves    ?? 0;
+
+        // restore dropdown values if present
+        const turnDropdown = document.getElementById('turn_drop_down');
+        const starDropdown = document.getElementById('star_drop_down');
+        const coinDropdown = document.getElementById('coin_drop_down');
+
+        if (turnDropdown && state.turnValue != null) turnDropdown.value = state.turnValue;
+        if (starDropdown && state.starValue != null) starDropdown.value = state.starValue;
+        if (coinDropdown && state.coinValue != null) coinDropdown.value = state.coinValue;
+
+        // refresh UI
+        updateStatsOnPage();
+        displayTotalMoves();
+        renderSelectedSpaceImage();
+    } catch (e) {
+        console.error('loadState failed (clearing saved state):', e);
+        localStorage.removeItem(STORAGE_KEY);
+    }
+}
+
+function resetGameState() {
+    blueSpacesCount = redSpacesCount = eventSpacesCount = luckySpacesCount = itemSpacesCount = 0;
+    bowserSpacesCount = gameguySpacesCount = battleSpacesCount = starSpacesCount = 0;
+    bankSpacesCount = booSpacesCount = chanceSpacesCount = 0;
+    selectedSpace = null;
+    currentTurn = 0;
+    totalMoves = 0;
+
+    // reset UI
+    updateStatsOnPage();
+    displayTotalMoves();
+    clearSelectedSpaceImage();
+
+    // reset dropdowns (optional defaults)
+    const turnDropdown = document.getElementById('turn_drop_down');
+    const starDropdown = document.getElementById('star_drop_down');
+    const coinDropdown = document.getElementById('coin_drop_down');
+    if (turnDropdown) turnDropdown.value = '0';
+    if (starDropdown) starDropdown.value = '0';
+    if (coinDropdown) coinDropdown.value = '0';
+
+    localStorage.removeItem(STORAGE_KEY);
+}
+
+function renderSelectedSpaceImage() {
+    if (!selectedSpace) return;
+    const container = document.getElementById('selected-space-container');
+    if (!container) return;
+    container.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = `images/spaces/spaces_${selectedSpace}.png`;
+    img.alt = `${selectedSpace} Space`;
+    container.appendChild(img);
+}
+
+function clearSelectedSpaceImage() {
+    const container = document.getElementById('selected-space-container');
+    if (container) container.innerHTML = '';
+}
+
+
 //This function will load all arrayed images on the page to ensure that images load seamlessly during dice rolls and item selections.
 function preloadImages(images) {
     const preloadedImages = [];
@@ -496,6 +615,28 @@ document.addEventListener('DOMContentLoaded', () => {
       select.dispatchEvent(event);
     });
   });
+
+  // Restore saved game state (survives refresh)
+  loadState();
+
+  // Save when dropdowns change
+  const turnDropdown = document.getElementById('turn_drop_down');
+  const starDropdown = document.getElementById('star_drop_down');
+  const coinDropdown = document.getElementById('coin_drop_down');
+  if (turnDropdown) turnDropdown.addEventListener('change', saveState);
+  if (starDropdown) starDropdown.addEventListener('change', saveState);
+  if (coinDropdown) coinDropdown.addEventListener('change', saveState);
+
+  // Optional: if you add a reset button with id='reset-game-button'
+  const resetBtn = document.getElementById('reset-game-button');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (window.confirm('Would you like to start a new game? All stats will be cleared if you click OK?')) {
+        resetGameState();
+      }
+    });
+  }
 });
 
 function rollMoveDice() {
@@ -519,6 +660,7 @@ function rollMoveDice() {
         // Increment the turn counter
         currentTurn++;
         updateTurnDropdown();
+        saveState(); // persist turn/totalMoves
     }, 1250);
     // After 3 seconds, show the modal for selecting the space
     setTimeout(() => {
@@ -556,6 +698,7 @@ function updateStats() {
 
     // Display the updated counts on the stats page
     updateStatsOnPage();
+    saveState(); // persist after stats update
 }
 
 const spaceImages = [
@@ -671,6 +814,7 @@ function rollCursedDice() {
         // Increment the turn counter
         currentTurn++;
         updateTurnDropdown();
+        saveState(); // persist turn/totalMoves
     }, 1250);
     // After 3 seconds, show the modal for selecting the space
     setTimeout(() => {
@@ -733,6 +877,7 @@ function rollMiniDice() {
         // Increment the turn counter
         currentTurn++;
         updateTurnDropdown();
+        saveState(); // persist turn/totalMoves
     }, 1250);
     // After 3 seconds, show the modal for selecting the space
     setTimeout(() => {

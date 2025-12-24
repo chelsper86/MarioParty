@@ -200,6 +200,10 @@ h1{
     cursor: pointer;
 }
 
+.dropDownContainer:has(#turn_drop_down) * { /*This disables the click option for the dropdown only for the turn drop down menu*/
+    pointer-events: none;
+}
+
 .image{
     width: 12.5vw;
     cursor: pointer;
@@ -567,6 +571,11 @@ h3 {
     color: inherit;
     text-align: center;
     justify-content: center;
+}
+
+#reset-game-button{
+    background-color: white;
+    margin: 10% auto;
 }
 
 #hiddenBlockModal{
