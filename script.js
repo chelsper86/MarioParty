@@ -627,16 +627,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (starDropdown) starDropdown.addEventListener('change', saveState);
   if (coinDropdown) coinDropdown.addEventListener('change', saveState);
 
-  // Optional: if you add a reset button with id='reset-game-button'
-  const resetBtn = document.getElementById('reset-game-button');
-  if (resetBtn) {
-    resetBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (window.confirm('Would you like to start a new game? All stats will be cleared if you click OK?')) {
-        resetGameState();
-      }
-    });
-  }
+const resetBtn = document.getElementById('reset-game-button');
+if (resetBtn) {
+  resetBtn.addEventListener('click', () => {
+    const confirmReset = window.confirm('You will lose all of your stats if you continue?');
+    if (!confirmReset) return;
+
+    resetGameState();
+
+    // Close the stats modal after reset
+    if (typeof closeStatsModal === 'function') {
+      closeStatsModal();
+    } else {
+      // Fallback: hide the modal directly if your close function isn't in scope
+      const statsModal = document.getElementById('statsModal');
+      if (statsModal) statsModal.style.display = 'none';
+    }
+  });
+}
 });
 
 function rollMoveDice() {
