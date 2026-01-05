@@ -359,22 +359,25 @@ h1{
 }
 
 .diceDropdown{
-    position: relative; /* Ensure it can be styled properly */
+    position: absolute; /* Ensure it can be styled properly */
+    top: 5%;
+    right: 5%;
     box-sizing: border-box; /* Ensures consistent sizing */
     border-style: none; /* Removes default border */
     appearance: none; /* Hides default arrow */
     -webkit-appearance: none; /* Hides arrow in WebKit browsers */
     -moz-appearance: none; /* Hides arrow in Firefox */
-
-    /* Background properties for the arrow */
-    background-image: url('images/drop_down_arrow.png'); /* Path to the arrow image */
-    background-size: 50%; /* Arrow occupies 25% of the container */
+    pointer-events: auto;
+    /* Background properties for the dice dropdown image */
+    /*background-image: url('images/drop_down_arrow.png');*/ /* Path to the arrow image */
+    background-image: url('images/dice_dropdown_logo.png');
+    background-size: 10%;
     background-repeat: no-repeat; /* Prevents tiling */
     background-position: center; /* Centers the arrow both horizontally and vertically */
 
     /* Dropdown dimensions */
     width: 100%; /* Match parent width */
-    height: 1em; /* Adjust as needed for desired height */
+    height: 3em; /* Adjust as needed for desired height */
     background-color: transparent;
 
     /* Optional styling for placeholder text */
