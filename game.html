@@ -373,17 +373,12 @@
                     </div>
                 </div>
             </div>
-<!--******************** Dice Container ********************-->
-    <div class="diceContainer">
-<!--******************** Dice Thumbnails ********************-->
-        <div id="diceThumbnailContainer"></div>
-        <div class="dice-wrapper">
-            <img src="" id="die-0" alt="Dice Image">
-        </div>
+            
 <!--******************** Dice Selection Dropdown Menu ********************-->
+     <div class="diceArea">
         <div class="diceDropDownParentContainer">
             <div class="diceDropDownContainer">
-                <!--<img src="images/dice/dice_dropdown.png" class="image">   -->
+                <!--<img src="images/dice/dice_dropdown.png" class="image">-->
                 <select id="rollType" class="diceDropdown" onchange="setRollType(this.value)">
                     <option value="move">Move Dice</option>
                     <option value="lucky">Lucky Dice</option>
@@ -398,6 +393,14 @@
                     <option value="battle">Battle Dice</option>
                     <option value="chance">Chance Dice</option>
                 </select>
+            </div>
+        </div>
+<!--******************** Dice Container ********************-->
+        <div class="diceContainer">
+<!--******************** Dice Thumbnails ********************-->
+            <div id="diceThumbnailContainer"></div>
+            <div class="dice-wrapper">
+                <img src="" id="die-0" alt="Dice Image">
             </div>
         </div>
     </div>
