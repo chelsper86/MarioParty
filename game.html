@@ -371,30 +371,29 @@
                             <img src="images/items/item_box_alt.png" class="image" id="item-image3" onerror="this.style.display='none'"> <!-- Unique ID for the third item image -->  
                         </div>
                     </div>
+<!-- NEW: Dice dropdown becomes "Item 4" -->
+                    <div class="itemContainer">
+                        <div class="diceDropDownParentContainer diceDropDownInline">
+                            <div class="diceDropDownContainer">
+                                <select id="rollType" class="diceDropdown" onchange="setRollType(this.value)">
+                                    <option value="move">Move Dice</option>
+                                    <option value="lucky">Lucky Dice</option>
+                                    <option value="character">Character Dice</option>
+                                    <option value="cursed">Cursed Dice</option>
+                                    <option value="bowser">Bowser Dice</option>
+                                    <option value="bowserFury">Bowser Fury Dice</option>
+                                    <option value="toadShop">Toad Shop Dice</option>
+                                    <option value="bowserShop">Bowser Shop Dice</option>
+                                    <option value="block">Hidden Block Dice</option>
+                                    <option value="mini">Mini Dice</option>
+                                    <option value="battle">Battle Dice</option>
+                                    <option value="chance">Chance Dice</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-<!--******************** Dice Selection Dropdown Menu ********************-->
-     <div class="diceArea">
-        <div class="diceDropDownParentContainer">
-            <div class="diceDropDownContainer">
-                <!--<img src="images/dice/dice_dropdown.png" class="image">-->
-                <select id="rollType" class="diceDropdown" onchange="setRollType(this.value)">
-                    <option value="move">Move Dice</option>
-                    <option value="lucky">Lucky Dice</option>
-                    <option value="character">Character Dice</option>
-                    <option value="cursed">Cursed Dice</option>
-                    <option value="bowser">Bowser Dice</option>
-                    <option value="bowserFury">Bowser Fury Dice</option>
-                    <option value="toadShop">Toad Shop Dice</option>
-                    <option value="bowserShop">Bowser Shop Dice</option>
-                    <option value="block">Hidden Block Dice</option>
-                    <option value="mini">Mini Dice</option>
-                    <option value="battle">Battle Dice</option>
-                    <option value="chance">Chance Dice</option>
-                </select>
-            </div>
-        </div>
 <!--******************** Dice Container ********************-->
         <div class="diceContainer">
 <!--******************** Dice Thumbnails ********************-->
@@ -403,7 +402,6 @@
                 <img src="" id="die-0" alt="Dice Image">
             </div>
         </div>
-    </div>
 <!-- ******************** Dice Images Container ******************** -->
     <div class="diceImagesContainer" id="diceImagesContainer">
 <!-- Dice images will be dynamically added here -->
